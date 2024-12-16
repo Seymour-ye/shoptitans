@@ -38,7 +38,7 @@ Thumbs.db
 
 # pyinstall files    #
 ######################
-crafting_sequence_calc/build/*
+*/build/*
 crafting_sequence_calc/dist
 *.spec
 *config.json

@@ -365,7 +365,7 @@ class SequenceCalculator(QWidget):
     def clear_logs(self):
         for key in self.logs:
             self.logs[key] = []
-            self.sequence_buttons[key].setText(f"石头x{self.active_sequence_index}")
+            self.sequence_buttons[key].setText(f"{key}(共0个)")
         self.config_manager.update_sequences(self.logs)
         self.best_sequence_label.setText("最优序列：")
         self.config_manager.update_best_sequence([])
