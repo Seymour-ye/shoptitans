@@ -255,6 +255,12 @@ class SequenceCalculator(QWidget):
         total_items = len(self.logs[current_sequence])
         self.sequence_buttons[current_sequence].setText(f"石头x{self.active_sequence_index}(共{total_items}个)")
 
+    def update_all_sequence_button_text(self):
+        for i in range(5):
+            current_sequence = f"石头x{i}"
+            total_items = len(self.logs[current_sequence])
+            self.sequence_buttons[current_sequence].setText(f"石头x{i}(共{total_items}个)")
+
     def toggle_window_stay_on_top(self):
         # 检查窗口是否已经设置为总是前置
         if self.windowFlags() & Qt.WindowStaysOnTopHint:
@@ -375,6 +381,7 @@ class SequenceCalculator(QWidget):
         else:
             self.calculate_best_sequence()
         self.update_all_logs()
+        self.update_all_sequence_button_text()
     
     def craft_stone_(self):
         # craft
@@ -394,6 +401,7 @@ class SequenceCalculator(QWidget):
         else:
             self.calculate_best_sequence()
         self.update_all_logs()
+        self.update_all_sequence_button_text()
 
     def update_all_logs(self):
         for i in range(5):
