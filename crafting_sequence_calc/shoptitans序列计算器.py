@@ -1,8 +1,11 @@
 import sys
-import copy
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QSpinBox
+import ctypes
+import os
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QSpinBox, QFileDialog
 from PyQt5.QtCore import Qt
 import json
+
+import subprocess
 
 class ConfigManager:
     def __init__(self, config_file="config.json"):
@@ -22,7 +25,8 @@ class ConfigManager:
                 "石头x3": [],
                 "石头x4": []
             },
-            "best_sequence": []
+            "best_sequence": [],
+            'game_path': ''
         }
         self.load_config()
 
@@ -36,6 +40,10 @@ class ConfigManager:
     def save_config(self):
         with open(self.config_file, "w", encoding="utf-8") as file:
             json.dump(self.data, file, ensure_ascii=False, indent=4)
+
+    def update_game_path(self, path):
+        self.data['game_path'] = path 
+        self.save_config()
 
     def update_quality_scores(self, scores):
         self.data["quality_scores"] = scores
@@ -202,6 +210,23 @@ class SequenceCalculator(QWidget):
         self.best_sequence_label.setWordWrap(True)
         self.layout.addWidget(self.best_sequence_label, 13, 0, 1, 3)  # 占用三列
 
+        # # 从配置管理器加载路径
+        # self.game_path = self.config_manager.data["game_path"]
+
+        # # 初始化选择游戏路径按钮
+        # self.select_path_button = QPushButton(self.game_path if self.game_path else "请选择游戏路径")
+        # self.select_path_button.clicked.connect(self.select_game_path)
+        # self.layout.addWidget(self.select_path_button, 14, 0)  # 放置在适当位置
+
+
+        # # 添加网络切换按钮
+        # self.toggle_net_button = QPushButton("断网")
+        # self.toggle_net_button.clicked.connect(self.toggle_network_access)
+        # self.layout.addWidget(self.toggle_net_button, 14, 1)  # 放置在适当的位置
+
+        # 初始化网络状态
+        self.is_blocked = False  # 初始状态为“未断网”
+
         # 添加切换窗口前置的按钮
         self.toggle_button = QPushButton("开启窗口前置", self)
         self.toggle_button.clicked.connect(self.toggle_window_stay_on_top)
@@ -215,6 +240,87 @@ class SequenceCalculator(QWidget):
 
         # 初始化激活序列样式
         self.update_sequence_styles()
+
+    def select_game_path(self):
+        # 打开文件选择对话框
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "选择游戏路径",
+            "",
+            "可执行文件 (*.exe);;所有文件 (*)"
+        )
+
+        if file_path:  # 如果用户选择了路径
+            if not os.path.normpath(file_path):
+                self.select_path_button.setText("文件路径无效，请重新选择")
+                return 
+            self.game_path = os.path.normpath(file_path)
+            self.config_manager.update_game_path(self.game_path)  # 更新配置文件
+            self.select_path_button.setText(file_path)  # 更新按钮显示
+            print(f"已选择游戏路径: {file_path}")
+        else:
+            self.select_path_button.setText("未选择游戏路径，请选择")
+
+
+    def toggle_network_access(self):
+        if not self.game_path:
+            self.select_path_button.setText("请先选择游戏路径")
+            return
+
+        # 规范化路径并检查文件是否存在
+        program_path = self.game_path
+        if not os.path.isfile(self.game_path):
+            self.select_path_button.setText("文件路径无效，请选择")
+            return
+
+        # 确保路径用双引号括起来
+        program_path = f'"{self.game_path}"'
+
+        if not self.is_blocked:
+            # 删除可能已存在的规则
+            subprocess.run(
+                [
+                    "netsh", "advfirewall", "firewall", "delete", "rule",
+                    "name=BlockShopTitansNetwork"
+                ],
+                check=False,
+                shell=True
+            )
+
+            # 添加阻止规则
+            try:
+                subprocess.run(
+                    [
+                        "netsh", "advfirewall", "firewall", "add", "rule",
+                        "name=BlockShopTitansNetwork",
+                        f"program={program_path}",
+                        "dir=out",
+                        "action=block"
+                    ],
+                    check=True,
+                    shell=True
+                )
+                print(f"已阻止程序 {self.game_path} 的网络访问")
+                self.toggle_net_button.setText("联网")
+                self.is_blocked = True
+            except subprocess.CalledProcessError as e:
+                print(f"设置防火墙规则时出错: {e}")
+        else:
+            # 删除规则
+            try:
+                subprocess.run(
+                    [
+                        "netsh", "advfirewall", "firewall", "delete", "rule",
+                        "name=BlockShopTitansNetwork"
+                    ],
+                    check=True,
+                    shell=True
+                )
+                print(f"已恢复程序 {self.game_path} 的网络访问")
+                self.toggle_net_button.setText("断网")
+                self.is_blocked = False
+            except subprocess.CalledProcessError as e:
+                print(f"删除防火墙规则时出错: {e}")
 
     def undo_last_entry(self):
     # 当前激活的序列
@@ -353,8 +459,33 @@ class SequenceCalculator(QWidget):
         self.config_manager.update_best_sequence([])
         self.update_all_logs()
 
+def is_admin():
+    """检查程序是否以管理员权限运行"""
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+
+def run_as_admin():
+    """以管理员权限重新启动程序"""
+    if not is_admin():
+        try:
+            # 提升权限重新运行程序
+            ctypes.windll.shell32.ShellExecuteW(
+                None, "runas", sys.executable, " ".join(sys.argv), None, 1
+            )
+        except Exception as e:
+            print(f"无法提升权限: {e}")
+        sys.exit()
 
 if __name__ == '__main__':
+
+    # 确保以管理员权限运行
+    if not is_admin():
+        run_as_admin()
+    
+    # 启动程序
     app = QApplication(sys.argv)
     calc_app = SequenceCalculator()
     calc_app.show()
