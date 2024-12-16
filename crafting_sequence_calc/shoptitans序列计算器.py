@@ -1,6 +1,5 @@
 import sys
-import copy
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QSpinBox
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QSpinBox, QScrollArea
 from PyQt5.QtCore import Qt
 import json
 
@@ -128,6 +127,10 @@ class SequenceCalculator(QWidget):
             self.sequence_buttons[f"石头x{i}"] = sequence_button
             self.layout.addWidget(sequence_button, i, 0)
 
+            # 创建 QScrollArea
+            scroll_area = QScrollArea()
+            scroll_area.setWidgetResizable(True)  # 内容自适应大小
+
             # 序列日志显示框，占 2 列
             log_display = QLabel("")
             log_display.setWordWrap(True)
@@ -137,7 +140,11 @@ class SequenceCalculator(QWidget):
                 padding: 5px;
             """)
             self.log_displays[f"石头x{i}"] = log_display
-            self.layout.addWidget(log_display, i, 1, 1, 2)  # 占用两列
+
+            scroll_area.setWidget(log_display)  # 将 QLabel 添加到 QScrollArea
+
+            self.layout.addWidget(scroll_area, i, 1, 1, 2)  # 占用两列
+            
 
         # 品质按钮 + 打分栏
         for i, (quality, color) in enumerate(qualities):
@@ -191,7 +198,7 @@ class SequenceCalculator(QWidget):
         # self.layout.addWidget(craft_stone_button, 12, 1)
 
         # 最优序列显示
-        self.best_sequence_label = QLabel(f"最优序列：{' -> '.join(self.best_sequence)}")
+        self.best_sequence_label = QLabel(f"最优序列：\n{' -> '.join(self.best_sequence)}")
         # self.best_sequence_label.setText(f"最优序列：{' -> '.join(self.best_sequence)}")
         self.best_sequence_label.setStyleSheet("""
             background-color: #3a3a3a;
@@ -199,8 +206,15 @@ class SequenceCalculator(QWidget):
             padding: 5px;
             color: #ffffff;
         """)
+        self.best_sequence_label.setTextInteractionFlags(Qt.TextSelectableByMouse | Qt.TextSelectableByKeyboard)
         self.best_sequence_label.setWordWrap(True)
-        self.layout.addWidget(self.best_sequence_label, 13, 0, 1, 3)  # 占用三列
+
+        # 创建 QScrollArea
+        scroll_area = QScrollArea()
+        scroll_area.setWidgetResizable(True)  # 内容自适应大小
+        scroll_area.setWidget(self.best_sequence_label)  # 将 QLabel 添加到 QScrollArea
+
+        self.layout.addWidget(scroll_area, 13, 0, 1, 3)  # 占用三列
 
         # 添加切换窗口前置的按钮
         self.toggle_button = QPushButton("开启窗口前置", self)
@@ -282,6 +296,10 @@ class SequenceCalculator(QWidget):
             self.update_sequence_button_text()
             self.update_log_display(self.active_sequence_index)
             self.config_manager.update_sequences(self.logs)
+
+            # 滚动到底部
+            scroll_area = self.layout.itemAtPosition(self.active_sequence_index, 1).widget()
+            scroll_area.verticalScrollBar().setValue(scroll_area.verticalScrollBar().maximum())
         return log_action
 
     def craft_equipment(self, curr_sequence, sequence_indices):
@@ -305,10 +323,10 @@ class SequenceCalculator(QWidget):
             key = (curr_sequence_index, tuple(sequence_indices))
             if key in memo:
                 return memo[key]
-            n = len(self.logs[f"石头x{curr_sequence_index}"])
-            if sequence_indices[curr_sequence_index] >= n:
-                memo[key] = (0,[])
-                return 0, []
+            for i in range(5):
+                if sequence_indices[i] >= len(self.logs[f"石头x{i}"]):
+                    memo[key] = (0,[])
+                    return 0, []
             item_curr, item_score, item, item_seq= self.craft_equipment(curr_sequence_index, sequence_indices)
             stone_curr, stone_seq = self.craft_stone(curr_sequence_index, sequence_indices)
             #if craft equipment
@@ -330,7 +348,7 @@ class SequenceCalculator(QWidget):
         for quality, amount in res[1]:
             result.append(quality+'x'+str(amount))
         self.best_sequence = result
-        self.best_sequence_label.setText(f"最优序列：{' -> '.join(result)}")
+        self.best_sequence_label.setText(f"最优序列：\n{' -> '.join(result)}")
         self.config_manager.update_best_sequence(result)
         print('finish')
 

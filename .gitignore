@@ -40,3 +40,5 @@ Thumbs.db
 ######################
 crafting_sequence_calc/build/*
 crafting_sequence_calc/dist
+*.spec
+*config.json
