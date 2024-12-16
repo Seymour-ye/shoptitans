@@ -21,7 +21,8 @@ class ConfigManager:
                 "石头x3": [],
                 "石头x4": []
             },
-            "best_sequence": []
+            "best_sequence": [],
+            'craft_active': 0
         }
         self.load_config()
 
@@ -35,6 +36,10 @@ class ConfigManager:
     def save_config(self):
         with open(self.config_file, "w", encoding="utf-8") as file:
             json.dump(self.data, file, ensure_ascii=False, indent=4)
+
+    def update_craft_active(self, craft_active):
+        self.data['craft_active'] = craft_active
+        self.save_config()
 
     def update_quality_scores(self, scores):
         self.data["quality_scores"] = scores
@@ -108,6 +113,7 @@ class SequenceCalculator(QWidget):
         self.sequence_buttons = {}  # 存储序列激活按钮
         self.active_sequence_index = 0  # 当前序列的索引，默认激活石头x0
         self.log_displays = {}  # 存储 QLabel 显示每条序列的日志
+        self.craft_active = self.config_manager.data['craft_active']
 
         qualities = [
             ("普通", "#ffffff"),  # 白色
@@ -188,15 +194,6 @@ class SequenceCalculator(QWidget):
         undo_button.clicked.connect(self.undo_last_entry)
         self.layout.addWidget(undo_button, 11, 2)  
 
-        # 制作按钮
-        # craft_equipment_button = QPushButton("制作装备")
-        # craft_equipment_button.clicked.connect(self.craft_equipment)
-        # self.layout.addWidget(craft_equipment_button, 12, 0)
-
-        # craft_stone_button = QPushButton("制作石头")
-        # craft_stone_button.clicked.connect(self.craft_stone)
-        # self.layout.addWidget(craft_stone_button, 12, 1)
-
         # 最优序列显示
         self.best_sequence_label = QLabel(f"最优序列：\n{' -> '.join(self.best_sequence)}")
         # self.best_sequence_label.setText(f"最优序列：{' -> '.join(self.best_sequence)}")
@@ -208,6 +205,16 @@ class SequenceCalculator(QWidget):
         """)
         self.best_sequence_label.setTextInteractionFlags(Qt.TextSelectableByMouse | Qt.TextSelectableByKeyboard)
         self.best_sequence_label.setWordWrap(True)
+
+
+        #制作按钮
+        craft_equipment_button = QPushButton("制作装备")
+        craft_equipment_button.clicked.connect(self.craft_equip_)
+        self.layout.addWidget(craft_equipment_button, 14, 0)
+
+        craft_stone_button = QPushButton("制作石头")
+        craft_stone_button.clicked.connect(self.craft_stone_)
+        self.layout.addWidget(craft_stone_button, 14, 1)
 
         # 创建 QScrollArea
         scroll_area = QScrollArea()
@@ -343,7 +350,7 @@ class SequenceCalculator(QWidget):
             memo[key] = (item_full_score, item_full_sequence)
             return item_full_score, item_full_sequence
         
-        res = dfs([0,0,0,0,0], 0, memo)
+        res = dfs([0,0,0,0,0], self.craft_active, memo)
         result = []
         for quality, amount in res[1]:
             result.append(quality+'x'+str(amount))
@@ -352,6 +359,41 @@ class SequenceCalculator(QWidget):
         self.config_manager.update_best_sequence(result)
         print('finish')
 
+    def craft_equip_(self):
+        #craft
+        crafted='  '
+        if self.best_sequence:
+            crafted = self.best_sequence.pop(0)
+            self.config_manager.update_best_sequence(self.best_sequence)
+        print(self.craft_active)
+        for i in range(5):
+            if self.logs[f"石头x{i}"]:
+                self.logs[f"石头x{i}"].pop(0)
+        
+        if crafted[:2] != '石头':
+            self.best_sequence_label.setText(f"最优序列：\n{' -> '.join(self.best_sequence)}")
+        else:
+            self.calculate_best_sequence()
+        self.update_all_logs()
+    
+    def craft_stone_(self):
+        # craft
+        crafted='  '
+        if self.best_sequence:
+            crafted = self.best_sequence.pop(0)
+            self.config_manager.update_best_sequence(self.best_sequence)
+        print(self.craft_active)
+        for i in range(4):
+            if self.logs[f"石头x{self.craft_active}"]:
+                self.logs[f"石头x{self.craft_active}"].pop(0)
+        self.craft_active = (self.craft_active + 1) % 5
+        self.config_manager.update_craft_active(self.craft_active)
+
+        if crafted[:2] == '石头':
+            self.best_sequence_label.setText(f"最优序列：\n{' -> '.join(self.best_sequence)}")
+        else:
+            self.calculate_best_sequence()
+        self.update_all_logs()
 
     def update_all_logs(self):
         for i in range(5):
@@ -363,6 +405,8 @@ class SequenceCalculator(QWidget):
         self.log_displays[f"石头x{index}"].setText(log_text)
 
     def clear_logs(self):
+        self.craft_active = 0
+        self.config_manager.update_craft_active(0)
         for key in self.logs:
             self.logs[key] = []
             self.sequence_buttons[key].setText(f"{key}(共0个)")
