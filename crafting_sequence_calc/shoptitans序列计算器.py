@@ -128,7 +128,7 @@ class SequenceCalculator(QWidget):
         # 创建序列按钮和日志框
         for i in range(5):
             # 序列激活按钮
-            sequence_button = QPushButton(f"石头x{i}(共{len(self.logs[f"石头x{i}"])}个)")
+            sequence_button = QPushButton(f"石头x{(i-self.craft_active)%5}(共{len(self.logs[f"石头x{i}"])}个)")
             sequence_button.clicked.connect(self.activate_sequence(i))
             self.sequence_buttons[f"石头x{i}"] = sequence_button
             self.layout.addWidget(sequence_button, i, 0)
@@ -253,13 +253,13 @@ class SequenceCalculator(QWidget):
     def update_sequence_button_text(self):
         current_sequence = f"石头x{self.active_sequence_index}"
         total_items = len(self.logs[current_sequence])
-        self.sequence_buttons[current_sequence].setText(f"石头x{self.active_sequence_index}(共{total_items}个)")
+        self.sequence_buttons[current_sequence].setText(f"石头x{(self.active_sequence_index-self.craft_active)%5}(共{total_items}个)")
 
     def update_all_sequence_button_text(self):
         for i in range(5):
             current_sequence = f"石头x{i}"
             total_items = len(self.logs[current_sequence])
-            self.sequence_buttons[current_sequence].setText(f"石头x{i}(共{total_items}个)")
+            self.sequence_buttons[current_sequence].setText(f"石头x{(i-self.craft_active)%5}(共{total_items}个)")
 
     def toggle_window_stay_on_top(self):
         # 检查窗口是否已经设置为总是前置
@@ -406,6 +406,7 @@ class SequenceCalculator(QWidget):
     def update_all_logs(self):
         for i in range(5):
             self.update_log_display(i)
+            self.config_manager.update_sequences(self.logs)
 
     def update_log_display(self, index):
         logs = self.logs[f"石头x{index}"]
