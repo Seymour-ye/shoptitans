@@ -62,7 +62,7 @@ class SequenceCalculator(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("制作工具")  # 窗口标题
+        self.setWindowTitle("序列计算器 - 不更新就提需求椰子鲨了你！！！")  # 窗口标题
         self.setGeometry(100, 100, 800, 600)
 
 
@@ -103,6 +103,14 @@ class SequenceCalculator(QWidget):
 
         self.layout = QGridLayout()
 
+        self.qualities = {
+            "普通": "#ffffff",  # 白色
+            "优质": "#00ff00",  # 绿色
+            "精良": "#4da6ff",  # 蓝色
+            "史诗": "#a64ca6",  # 紫色
+            "传说": "#ffd700",  # 金色
+        }
+
         # 初始化品质评分表和输入框
         self.score_inputs = {}
         self.quality_scores = self.config_manager.data["quality_scores"]
@@ -115,13 +123,6 @@ class SequenceCalculator(QWidget):
         self.log_displays = {}  # 存储 QLabel 显示每条序列的日志
         self.craft_active = self.config_manager.data['craft_active']
 
-        qualities = [
-            ("普通", "#ffffff"),  # 白色
-            ("优质", "#00ff00"),  # 绿色
-            ("精良", "#0000ff"),  # 蓝色
-            ("史诗", "#500050"),  # 紫色
-            ("传说", "#ffd700"),  # 金色
-        ]
         default_scores = [1, 5, 30, 200, 1500]
 
 
@@ -153,7 +154,8 @@ class SequenceCalculator(QWidget):
             
 
         # 品质按钮 + 打分栏
-        for i, (quality, color) in enumerate(qualities):
+        for i, quality in enumerate(self.qualities):
+            color = self.qualities[quality]
             default_score = default_scores[i]
 
             # 单件按钮
@@ -195,8 +197,7 @@ class SequenceCalculator(QWidget):
         self.layout.addWidget(undo_button, 11, 2)  
 
         # 最优序列显示
-        self.best_sequence_label = QLabel(f"最优序列：\n{' -> '.join(self.best_sequence)}")
-        # self.best_sequence_label.setText(f"最优序列：{' -> '.join(self.best_sequence)}")
+        self.best_sequence_label = QLabel("最优序列：\n")
         self.best_sequence_label.setStyleSheet("""
             background-color: #3a3a3a;
             border: 1px solid #555;
@@ -205,7 +206,7 @@ class SequenceCalculator(QWidget):
         """)
         self.best_sequence_label.setTextInteractionFlags(Qt.TextSelectableByMouse | Qt.TextSelectableByKeyboard)
         self.best_sequence_label.setWordWrap(True)
-
+        self.update_best_sequence_display()
 
         #制作按钮
         craft_equipment_button = QPushButton("制作装备")
@@ -357,12 +358,9 @@ class SequenceCalculator(QWidget):
             return item_full_score, item_full_sequence
         
         res = dfs([0,0,0,0,0], self.craft_active, memo)
-        result = []
-        for quality, amount in res[1]:
-            result.append(quality+'x'+str(amount))
-        self.best_sequence = result
-        self.best_sequence_label.setText(f"最优序列：\n{' -> '.join(result)}")
-        self.config_manager.update_best_sequence(result)
+        self.best_sequence = res[1]
+        self.update_best_sequence_display()
+        self.config_manager.update_best_sequence(self.best_sequence)
         print('finish')
 
     def craft_equip_(self):
@@ -377,7 +375,7 @@ class SequenceCalculator(QWidget):
                 self.logs[f"石头x{i}"].pop(0)
         
         if crafted[:2] != '石头':
-            self.best_sequence_label.setText(f"最优序列：\n{' -> '.join(self.best_sequence)}")
+            self.update_best_sequence_display()
         else:
             self.calculate_best_sequence()
         self.update_all_logs()
@@ -397,20 +395,31 @@ class SequenceCalculator(QWidget):
         self.config_manager.update_craft_active(self.craft_active)
 
         if crafted[:2] == '石头':
-            self.best_sequence_label.setText(f"最优序列：\n{' -> '.join(self.best_sequence)}")
+            self.update_best_sequence_display()
         else:
             self.calculate_best_sequence()
         self.update_all_logs()
         self.update_all_sequence_button_text()
+
+    def update_best_sequence_display(self):
+        tl = []
+        for i in self.best_sequence:
+            quality = i[0]
+            amount = i[1]
+            color = '#AAAAAA' if quality == '石头' else self.qualities[quality]
+            tl.append((quality, amount, color))
+        text = f"最优序列：<br>{' -> '.join([f"<span style='color: {color};'>{quality}x{amount}</span>" for quality, amount, color in tl])}"
+        self.best_sequence_label.setText(text)
 
     def update_all_logs(self):
         for i in range(5):
             self.update_log_display(i)
             self.config_manager.update_sequences(self.logs)
 
+
     def update_log_display(self, index):
         logs = self.logs[f"石头x{index}"]
-        log_text = " | ".join([f"{q}x{a}" for q, a in logs])
+        log_text = " | ".join([f"<span style='color: {self.qualities[q]};'>{q}x{a}</span>" for q, a in logs])
         self.log_displays[f"石头x{index}"].setText(log_text)
 
     def clear_logs(self):
@@ -420,7 +429,7 @@ class SequenceCalculator(QWidget):
             self.logs[key] = []
             self.sequence_buttons[key].setText(f"{key}(共0个)")
         self.config_manager.update_sequences(self.logs)
-        self.best_sequence_label.setText("最优序列：")
+        self.update_best_sequence_display()
         self.config_manager.update_best_sequence([])
         self.update_all_logs()
 
