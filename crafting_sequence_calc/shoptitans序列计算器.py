@@ -365,27 +365,22 @@ class SequenceCalculator(QWidget):
 
     def craft_equip_(self):
         #craft
-        crafted='  '
         if self.best_sequence:
-            crafted = self.best_sequence.pop(0)
+            self.best_sequence.pop(0)
             self.config_manager.update_best_sequence(self.best_sequence)
         print(self.craft_active)
         for i in range(5):
             if self.logs[f"石头x{i}"]:
                 self.logs[f"石头x{i}"].pop(0)
         
-        if crafted[:2] != '石头':
-            self.update_best_sequence_display()
-        else:
-            self.calculate_best_sequence()
+        self.calculate_best_sequence()
         self.update_all_logs()
         self.update_all_sequence_button_text()
     
     def craft_stone_(self):
         # craft
-        crafted='  '
         if self.best_sequence:
-            crafted = self.best_sequence.pop(0)
+            self.best_sequence.pop(0)
             self.config_manager.update_best_sequence(self.best_sequence)
         print(self.craft_active)
         for i in range(4):
@@ -394,10 +389,7 @@ class SequenceCalculator(QWidget):
         self.craft_active = (self.craft_active + 1) % 5
         self.config_manager.update_craft_active(self.craft_active)
 
-        if crafted[:2] == '石头':
-            self.update_best_sequence_display()
-        else:
-            self.calculate_best_sequence()
+        self.calculate_best_sequence()
         self.update_all_logs()
         self.update_all_sequence_button_text()
 
