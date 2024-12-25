@@ -351,11 +351,11 @@ class SequenceCalculator(QWidget):
             stone = dfs(stone_seq, stone_curr, memo)
             stone_full_score = stone[0] 
             stone_full_sequence = [('石头',1)] + stone[1]
-            if stone_full_score > item_full_score:
-                memo[key] = (stone_full_score, stone_full_sequence)
-                return stone_full_score, stone_full_sequence
-            memo[key] = (item_full_score, item_full_sequence)
-            return item_full_score, item_full_sequence
+            if stone_full_score < item_full_score:
+                memo[key] = (item_full_score, item_full_sequence)
+                return item_full_score, item_full_sequence
+            memo[key] = (stone_full_score, stone_full_sequence)
+            return stone_full_score, stone_full_sequence
         
         res = dfs([0,0,0,0,0], self.craft_active, memo)
         self.best_sequence = res[1]
