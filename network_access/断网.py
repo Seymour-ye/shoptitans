@@ -25,11 +25,9 @@ class ConfigManager:
         with open(self.config_file, "w", encoding="utf-8") as file:
             json.dump(self.data, file, ensure_ascii=False, indent=4)
 
-
     def update_game_path(self, path):
         self.data["game_path"] = path
         self.save_config()
-
 
 class NetworkToggle(QWidget):
     def __init__(self):
@@ -38,9 +36,9 @@ class NetworkToggle(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("断网刷技能")  # 窗口标题
+        title = "管理员权限已获取，可以断网" if is_admin() else "未获得管理员权限，无法断网"
+        self.setWindowTitle(title )  # 窗口标题
         self.setGeometry(100, 100, 400, 200)
-
 
         self.setStyleSheet("""
             QWidget {
@@ -204,7 +202,6 @@ def is_admin():
     except:
         return False
 
-
 def run_as_admin():
     """以管理员权限重新启动程序"""
     if not is_admin():
@@ -216,7 +213,6 @@ def run_as_admin():
         except Exception as e:
             print(f"无法提升权限: {e}")
         sys.exit()
-
 
 if __name__ == '__main__':
     # 确保以管理员权限运行
