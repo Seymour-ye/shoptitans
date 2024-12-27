@@ -3,7 +3,7 @@
 *.com
 *.class
 *.dll
-*.exe
+# *.exe
 *.o
 *.so
 
@@ -39,6 +39,5 @@ Thumbs.db
 # pyinstall files    #
 ######################
 */build/*
-crafting_sequence_calc/dist
 *.spec
 *config.json
