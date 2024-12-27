@@ -337,6 +337,16 @@ class SequenceCalculator(QWidget):
             key = (curr_sequence_index, tuple(sequence_indices))
             if key in memo:
                 return memo[key]
+            # prior = True
+            # for i in range(self.craft_active, self.craft_active+5):
+            #     if i%5 == curr_sequence_index:
+            #         prior = False 
+            #     if prior and sequence_indices[i%5] + 4 >= len(self.logs[f"石头x{i%5}"]):
+            #         memo[key] = (0,[])
+            #         return 0, []
+            #     elif not prior and sequence_indices[i%5] >= len(self.logs[f"石头x{i%5}"]):
+            #         memo[key] = (0,[])
+            #         return 0, []
             for i in range(5):
                 if sequence_indices[i] >= len(self.logs[f"石头x{i}"]):
                     memo[key] = (0,[])
@@ -351,7 +361,7 @@ class SequenceCalculator(QWidget):
             stone = dfs(stone_seq, stone_curr, memo)
             stone_full_score = stone[0] 
             stone_full_sequence = [('石头',1)] + stone[1]
-            if stone_full_score < item_full_score:
+            if stone_full_score <= item_full_score:
                 memo[key] = (item_full_score, item_full_sequence)
                 return item_full_score, item_full_sequence
             memo[key] = (stone_full_score, stone_full_sequence)
