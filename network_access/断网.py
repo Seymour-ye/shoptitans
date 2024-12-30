@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt
 import json
 
 class ConfigManager:
-    def __init__(self, config_file="config.json"):
+    def __init__(self, config_file="naConfig.json"):
         self.config_file = config_file
         self.data = {
             'game_path': ''

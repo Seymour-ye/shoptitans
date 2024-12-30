@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QLabel, QSpinBox, QScrollArea
+import webbrowser
+from PyQt5.QtWidgets import QComboBox, QApplication, QWidget, QGridLayout, QPushButton, QLabel, QSpinBox, QScrollArea
 from PyQt5.QtCore import Qt
 from config import ConfigManager
 
@@ -7,7 +8,7 @@ from config import ConfigManager
 
 class SequenceCalculator(QWidget):
     def __init__(self):
-        self.config_manager = ConfigManager()
+        self.config_manager = ConfigManager('scConfig.json')
         super().__init__()
         self.initUI()
 
@@ -63,18 +64,47 @@ class SequenceCalculator(QWidget):
 
         # 初始化品质评分表和输入框
         self.score_inputs = {}
-        self.quality_scores = self.config_manager.data["quality_scores"]
-        self.logs = self.config_manager.data["sequences"]
-        self.best_sequence = self.config_manager.data["best_sequence"]
+        self.load_data()
         
         # 初始化序列日志和显示框
         self.sequence_buttons = {}  # 存储序列激活按钮
         self.active_sequence_index = 0  # 当前序列的索引，默认激活石头x0
         self.log_displays = {}  # 存储 QLabel 显示每条序列的日志
-        self.craft_active = self.config_manager.data['craft_active']
 
         default_scores = [1, 5, 30, 200, 1500]
 
+        # 添加选择 Tier 的输入框
+        tier_selector_label = QLabel("选择 Tier (T级):")
+        tier_selector_label.setStyleSheet("""
+                QLabel {
+                    font-size: 14px;
+                    background: none;  /* 去掉背景色 */
+                    border: none;      /* 去掉边框 */
+                    color: #ffffff;    /* 字体颜色 */
+                }
+            """)
+        tier_selector_label.setAlignment(Qt.AlignRight | Qt.AlignVCenter)  # 右对齐，垂直居中
+        self.layout.addWidget(tier_selector_label, 0, 0)
+
+        self.tier_selector = QComboBox()
+        self.tier_selector.addItems([str(i) for i in range(1, 15)])  # 添加 1 到 14 的选项
+        self.tier_selector.setCurrentText(str(self.config_manager.tier))  # 设置默认值
+        self.tier_selector.setStyleSheet("""
+            QComboBox {
+                background-color: #3a3a3a; /* 深灰背景 */
+                border: 1px solid #555;    /* 边框 */
+                color: #ffffff;            /* 字体颜色 */
+                font-size: 14px;           /* 字体大小 */
+                padding: 2px;              /* 内边距 */
+            }
+            QComboBox QAbstractItemView {
+                background-color: #3a3a3a; /* 下拉选项背景色 */
+                color: #ffffff;            /* 下拉选项字体颜色 */
+                border: 1px solid #555;    /* 边框 */
+            }
+        """)
+        self.tier_selector.currentTextChanged.connect(self.change_tier)  # 绑定值变化事件
+        self.layout.addWidget(self.tier_selector, 0, 1)
 
         # 创建序列按钮和日志框
         for i in range(5):
@@ -82,7 +112,7 @@ class SequenceCalculator(QWidget):
             sequence_button = QPushButton(f"石头x{(i-self.craft_active)%5}(共{len(self.logs[f"石头x{i}"])}个)")
             sequence_button.clicked.connect(self.activate_sequence(i))
             self.sequence_buttons[f"石头x{i}"] = sequence_button
-            self.layout.addWidget(sequence_button, i, 0)
+            self.layout.addWidget(sequence_button, i+1, 0)
 
             # 创建 QScrollArea
             scroll_area = QScrollArea()
@@ -100,7 +130,7 @@ class SequenceCalculator(QWidget):
 
             scroll_area.setWidget(log_display)  # 将 QLabel 添加到 QScrollArea
 
-            self.layout.addWidget(scroll_area, i, 1, 1, 2)  # 占用两列
+            self.layout.addWidget(scroll_area, i+1, 1, 1, 2)  # 占用两列
             
 
         # 品质按钮 + 打分栏
@@ -112,13 +142,13 @@ class SequenceCalculator(QWidget):
             single_button = QPushButton(quality)
             single_button.clicked.connect(self.add_log(quality, 1))
             single_button.setStyleSheet(f"color: {color};")  # 设置按钮字体颜色
-            self.layout.addWidget(single_button, i + 6, 0)
+            self.layout.addWidget(single_button, i + 7, 0)
 
             # 双件按钮
             double_button = QPushButton(f"{quality}x2")
             double_button.clicked.connect(self.add_log(quality, 2))
             double_button.setStyleSheet(f"color: {color};")  # 设置按钮字体颜色
-            self.layout.addWidget(double_button, i + 6, 1)
+            self.layout.addWidget(double_button, i + 7, 1)
 
             # 打分栏
             spin_box = QSpinBox()
@@ -126,7 +156,7 @@ class SequenceCalculator(QWidget):
             spin_box.setValue(default_score)  # 默认值
             spin_box.setFixedWidth(60)  # 设置固定宽度，足够显示4位数
             spin_box.valueChanged.connect(self.update_scores(quality))
-            self.layout.addWidget(spin_box, i + 6, 2)
+            self.layout.addWidget(spin_box, i + 7, 2)
 
             self.quality_scores[quality] = default_score
             self.score_inputs[quality] = spin_box
@@ -134,17 +164,17 @@ class SequenceCalculator(QWidget):
         # 清空按钮
         clear_button = QPushButton("清空")
         clear_button.clicked.connect(self.clear_logs)
-        self.layout.addWidget(clear_button, 11, 0)
+        self.layout.addWidget(clear_button, 13, 0)
 
         # 计算最优序列按钮
         calculate_button = QPushButton("计算最优序列")
         calculate_button.clicked.connect(self.calculate_best_sequence)
-        self.layout.addWidget(calculate_button, 11, 1)
+        self.layout.addWidget(calculate_button, 13, 1)
 
         # 撤销按钮
         undo_button = QPushButton("撤销")
         undo_button.clicked.connect(self.undo_last_entry)
-        self.layout.addWidget(undo_button, 11, 2)  
+        self.layout.addWidget(undo_button, 13, 2)  
 
         # 最优序列显示
         self.best_sequence_label = QLabel("最优序列：\n")
@@ -161,23 +191,23 @@ class SequenceCalculator(QWidget):
         #制作按钮
         craft_equipment_button = QPushButton("制作装备")
         craft_equipment_button.clicked.connect(self.craft_equip_)
-        self.layout.addWidget(craft_equipment_button, 14, 0)
+        self.layout.addWidget(craft_equipment_button, 15, 0)
 
         craft_stone_button = QPushButton("制作石头")
         craft_stone_button.clicked.connect(self.craft_stone_)
-        self.layout.addWidget(craft_stone_button, 14, 1)
+        self.layout.addWidget(craft_stone_button, 15, 1)
 
         # 创建 QScrollArea
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)  # 内容自适应大小
         scroll_area.setWidget(self.best_sequence_label)  # 将 QLabel 添加到 QScrollArea
 
-        self.layout.addWidget(scroll_area, 13, 0, 1, 3)  # 占用三列
+        self.layout.addWidget(scroll_area, 14, 0, 1, 3)  # 占用三列
 
         # 添加切换窗口前置的按钮
         self.toggle_button = QPushButton("开启窗口前置", self)
         self.toggle_button.clicked.connect(self.toggle_window_stay_on_top)
-        self.layout.addWidget(self.toggle_button, 14, 2)  
+        self.layout.addWidget(self.toggle_button, 15, 2)  
 
         # 刷新窗口数据
         self.update_all_logs()
@@ -187,6 +217,30 @@ class SequenceCalculator(QWidget):
 
         # 初始化激活序列样式
         self.update_sequence_styles()
+
+    def load_data(self, tier=-1):
+        if tier == -1:
+            tier = self.config_manager.tier
+
+        self.craft_active = self.config_manager.data[tier]['craft_active']
+        self.quality_scores = self.config_manager.data['quality_scores']
+        self.logs = self.config_manager.data[tier]['sequences']
+        self.best_sequence = self.config_manager.data[tier]['best_sequence']
+        
+        self.config_manager.update_tier(tier)
+
+    def change_tier(self, value):
+        # 更新配置管理器中的 tier
+        value = int(value)
+        self.config_manager.update_tier(value)
+
+        # 加载新 tier 的数据
+        self.load_data(value)
+
+        # 刷新界面
+        self.update_all_logs()
+        self.update_all_sequence_button_text()
+        self.update_best_sequence_display()
 
     def undo_last_entry(self):
     # 当前激活的序列
@@ -200,6 +254,7 @@ class SequenceCalculator(QWidget):
             # 更新按钮文本和日志显示
             self.update_sequence_button_text()
             self.update_log_display(self.active_sequence_index)
+            self.config_manager.update_sequences(self.logs)
 
     def update_sequence_button_text(self):
         current_sequence = f"石头x{self.active_sequence_index}"
@@ -262,7 +317,7 @@ class SequenceCalculator(QWidget):
             self.config_manager.update_sequences(self.logs)
 
             # 滚动到底部
-            scroll_area = self.layout.itemAtPosition(self.active_sequence_index, 1).widget()
+            scroll_area = self.layout.itemAtPosition(self.active_sequence_index+1, 1).widget()
             scroll_area.verticalScrollBar().setValue(scroll_area.verticalScrollBar().maximum())
         return log_action
 
@@ -321,14 +376,12 @@ class SequenceCalculator(QWidget):
         self.best_sequence = res[1]
         self.update_best_sequence_display()
         self.config_manager.update_best_sequence(self.best_sequence)
-        print('finish')
 
     def craft_equip_(self):
         #craft
         if self.best_sequence:
             self.best_sequence.pop(0)
             self.config_manager.update_best_sequence(self.best_sequence)
-        print(self.craft_active)
         for i in range(5):
             if self.logs[f"石头x{i}"]:
                 self.logs[f"石头x{i}"].pop(0)
@@ -342,7 +395,6 @@ class SequenceCalculator(QWidget):
         if self.best_sequence:
             self.best_sequence.pop(0)
             self.config_manager.update_best_sequence(self.best_sequence)
-        print(self.craft_active)
         for i in range(4):
             if self.logs[f"石头x{self.craft_active}"]:
                 self.logs[f"石头x{self.craft_active}"].pop(0)
@@ -360,7 +412,10 @@ class SequenceCalculator(QWidget):
             amount = i[1]
             color = '#AAAAAA' if quality == '石头' else self.qualities[quality]
             tl.append((quality, amount, color))
-        text = f"最优序列：<br>{' -> '.join([f"<span style='color: {color};'>{quality}x{amount}</span>" for quality, amount, color in tl])}"
+        text = f"最优序列：<br>{' -> '.join([
+                f"<span style='color: {color};'>{quality}x{amount}</span>" 
+                for quality, amount, color in tl
+            ])}"
         self.best_sequence_label.setText(text)
 
     def update_all_logs(self):
