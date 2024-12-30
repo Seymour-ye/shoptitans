@@ -106,6 +106,29 @@ class SequenceCalculator(QWidget):
         self.tier_selector.currentTextChanged.connect(self.change_tier)  # 绑定值变化事件
         self.layout.addWidget(self.tier_selector, 0, 1)
 
+        # 添加跳转按钮
+        web_button = QPushButton("使用说明")
+        web_button.clicked.connect(self.open_web_link)
+        web_button.setStyleSheet("""
+            QPushButton {
+                background-color: #3a3a3a; /* 按钮背景色 */
+                color: #ffffff;            /* 字体颜色 */
+                border: 1px solid #555;    /* 边框 */
+                border-radius: 5px;        /* 圆角按钮 */
+                padding: 5px;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #505050; /* 鼠标悬停时背景色 */
+            }
+            QPushButton:pressed {
+                background-color: #707070; /* 按钮按下时背景色 */
+            }
+        """)
+
+        # 添加到右上角
+        self.layout.addWidget(web_button, 0, 2)
+
         # 创建序列按钮和日志框
         for i in range(5):
             # 序列激活按钮
@@ -217,6 +240,9 @@ class SequenceCalculator(QWidget):
 
         # 初始化激活序列样式
         self.update_sequence_styles()
+
+    def open_web_link(self):
+        webbrowser.open("https://github.com/Seymour-ye/shoptitans")  # 替换为你的链接
 
     def load_data(self, tier=-1):
         if tier == -1:
