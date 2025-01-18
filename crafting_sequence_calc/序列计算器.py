@@ -438,7 +438,12 @@ class SequenceCalculator(QWidget):
             amount = i[1]
             color = '#AAAAAA' if quality == '石头' else self.qualities[quality]
             tl.append((quality, amount, color))
-        text = f"最优序列：<br>{' -> '.join([
+        text = "最优序列："
+        for seq in self.logs.values():
+            if len(seq) <= 4:
+                text += "<span style='color: #ff0000;'>有已窥序列数量小于等于4，建议延长序列<br>序列数量过少可能导致最优序列计算导致偏差</span>"
+                break
+        text += f"<br>{' -> '.join([
                 f"<span style='color: {color};'>{quality}x{amount}</span>" 
                 for quality, amount, color in tl
             ])}"
