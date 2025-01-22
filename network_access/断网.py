@@ -2,15 +2,20 @@ import sys
 import ctypes 
 import os 
 import subprocess
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QFileDialog, QInputDialog
 from PyQt5.QtCore import Qt
 import json
+
+import threading
+import keyboard  # 用于全局热键
+import mouse  # 用于捕获鼠标事件
 
 class ConfigManager:
     def __init__(self, config_file="naConfig.json"):
         self.config_file = config_file
         self.data = {
-            'game_path': ''
+            'game_path': '',
+            'hotkey': 'ctrl+shift+d' #默认快捷键
         }
         self.load_config()
 
@@ -29,11 +34,18 @@ class ConfigManager:
         self.data["game_path"] = path
         self.save_config()
 
+    def update_hotkey(self, hotkey):
+        self.data["hotkey"] = hotkey
+        self.save_config()
+
 class NetworkToggle(QWidget):
     def __init__(self):
         self.config_manager = ConfigManager()
         super().__init__()
+        self.registered_hotkeys = []  # 记录已注册的热键
+        self.registered_mouse_buttons = []  # 记录已注册的鼠标事件
         self.initUI()
+        self.setup_hotkey()  # 设置全局热键
 
     def initUI(self):
         title = "管理员权限已获取，可以断网" if is_admin() else "未获得管理员权限，无法断网"
@@ -78,6 +90,7 @@ class NetworkToggle(QWidget):
         self.layout = QGridLayout()
         self.config_manager.load_config()
         self.game_path = self.config_manager.data['game_path']
+        self.hotkey = self.config_manager.data['hotkey']
 
         # 初始化选择游戏路径按钮
         self.select_path_button = QPushButton(self.game_path if self.game_path else "请选择游戏路径")
@@ -88,6 +101,11 @@ class NetworkToggle(QWidget):
         self.toggle_net_button = QPushButton("断网")
         self.toggle_net_button.clicked.connect(self.toggle_network_access)
         self.layout.addWidget(self.toggle_net_button, 1, 0)  # 放置在适当的位置
+
+        # 添加快捷键设置按钮
+        self.hotkey_button = QPushButton(f"设置快捷键 ({self.hotkey})")
+        self.hotkey_button.clicked.connect(self.set_hotkey)
+        self.layout.addWidget(self.hotkey_button, 2, 1)  # 放置在适当位置
 
         # 初始化网络状态
         self.is_blocked = False  # 初始状态为“未断网”
@@ -100,7 +118,47 @@ class NetworkToggle(QWidget):
         # 设置主布局
         self.setLayout(self.layout)
 
-    
+    def setup_hotkey(self):
+        """设置全局热键，支持键盘和鼠标"""
+        def hotkey_action():
+            self.toggle_network_access()
+
+        # 清除之前的绑定
+        self.clear_hotkeys()
+
+        # 判断快捷键是否为鼠标按键
+        if self.hotkey.startswith("mouse_"):
+            button = self.hotkey.replace("mouse_", "").lower()  # 去除前缀并小写
+            valid_buttons = ["left", "right", "middle", "x", "x2"]
+            if button in valid_buttons:
+                print(f"绑定鼠标按键: {button}")
+                mouse.on_button(hotkey_action, buttons=(button,), types=('down',))
+                self.registered_mouse_buttons.append(button)
+            else:
+                print(f"无效的鼠标按键: {button}")
+        else:
+            hotkey_id = keyboard.add_hotkey(self.hotkey, hotkey_action)
+            self.registered_hotkeys.append(hotkey_id)
+
+    def clear_hotkeys(self):
+        """清除已注册的热键和鼠标绑定"""
+        for hotkey_id in self.registered_hotkeys:
+            keyboard.remove_hotkey(hotkey_id)
+        self.registered_hotkeys.clear()
+
+        for button in self.registered_mouse_buttons:
+            mouse.unhook_all_buttons()  # 清除所有鼠标绑定（仅限当前库内绑定）
+        self.registered_mouse_buttons.clear()
+
+    def set_hotkey(self):
+        """设置自定义快捷键，支持鼠标按键"""
+        new_hotkey, ok = QInputDialog.getText(self, "设置快捷键", "请输入新的快捷键或鼠标按键 (例如 'ctrl+shift+d' 或 'mouse_x'):", text=self.hotkey)
+        if ok and new_hotkey.strip():
+            self.hotkey = new_hotkey.strip()
+            self.config_manager.update_hotkey(self.hotkey)
+            self.hotkey_button.setText(f"设置快捷键 ({self.hotkey})")
+            self.setup_hotkey()  # 重新设置新的快捷键
+
     def select_game_path(self):
         # 打开文件选择对话框
         file_path, _ = QFileDialog.getOpenFileName(
