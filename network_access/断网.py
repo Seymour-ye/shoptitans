@@ -121,7 +121,10 @@ class NetworkToggle(QWidget):
     def setup_hotkey(self):
         """设置全局热键，支持键盘和鼠标"""
         def hotkey_action():
-            self.toggle_network_access()
+            try:
+                self.toggle_network_access()
+            except Exception as e:
+                print(f"快捷键触发时出错: {e}")
 
         # 清除之前的绑定
         self.clear_hotkeys()
@@ -132,22 +135,39 @@ class NetworkToggle(QWidget):
             valid_buttons = ["left", "right", "middle", "x", "x2"]
             if button in valid_buttons:
                 print(f"绑定鼠标按键: {button}")
-                mouse.on_button(hotkey_action, buttons=(button,), types=('down',))
-                self.registered_mouse_buttons.append(button)
+                def mouse_listener():
+                    try:
+                        mouse.on_button(hotkey_action, buttons=(button,), types=('down',))
+                        self.registered_mouse_buttons.append(button)
+                    except Exception as e:
+                        print(f"鼠标按键绑定出错: {e}")
+                threading.Thread(target=mouse_listener, daemon=True).start()
             else:
                 print(f"无效的鼠标按键: {button}")
         else:
-            hotkey_id = keyboard.add_hotkey(self.hotkey, hotkey_action)
-            self.registered_hotkeys.append(hotkey_id)
+            print(f"绑定键盘快捷键: {self.hotkey}")
+            def keyboard_listener():
+                try:
+                    hotkey_id = keyboard.add_hotkey(self.hotkey, hotkey_action)
+                    self.registered_hotkeys.append(hotkey_id)
+                except Exception as e:
+                    print(f"键盘快捷键绑定出错: {e}")
+            threading.Thread(target=keyboard_listener, daemon=True).start()
 
     def clear_hotkeys(self):
         """清除已注册的热键和鼠标绑定"""
         for hotkey_id in self.registered_hotkeys:
-            keyboard.remove_hotkey(hotkey_id)
+            try:
+                keyboard.remove_hotkey(hotkey_id)
+            except Exception as e:
+                print(f"清除键盘热键时出错: {e}")
         self.registered_hotkeys.clear()
 
         for button in self.registered_mouse_buttons:
-            mouse.unhook_all_buttons()  # 清除所有鼠标绑定（仅限当前库内绑定）
+            try:
+                mouse.unhook_all_buttons()  # 清除所有鼠标绑定（仅限当前库内绑定）
+            except Exception as e:
+                print(f"清除鼠标绑定时出错: {e}")
         self.registered_mouse_buttons.clear()
 
     def set_hotkey(self):
