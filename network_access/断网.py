@@ -3,7 +3,7 @@ import ctypes
 import os 
 import subprocess
 from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, QPushButton, QFileDialog, QInputDialog
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 import json
 
 import threading
@@ -46,6 +46,11 @@ class NetworkToggle(QWidget):
         self.registered_mouse_buttons = []  # 记录已注册的鼠标事件
         self.initUI()
         self.setup_hotkey()  # 设置全局热键
+
+        #刷新快捷键计时器
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.refresh_hotkeys)
+        self.timer.start(60000)
 
     def initUI(self):
         title = "管理员权限已获取，可以断网" if is_admin() else "未获得管理员权限，无法断网"
@@ -118,6 +123,10 @@ class NetworkToggle(QWidget):
         # 设置主布局
         self.setLayout(self.layout)
 
+    def refresh_hotkeys(self):
+        self.clear_hotkeys()
+        self.setup_hotkey()
+        
     def setup_hotkey(self):
         """设置全局热键，支持键盘和鼠标"""
         def hotkey_action():
