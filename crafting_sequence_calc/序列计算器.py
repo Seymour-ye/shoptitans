@@ -8,6 +8,7 @@ from config import ConfigManager
 
 class SequenceCalculator(QWidget):
     def __init__(self):
+        self.switchables = [4,7,9,10,12,14]
         self.config_manager = ConfigManager('scConfig.json')
         super().__init__()
         self.initUI()
@@ -397,9 +398,14 @@ class SequenceCalculator(QWidget):
                 return item_full_score, item_full_sequence
             memo[key] = (stone_full_score, stone_full_sequence)
             return stone_full_score, stone_full_sequence
-        
-        res = dfs([0,0,0,0,0], self.craft_active, memo)
-        self.best_sequence = res[1]
+        if self.config_manager.tier in self.switchables:
+            res = dfs([0,0,0,0,0], self.craft_active, memo)
+            self.best_sequence = res[1]
+        else:
+            for seq in self.logs.values():
+                if len(seq) != 0:
+                    self.best_sequence = seq
+                    break
         self.update_best_sequence_display()
         self.config_manager.update_best_sequence(self.best_sequence)
 
@@ -440,7 +446,7 @@ class SequenceCalculator(QWidget):
             tl.append((quality, amount, color))
         text = "最优序列："
         for seq in self.logs.values():
-            if len(seq) <= 4:
+            if len(seq) <= 4 and self.config_manager.tier in self.switchables:
                 text += "<span style='color: #ff0000;'>有已窥序列数量小于等于4，建议延长序列<br>序列数量过少可能导致最优序列计算导致偏差</span>"
                 break
         text += f"<br>{' -> '.join([
