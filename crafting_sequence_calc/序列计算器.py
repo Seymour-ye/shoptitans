@@ -398,14 +398,8 @@ class SequenceCalculator(QWidget):
                 return item_full_score, item_full_sequence
             memo[key] = (stone_full_score, stone_full_sequence)
             return stone_full_score, stone_full_sequence
-        if self.config_manager.tier in self.switchables:
-            res = dfs([0,0,0,0,0], self.craft_active, memo)
-            self.best_sequence = res[1]
-        else:
-            for seq in self.logs.values():
-                if len(seq) != 0:
-                    self.best_sequence = seq
-                    break
+        res = dfs([0,0,0,0,0], self.craft_active, memo)
+        self.best_sequence = res[1]
         self.update_best_sequence_display()
         self.config_manager.update_best_sequence(self.best_sequence)
 
@@ -439,7 +433,8 @@ class SequenceCalculator(QWidget):
 
     def update_best_sequence_display(self):
         tl = []
-        for i in self.best_sequence:
+        sequence = self.best_sequence if self.config_manager.tier in self.switchables else self.logs['石头x0']
+        for i in sequence:
             quality = i[0]
             amount = i[1]
             color = '#AAAAAA' if quality == '石头' else self.qualities[quality]
