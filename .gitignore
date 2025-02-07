@@ -40,4 +40,4 @@ Thumbs.db
 ######################
 */build/*
 *.spec
-*config.json
+#*config.json
