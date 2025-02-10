@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>529</width>
-    <height>520</height>
+    <width>516</width>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>516</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>516</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="mouseTracking">
    <bool>false</bool>
@@ -27,6 +39,10 @@ Line {
 QGroupBox {
 		color: #ffffff;
 }
+QTabWidget::pane {
+        border: none;  /* 去掉整个 QTabWidget 的边框 */
+        background: #333;  /* 设定背景色（可选）*/
+    }
 QTabBar::tab {
         background: #3a3a3a;  /* 设置未选中的Tab颜色 */
         color: white;
@@ -108,14 +124,14 @@ QCheckBox {
     <property name="usesScrollButtons">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="Home_tab">
+    <widget class="QWidget" name="home_tab">
      <property name="styleSheet">
       <string notr="true"/>
      </property>
      <attribute name="title">
       <string>Home</string>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget_2">
+     <widget class="QTabWidget" name="home_info_tabwidget">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -123,6 +139,9 @@ QCheckBox {
         <width>521</width>
         <height>451</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::TabPosition::West</enum>
@@ -136,573 +155,632 @@ QCheckBox {
       <property name="elideMode">
        <enum>Qt::TextElideMode::ElideNone</enum>
       </property>
-      <widget class="QWidget" name="readme">
+      <widget class="QWidget" name="readme_tab">
        <attribute name="title">
         <string>使用说明</string>
        </attribute>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>471</width>
+          <height>431</height>
+         </rect>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>469</width>
+           <height>429</height>
+          </rect>
+         </property>
+         <widget class="QLabel" name="readme_label">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>451</width>
+            <height>431</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;2025-02-09 2:14 制作 T14 普通x2&lt;/p&gt;&lt;p&gt;2025-02-09 2:13 制作 T13 优质x1&lt;/p&gt;&lt;p&gt;2025-02-09 2:12 附魔 x 12&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="craft_summary_tab">
        <attribute name="title">
         <string>最优序列</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox_2">
+       <widget class="QGroupBox" name="craft_summary">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>10</y>
-          <width>421</width>
-          <height>101</height>
+          <x>0</x>
+          <y>0</y>
+          <width>480</width>
+          <height>460</height>
          </rect>
         </property>
         <property name="title">
-         <string/>
+         <string>最优序列</string>
         </property>
-        <widget class="QScrollArea" name="best_craft_sequence_display_2">
+        <widget class="QGroupBox" name="craft_summary_bs_0">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>10</y>
-           <width>321</width>
-           <height>81</height>
+           <y>20</y>
+           <width>461</width>
+           <height>101</height>
           </rect>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
+         <property name="title">
+          <string/>
          </property>
-         <widget class="QWidget" name="sequence_display_6">
+         <widget class="QScrollArea" name="craft_summary_bs_display_0">
           <property name="geometry">
            <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>319</width>
-            <height>79</height>
+            <x>50</x>
+            <y>10</y>
+            <width>321</width>
+            <height>81</height>
            </rect>
           </property>
-          <widget class="QLabel" name="label_2">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="craft_summary_bs_display_widget_0">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>301</width>
-             <height>81</height>
+             <width>319</width>
+             <height>79</height>
             </rect>
            </property>
-           <property name="sizeIncrement">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Plain</enum>
-           </property>
-           <property name="text">
-            <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
+           <widget class="QLabel" name="craft_summary_bs_display_label_0">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>301</width>
+              <height>81</height>
+             </rect>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Plain</enum>
+            </property>
+            <property name="text">
+             <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
          </widget>
+         <widget class="QPushButton" name="craft_summary_craft_item_0">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作装备</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_stone_0">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>40</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作石头</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_backswitch_0">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>70</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作反切</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="craft_summary_tier_selection__label_0">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: none;
+border: none;</string>
+          </property>
+          <property name="text">
+           <string>Tier</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="craft_summary_tier_selection_box_0">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>10</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作装备</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>40</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作石头</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_6">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>70</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作反切</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_3">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>120</y>
-          <width>421</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string/>
-        </property>
-        <widget class="QScrollArea" name="best_craft_sequence_display_3">
+        <widget class="QGroupBox" name="craft_summary_bs_1">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>10</y>
-           <width>321</width>
-           <height>81</height>
+           <y>130</y>
+           <width>461</width>
+           <height>101</height>
           </rect>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
+         <property name="title">
+          <string/>
          </property>
-         <widget class="QWidget" name="sequence_display_7">
+         <widget class="QScrollArea" name="craft_summary_bs_display_1">
           <property name="geometry">
            <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>319</width>
-            <height>79</height>
+            <x>50</x>
+            <y>10</y>
+            <width>321</width>
+            <height>81</height>
            </rect>
           </property>
-          <widget class="QLabel" name="label_3">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="craft_summary_bs_display_widget_1">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>301</width>
-             <height>81</height>
+             <width>319</width>
+             <height>79</height>
             </rect>
            </property>
-           <property name="sizeIncrement">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Plain</enum>
-           </property>
-           <property name="text">
-            <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
+           <widget class="QLabel" name="craft_summary_bs_display_label_1">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>301</width>
+              <height>81</height>
+             </rect>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Plain</enum>
+            </property>
+            <property name="text">
+             <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
          </widget>
+         <widget class="QPushButton" name="craft_summary_craft_item_1">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作装备</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_stone_1">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>40</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作石头</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_backswitch_1">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>70</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作反切</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="craft_summary_tier_selection__label_1">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: none;
+border: none;</string>
+          </property>
+          <property name="text">
+           <string>Tier</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="craft_summary_tier_selection_box_1">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton_7">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>10</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作装备</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_8">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>40</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作石头</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_9">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>70</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作反切</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_4">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>230</y>
-          <width>421</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string/>
-        </property>
-        <widget class="QScrollArea" name="best_craft_sequence_display_4">
+        <widget class="QGroupBox" name="craft_summary_bs_2">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>10</y>
-           <width>321</width>
-           <height>81</height>
+           <y>240</y>
+           <width>461</width>
+           <height>101</height>
           </rect>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
+         <property name="title">
+          <string/>
          </property>
-         <widget class="QWidget" name="sequence_display_8">
+         <widget class="QScrollArea" name="craft_summary_bs_display_2">
           <property name="geometry">
            <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>319</width>
-            <height>79</height>
+            <x>50</x>
+            <y>10</y>
+            <width>321</width>
+            <height>81</height>
            </rect>
           </property>
-          <widget class="QLabel" name="label_4">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="craft_summary_bs_display_widget_2">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>301</width>
-             <height>81</height>
+             <width>319</width>
+             <height>79</height>
             </rect>
            </property>
-           <property name="sizeIncrement">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Plain</enum>
-           </property>
-           <property name="text">
-            <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
+           <widget class="QLabel" name="craft_summary_bs_display_label_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>301</width>
+              <height>81</height>
+             </rect>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Plain</enum>
+            </property>
+            <property name="text">
+             <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
          </widget>
+         <widget class="QPushButton" name="craft_summary_craft_item_2">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作装备</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_stone_2">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>40</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作石头</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_backswitch_2">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>70</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作反切</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="craft_summary_tier_selection__label_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: none;
+border: none;</string>
+          </property>
+          <property name="text">
+           <string>Tier</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="craft_summary_tier_selection_box_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
         </widget>
-        <widget class="QPushButton" name="pushButton_10">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>10</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作装备</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_11">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>40</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作石头</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_12">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>70</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作反切</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_5">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>340</y>
-          <width>421</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string/>
-        </property>
-        <widget class="QScrollArea" name="best_craft_sequence_display_5">
+        <widget class="QGroupBox" name="craft_summary_bs_3">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>10</y>
-           <width>321</width>
-           <height>81</height>
+           <y>350</y>
+           <width>461</width>
+           <height>101</height>
           </rect>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
+         <property name="title">
+          <string/>
          </property>
-         <widget class="QWidget" name="sequence_display_9">
+         <widget class="QScrollArea" name="craft_summary_bs_display_3">
           <property name="geometry">
            <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>319</width>
-            <height>79</height>
+            <x>50</x>
+            <y>10</y>
+            <width>321</width>
+            <height>81</height>
            </rect>
           </property>
-          <widget class="QLabel" name="label_5">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="craft_summary_bs_display_widget_3">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>301</width>
-             <height>81</height>
+             <width>319</width>
+             <height>79</height>
             </rect>
            </property>
-           <property name="sizeIncrement">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Shadow::Plain</enum>
-           </property>
-           <property name="text">
-            <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
+           <widget class="QLabel" name="craft_summary_bs_display_label_3">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>301</width>
+              <height>81</height>
+             </rect>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Plain</enum>
+            </property>
+            <property name="text">
+             <string>普通x2 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1 -&gt; 普通x1</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
          </widget>
-        </widget>
-        <widget class="QPushButton" name="pushButton_13">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>10</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作装备</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_14">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>40</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作石头</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_15">
-         <property name="geometry">
-          <rect>
-           <x>340</x>
-           <y>70</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>制作反切</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QLabel" name="tier_selection_8">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>31</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LayoutDirection::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: none;
+         <widget class="QPushButton" name="craft_summary_craft_item_3">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作装备</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_stone_3">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>40</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作石头</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="craft_summary_craft_backswitch_3">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>70</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>制作反切</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="craft_summary_tier_selection__label_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: none;
 border: none;</string>
-        </property>
-        <property name="text">
-         <string>Tier</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="tier_selection_dropbox_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>50</y>
-          <width>41</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="currentText">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="tier_selection_dropbox_3">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>170</y>
-          <width>41</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="tier_selection_9">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>150</y>
-          <width>31</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LayoutDirection::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: none;
-border: none;</string>
-        </property>
-        <property name="text">
-         <string>Tier</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="tier_selection_dropbox_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>280</y>
-          <width>41</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="tier_selection_10">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>260</y>
-          <width>31</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LayoutDirection::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: none;
-border: none;</string>
-        </property>
-        <property name="text">
-         <string>Tier</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="tier_selection_dropbox_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>390</y>
-          <width>41</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="tier_selection_11">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>370</y>
-          <width>31</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LayoutDirection::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: none;
-border: none;</string>
-        </property>
-        <property name="text">
-         <string>Tier</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
+          </property>
+          <property name="text">
+           <string>Tier</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="craft_summary_tier_selection_box_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>40</y>
+            <width>31</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="currentText">
+           <string/>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>更新日志</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="log_tab">
        <attribute name="title">
         <string>操作日志</string>
        </attribute>
-       <widget class="QScrollArea" name="scrollArea">
+       <widget class="QScrollArea" name="scrollArea_log">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -723,13 +801,60 @@ border: none;</string>
            <height>429</height>
           </rect>
          </property>
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="log_label">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>441</width>
-            <height>411</height>
+            <x>0</x>
+            <y>0</y>
+            <width>451</width>
+            <height>431</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;2025-02-09 2:14 制作 T14 普通x2&lt;/p&gt;&lt;p&gt;2025-02-09 2:13 制作 T13 优质x1&lt;/p&gt;&lt;p&gt;2025-02-09 2:12 附魔 x 12&lt;/p&gt;&lt;p&gt;4&lt;/p&gt;&lt;p&gt;5&lt;/p&gt;&lt;p&gt;6&lt;/p&gt;&lt;p&gt;7&lt;/p&gt;&lt;p&gt;8&lt;/p&gt;&lt;p&gt;9&lt;/p&gt;&lt;p&gt;10&lt;/p&gt;&lt;p&gt;11&lt;/p&gt;&lt;p&gt;12&lt;/p&gt;&lt;p&gt;13&lt;/p&gt;&lt;p&gt;14&lt;/p&gt;&lt;p&gt;15&lt;/p&gt;&lt;p&gt;16&lt;/p&gt;&lt;p&gt;17&lt;/p&gt;&lt;p&gt;18&lt;/p&gt;&lt;p&gt;19&lt;/p&gt;&lt;p&gt;20&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="updates_tab">
+       <attribute name="title">
+        <string>更新日志</string>
+       </attribute>
+       <widget class="QScrollArea" name="scrollArea_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>471</width>
+          <height>431</height>
+         </rect>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>469</width>
+           <height>429</height>
+          </rect>
+         </property>
+         <widget class="QLabel" name="updates_label">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>451</width>
+            <height>431</height>
            </rect>
           </property>
           <property name="text">
@@ -781,7 +906,7 @@ border: none;</string>
       <property name="title">
        <string/>
       </property>
-      <widget class="QSpinBox" name="quality_5_score">
+      <widget class="QSpinBox" name="legendary_score">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -797,7 +922,7 @@ border: none;</string>
         <number>1500</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_0_1">
+      <widget class="QPushButton" name="normal_x1_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -810,7 +935,7 @@ border: none;</string>
         <string>普通</string>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection">
+      <widget class="QLabel" name="tier_selection_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -827,7 +952,7 @@ border: none;</string>
         <string>选择Tier(T级):</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_1_2">
+      <widget class="QPushButton" name="superior_x2_button">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -843,7 +968,7 @@ border: none;</string>
         <string>优质x2</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_3_1">
+      <widget class="QPushButton" name="epic_x1_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -859,7 +984,7 @@ border: none;</string>
         <string>史诗</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_3_score">
+      <widget class="QSpinBox" name="flawless_score">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -875,7 +1000,7 @@ border: none;</string>
         <number>30</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_4_1">
+      <widget class="QPushButton" name="legendary_x1_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -891,7 +1016,7 @@ border: none;</string>
         <string>传说</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_2_score">
+      <widget class="QSpinBox" name="superior_score">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -913,7 +1038,7 @@ border: none;</string>
         <number>10</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_2_2">
+      <widget class="QPushButton" name="flawless_x2_button">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -929,7 +1054,7 @@ border: none;</string>
         <string>精良x2</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_4_score">
+      <widget class="QSpinBox" name="epic_score">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -958,7 +1083,7 @@ border: none;</string>
         <string>14</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_1_1">
+      <widget class="QPushButton" name="superior_x1_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -974,7 +1099,7 @@ border: none;</string>
         <string>优质</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_2_1">
+      <widget class="QPushButton" name="flawless_x1_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -990,7 +1115,7 @@ border: none;</string>
         <string>精良</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_3_2">
+      <widget class="QPushButton" name="epic_x2_button">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -1006,7 +1131,7 @@ border: none;</string>
         <string>史诗x2</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_1_score">
+      <widget class="QSpinBox" name="normal_score">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -1025,7 +1150,7 @@ border: none;</string>
         <number>1</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_0_2">
+      <widget class="QPushButton" name="normal_x2_button">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -1038,7 +1163,7 @@ border: none;</string>
         <string>普通x2</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="quality_4_2">
+      <widget class="QPushButton" name="legendary_x2_button">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -1093,11 +1218,11 @@ border: none;</string>
         <string>计算</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="back_switch_checkbox">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>260</y>
+         <y>250</y>
          <width>80</width>
          <height>19</height>
         </rect>
@@ -1106,11 +1231,11 @@ border: none;</string>
         <string>包含反切</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="window_on_top_checkbox">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>280</y>
+         <y>290</y>
          <width>80</width>
          <height>19</height>
         </rect>
@@ -1119,11 +1244,11 @@ border: none;</string>
         <string>窗口前置</string>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_7">
+      <widget class="QLabel" name="back_switch_rate_label">
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>260</y>
+         <y>250</y>
          <width>81</width>
          <height>20</height>
         </rect>
@@ -1136,11 +1261,11 @@ border: none;</string>
         <string>反切分数倍率</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_5_score_2">
+      <widget class="QSpinBox" name="back_switch_rate_selection">
        <property name="geometry">
         <rect>
          <x>170</x>
-         <y>260</y>
+         <y>250</y>
          <width>61</width>
          <height>22</height>
         </rect>
@@ -1149,7 +1274,7 @@ border: none;</string>
         <number>2</number>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox_3">
+      <widget class="QCheckBox" name="multi_entry_checkbox">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1162,7 +1287,7 @@ border: none;</string>
         <string>批量录入</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_5_score_3">
+      <widget class="QSpinBox" name="multi_entry_amount_selection">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -1175,7 +1300,7 @@ border: none;</string>
         <number>1</number>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_16">
+      <widget class="QLabel" name="multi_entry_label">
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -1193,7 +1318,7 @@ border: none;</string>
        </property>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="sequence_display">
+     <widget class="QGroupBox" name="sequence_display_area">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -1205,178 +1330,7 @@ border: none;</string>
       <property name="title">
        <string/>
       </property>
-      <widget class="QScrollArea" name="scrollArea_3">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>190</y>
-         <width>171</width>
-         <height>53</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="sequence_display_3">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>169</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="sequence_3">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>151</width>
-           <height>53</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="baseSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-      <widget class="QScrollArea" name="scrollArea_4">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>250</y>
-         <width>171</width>
-         <height>53</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="sequence_display_4">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>169</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="sequence_4">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>151</width>
-           <height>53</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="baseSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::TextInteractionFlag::LinksAccessibleByMouse</set>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-      <widget class="QScrollArea" name="scrollArea_0">
+      <widget class="QScrollArea" name="sequence_0_display">
        <property name="geometry">
         <rect>
          <x>70</x>
@@ -1406,7 +1360,7 @@ border: none;</string>
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="sequence_display_0">
+       <widget class="QWidget" name="sequence_0_display_area">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -1415,7 +1369,7 @@ border: none;</string>
           <height>51</height>
          </rect>
         </property>
-        <widget class="QLabel" name="sequence_0">
+        <widget class="QLabel" name="sequence_0_display_label">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -1445,174 +1399,6 @@ border: none;</string>
          <property name="baseSize">
           <size>
            <width>151</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-      <widget class="QScrollArea" name="scrollArea_1">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>70</y>
-         <width>171</width>
-         <height>53</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="sequence_display_1">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>169</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="sequence_1">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>151</width>
-           <height>53</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="baseSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-      <widget class="QScrollArea" name="scrollArea_2">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>130</y>
-         <width>171</width>
-         <height>53</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="baseSize">
-        <size>
-         <width>0</width>
-         <height>53</height>
-        </size>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="sequence_display_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>169</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="sequence_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>151</width>
-           <height>53</height>
-          </rect>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>53</height>
-          </size>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="baseSize">
-          <size>
-           <width>0</width>
            <height>53</height>
           </size>
          </property>
@@ -1693,7 +1479,7 @@ border: none;</string>
         <string>石头x4</string>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_2">
+      <widget class="QLabel" name="sequence_0_count_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1713,7 +1499,7 @@ border: none;</string>
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_3">
+      <widget class="QLabel" name="sequence_1_count_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1733,7 +1519,7 @@ border: none;</string>
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_4">
+      <widget class="QLabel" name="sequence_2_count_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1753,7 +1539,7 @@ border: none;</string>
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_5">
+      <widget class="QLabel" name="sequence_3_count_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1773,7 +1559,7 @@ border: none;</string>
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="tier_selection_6">
+      <widget class="QLabel" name="sequence_4_count_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1793,8 +1579,344 @@ border: none;</string>
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
+      <widget class="QScrollArea" name="sequence_1_display">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>70</y>
+         <width>171</width>
+         <height>53</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="sequence_0_display_area_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>169</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <widget class="QLabel" name="sequence_0_display_label_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>151</width>
+           <height>53</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>151</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QScrollArea" name="sequence_2_display">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>130</y>
+         <width>171</width>
+         <height>53</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="sequence_0_display_area_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>169</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <widget class="QLabel" name="sequence_0_display_label_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>151</width>
+           <height>53</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>151</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QScrollArea" name="sequence_3_display">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>190</y>
+         <width>171</width>
+         <height>53</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="sequence_0_display_area_5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>169</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <widget class="QLabel" name="sequence_0_display_label_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>151</width>
+           <height>53</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>151</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QScrollArea" name="sequence_4_display">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>250</y>
+         <width>171</width>
+         <height>53</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>53</height>
+        </size>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="sequence_0_display_area_6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>169</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <widget class="QLabel" name="sequence_0_display_label_6">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>151</width>
+           <height>53</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>151</width>
+           <height>53</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1 | 普通x1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </widget>
+      </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="best_craft_sequence_groupbox">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1818,7 +1940,7 @@ border: none;</string>
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="sequence_display_5">
+       <widget class="QWidget" name="best_craft_sequence_display_area">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -1827,7 +1949,7 @@ border: none;</string>
           <height>79</height>
          </rect>
         </property>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="best_craft_sequence_display_label">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -1857,7 +1979,7 @@ border: none;</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="craft_item">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -1870,7 +1992,7 @@ border: none;</string>
         <string>制作装备</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="craft_stone">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -1883,7 +2005,7 @@ border: none;</string>
         <string>制作石头</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="craft_back_switch_item">
        <property name="geometry">
         <rect>
          <x>410</x>
@@ -1898,11 +2020,11 @@ border: none;</string>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="enchantment_tab">
      <attribute name="title">
       <string>附魔</string>
      </attribute>
-     <widget class="QRadioButton" name="radioButton_2">
+     <widget class="QRadioButton" name="superior_selection">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1918,7 +2040,7 @@ border: none;</string>
        <string>优质</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_3">
+     <widget class="QRadioButton" name="flawless_selection">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1934,7 +2056,7 @@ border: none;</string>
        <string>精良</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_4">
+     <widget class="QRadioButton" name="epic_selection">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1950,7 +2072,7 @@ border: none;</string>
        <string>史诗</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_5">
+     <widget class="QRadioButton" name="legendary_selection">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1966,7 +2088,7 @@ border: none;</string>
        <string>传说</string>
       </property>
      </widget>
-     <widget class="QLabel" name="tier_selection_12">
+     <widget class="QLabel" name="superior_sequence_count_label">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -1986,7 +2108,7 @@ border: none;</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="tier_selection_13">
+     <widget class="QLabel" name="legendary_sequence_count_label">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -2006,7 +2128,7 @@ border: none;</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="tier_selection_14">
+     <widget class="QLabel" name="epic_sequence_count_label">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -2026,7 +2148,7 @@ border: none;</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="tier_selection_15">
+     <widget class="QLabel" name="flawless_sequence_count_label">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -2046,7 +2168,7 @@ border: none;</string>
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_5">
+     <widget class="QScrollArea" name="epic_sequence_display">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2076,7 +2198,7 @@ border: none;</string>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="sequence_display_10">
+      <widget class="QWidget" name="epic_sequence_display_area">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2085,7 +2207,7 @@ border: none;</string>
          <height>51</height>
         </rect>
        </property>
-       <widget class="QLabel" name="sequence_5">
+       <widget class="QLabel" name="epic_sequence_display_label">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -2130,7 +2252,7 @@ border: none;</string>
        </widget>
       </widget>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_6">
+     <widget class="QScrollArea" name="legendary_sequence_display">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2160,7 +2282,7 @@ border: none;</string>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="sequence_display_11">
+      <widget class="QWidget" name="legendary_sequence_display_area">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2169,7 +2291,7 @@ border: none;</string>
          <height>51</height>
         </rect>
        </property>
-       <widget class="QLabel" name="sequence_6">
+       <widget class="QLabel" name="legendary_sequence_display_label">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -2217,7 +2339,7 @@ border: none;</string>
        </widget>
       </widget>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_7">
+     <widget class="QScrollArea" name="superior_sequence_display">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2247,7 +2369,7 @@ border: none;</string>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="sequence_display_12">
+      <widget class="QWidget" name="superior_sequence_display_area">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2256,7 +2378,7 @@ border: none;</string>
          <height>51</height>
         </rect>
        </property>
-       <widget class="QLabel" name="sequence_7">
+       <widget class="QLabel" name="superior_sequence_display_label">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -2301,7 +2423,7 @@ border: none;</string>
        </widget>
       </widget>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_8">
+     <widget class="QScrollArea" name="flawless_sequence_display">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2331,7 +2453,7 @@ border: none;</string>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="sequence_display_13">
+      <widget class="QWidget" name="flawless_sequence_display_area">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2340,7 +2462,7 @@ border: none;</string>
          <height>51</height>
         </rect>
        </property>
-       <widget class="QLabel" name="sequence_8">
+       <widget class="QLabel" name="flawless_sequence_display_label">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -2385,7 +2507,7 @@ border: none;</string>
        </widget>
       </widget>
      </widget>
-     <widget class="QPushButton" name="sequence_button_5">
+     <widget class="QPushButton" name="superior_failure">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -2398,7 +2520,7 @@ border: none;</string>
        <string>x 失败</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="quality_1_3">
+     <widget class="QPushButton" name="superior_success">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2414,7 +2536,7 @@ border: none;</string>
        <string>成功</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="sequence_button_6">
+     <widget class="QPushButton" name="flawless_failure">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -2427,7 +2549,7 @@ border: none;</string>
        <string>x 失败</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="quality_1_4">
+     <widget class="QPushButton" name="flawless_success">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2443,7 +2565,7 @@ border: none;</string>
        <string>成功</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="sequence_button_7">
+     <widget class="QPushButton" name="epic_failure">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -2456,7 +2578,7 @@ border: none;</string>
        <string>x 失败</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="quality_1_5">
+     <widget class="QPushButton" name="epic_success">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2472,7 +2594,7 @@ border: none;</string>
        <string>成功</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="sequence_button_8">
+     <widget class="QPushButton" name="legendary_failure">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -2485,7 +2607,7 @@ border: none;</string>
        <string>x 失败</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="quality_1_6">
+     <widget class="QPushButton" name="legendary_success">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2501,11 +2623,11 @@ border: none;</string>
        <string>成功</string>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_6">
+     <widget class="QGroupBox" name="final_sequence">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>280</y>
+        <y>310</y>
         <width>501</width>
         <height>111</height>
        </rect>
@@ -2513,7 +2635,7 @@ border: none;</string>
       <property name="title">
        <string>附魔序列</string>
       </property>
-      <widget class="QScrollArea" name="best_craft_sequence_display_6">
+      <widget class="QScrollArea" name="final_sequence_display">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -2525,7 +2647,7 @@ border: none;</string>
        <property name="widgetResizable">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="sequence_display_14">
+       <widget class="QWidget" name="final_sequence_display_area">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -2534,7 +2656,7 @@ border: none;</string>
           <height>79</height>
          </rect>
         </property>
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="final_sequence_display_label">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -2564,7 +2686,7 @@ border: none;</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QPushButton" name="pushButton_18">
+      <widget class="QPushButton" name="enchantment_button">
        <property name="geometry">
         <rect>
          <x>404</x>
@@ -2577,7 +2699,7 @@ border: none;</string>
         <string>附魔</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="quality_5_score_4">
+      <widget class="QSpinBox" name="enchantment_amount">
        <property name="geometry">
         <rect>
          <x>420</x>
@@ -2636,7 +2758,7 @@ border: none;</string>
        <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QSpinBox" name="quality_3_score_2">
+     <widget class="QSpinBox" name="epic_failure_amount">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2655,7 +2777,7 @@ border: none;</string>
        <number>183</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="quality_1_score_2">
+     <widget class="QSpinBox" name="superior_failure_amount">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2677,7 +2799,7 @@ border: none;</string>
        <number>3</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="quality_4_score_2">
+     <widget class="QSpinBox" name="legendary_failure_amount">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2696,7 +2818,7 @@ border: none;</string>
        <number>322</number>
       </property>
      </widget>
-     <widget class="QSpinBox" name="quality_2_score_2">
+     <widget class="QSpinBox" name="flawless_failure_amount">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -2721,20 +2843,36 @@ border: none;</string>
        <number>10</number>
       </property>
      </widget>
+     <widget class="QPushButton" name="enchantment_clear">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>280</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>清空</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="enchantment_backspace">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>280</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>撤销</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>529</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <resources/>
  <connections/>
