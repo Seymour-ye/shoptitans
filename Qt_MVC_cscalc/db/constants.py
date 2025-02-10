@@ -1,7 +1,15 @@
 import requests
 
-GITHUB_UPDATE_URL = ''
+GITHUB_UPDATES_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/UPDATES.md'
 
+def fetch_updates():
+    response = requests.get(GITHUB_UPDATES_FILE_URL)
+    if response.status_code == 200:
+        content = response.text
+        return content 
+    else:
+        return "Failed to fetch UPDATES."
+    
 qualities = {
             "普通": "#ffffff",  # 白色
             "优质": "#00ff00",  # 绿色
