@@ -1,4 +1,5 @@
 import json
+import db.constants as CONSTANTS
 
 class ConfigManager:
     def __init__(self):
@@ -6,14 +7,26 @@ class ConfigManager:
         self.data = self.generate_config_default()
         self.load_config()
 
-    def generate_tier_default(self):
+    def generate_tier_default(self, tier):
         return {
             'best_sequence': [],
-            'sequences': [[],[],[],[],[]],
             'craft_active': 0,
-            'scores': [1,5,30,200,1500]
+            'scores': [1,5,30,200,1500],
+            'back_switch': False,
+            'back_switch_rate': 0,
+            'sequences': self.generate_tier_default_sequence(tier, False)
         }
     
+    def generate_tier_default_sequence(self, tier, backswitch):
+        ret = []
+        unv = CONSTANTS.unvisibles(tier, backswitch)
+        for i in range(5):
+            seq = []
+            for j in range(unv[i]):
+                seq.append((0,0))
+            ret.append(seq)
+        return ret
+
     def generate_enchantment_default(self):
         return {
             'superior':[],
@@ -26,7 +39,7 @@ class ConfigManager:
     def generate_config_default(self):
         return {
             'active_tier': 14, 
-            14: self.generate_tier_default(),
+            14: self.generate_tier_default(14),
             'enchantment': self.generate_enchantment_default(),
             'logs':[] #'YYYY-MM-DD HH:MM action description',...
         }
@@ -44,7 +57,7 @@ class ConfigManager:
 
                 # 验证配置完整性
                 if self.tier not in self.data:
-                    self.data[self.tier] = self.generate_default()
+                    self.data[self.tier] = self.generate_tier_default(self.tier)
         except json.JSONDecodeError:
             print("配置文件格式错误，重置为默认配置")
             self.data = self.generate_config_default()
@@ -55,3 +68,40 @@ class ConfigManager:
         with open(self.config_file, "w", encoding="utf-8") as file:
             json.dump(self.data, file, ensure_ascii=False, indent=4)
 
+    def update_quality_score(self, tier, quality_index, score):
+        self.data[tier]['scores'][quality_index] = score 
+        self.save_config()
+
+    def update_active_tier(self, tier):
+        self.data['active_tier'] = tier 
+        if tier not in self.data:
+            self.data[tier] = self.generate_tier_default(tier)
+        self.save_config()
+
+    def get_back_switch(self, tier):
+        return self.data[tier]['back_switch']
+
+    def get_back_switch_rate(self, tier):
+        return self.data[tier]['back_switch_rate']
+    
+    def update_back_switch(self, tier, checked):
+        self.data[tier]['back_switch'] = checked 
+        self.save_config()
+
+    def update_back_switch_rate(self, tier, value):
+        self.data[tier]['back_switch_rate'] = value 
+        self.save_config()
+
+    def get_craft_active(self, tier):
+        return self.data[tier]['craft_active']
+    
+    def get_craft_sequence(self, tier, sequence_index):
+        return self.data[tier]['sequences'][sequence_index]
+        
+    def add_sequence_log(self, tier, sequence_index, quality, amount):
+        self.data[tier]['sequences'][sequence_index].append((quality, amount))
+        self.save_config()
+    
+    def sequence_log_backspace(self, tier, sequence_index):
+        if len(self.data[tier]['sequences'][sequence_index]) > CONSTANTS.unvisibles(tier, self.get_back_switch(tier))[sequence_index]:
+            self.data[tier]['sequences'][sequence_index].pop()
