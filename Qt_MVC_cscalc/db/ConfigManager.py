@@ -92,6 +92,10 @@ class ConfigManager:
         self.data[tier]['back_switch_rate'] = value 
         self.save_config()
 
+    def update_craft_active(self, tier, value):
+        self.data[tier]['craft_active'] = value 
+        self.save_config()
+
     def get_craft_active(self, tier):
         return self.data[tier]['craft_active']
     
@@ -105,3 +109,35 @@ class ConfigManager:
     def sequence_log_backspace(self, tier, sequence_index):
         if len(self.data[tier]['sequences'][sequence_index]) > CONSTANTS.unvisibles(tier, self.get_back_switch(tier))[sequence_index]:
             self.data[tier]['sequences'][sequence_index].pop()
+        self.save_config()
+
+    def reset_sequences(self, tier):
+        self.data[tier]['sequences'] = self.generate_tier_default_sequence(tier, self.get_back_switch(tier))
+        self.save_config()
+
+    def craft_item(self, tier):
+        for i in range(5):
+            self.data[tier]['sequences'][i].pop(0)
+        self.save_config()
+
+    def craft_back_switch(self, tier):
+        self.update_craft_active(tier, (self.get_craft_active(tier) - 1) % 5) 
+        for i in range(5):
+            self.data[tier]['sequences'][i].pop(0)
+            if i == self.get_craft_active(tier):
+                self.data[tier]['sequences'][i].pop(0)
+        self.save_config()
+
+    def craft_stone(self, tier):
+        for i in range(5):
+            if i != self.get_craft_active(tier):
+                self.data[tier]['sequences'][i].pop(0)
+        self.update_craft_active(tier, (self.get_craft_active(tier) + 1) % 5)
+        self.save_config()
+
+    def get_best_sequence(self, tier):
+        return self.data[tier]['best_sequence']
+    
+    def update_best_sequence(self, tier, sequence):
+        self.data[tier]['best_sequence'] = sequence 
+        self.save_config()

@@ -57,9 +57,15 @@ class MainApp(QMainWindow):
             button.setProperty('sequence_index', i)
             button.clicked.connect(self.input_sequence_activate)
         # clear
+        self.clear_button.clicked.connect(self.clear_sequences)
         # backspace
-        self.back_space.clicked.connect(self.backspace)
+        self.back_space_button.clicked.connect(self.backspace)
         # calculate
+        self.calculate_button.clicked.connect(self.calculate_best_sequence)
+        # craft buttons
+        self.craft_back_switch_item.clicked.connect(self.craft_back_switch_button)
+        self.craft_item.clicked.connect(self.craft_item_button)
+        self.craft_stone.clicked.connect(self.craft_stone_button)
 
     def get_curr_tier(self):
         return self.cm.data['active_tier']
@@ -87,7 +93,7 @@ class MainApp(QMainWindow):
     def set_back_switch(self):
         self.cm.update_back_switch(self.get_curr_tier(),
                                    self.back_switch_checkbox.isChecked())
-        self.load_craft_sequences()
+        self.load_craft_page()
         
     def get_back_switch(self):
         return self.cm.get_back_switch(self.get_curr_tier())
@@ -124,6 +130,43 @@ class MainApp(QMainWindow):
         self.cm.sequence_log_backspace(self.get_curr_tier(), self.craft_input_active)
         self.load_craft_sequence(self.craft_input_active)
 
+    def clear_sequences(self):
+        self.cm.reset_sequences(self.get_curr_tier())
+        self.load_craft_sequences()
+
+    def craft_item_button(self):
+        self.cm.craft_item(self.get_curr_tier())
+        self.load_craft_sequences()
+
+    def craft_stone_button(self):
+        self.cm.craft_stone(self.get_curr_tier())
+        self.load_craft_sequences()
+
+    def craft_back_switch_button(self):
+        self.cm.craft_back_switch(self.get_curr_tier())
+        self.load_craft_sequences()
+
+    def get_best_sequence(self, tier):
+        return self.cm.get_best_sequence(tier)
+
+    def calculate_best_sequence(self):
+        result = [] # (craft, quality, amount)
+        self.cm.update_best_sequence(self.get_curr_tier(), result)
+        self.load_best_sequence()
+        
+
+    def load_best_sequence(self):
+        best_sequence = self.get_best_sequence(self.get_curr_tier())
+        result = []
+        for rec in best_sequence:
+            quality = rec[1]
+            craft = rec[0] if rec[0] else CONSTANTS.QUALITIES[quality] #石头/反切/品质
+            amount = rec[2]
+            color = '#AAAAAA' if craft == '石头' else CONSTANTS.QUALITIY_COLORS[quality] 
+            result.append((craft, amount, color))
+        text = " -> ".join([f"<span style='color: {color};'>{craft}x{amount}</span>" for craft, amount, color in result])
+        self.best_sequence_display.setText(text)
+
     def load_craft_page(self):
         # load tier selection
         self.tier_selection_dropbox.blockSignals(True)
@@ -139,18 +182,27 @@ class MainApp(QMainWindow):
         # load craft sequences
         self.load_craft_sequences()
         self.load_craft_sequence_button_style()
-
+        # load best_sequence
+        self.load_best_sequence()
         # hide objects
         if CONSTANTS.SWITCHABLES[self.get_curr_tier()][1]:
             self.back_switch_checkbox.show()
+        else:
+            self.back_switch_checkbox.hide() 
+        
+        if CONSTANTS.SWITCHABLES[self.get_curr_tier()][0]:
+            self.craft_stone.show()
+        else:
+            self.craft_stone.hide()       
+        
+        if self.get_back_switch():
             self.back_switch_rate_selection.show()
             self.back_switch_rate_label.show()
             self.craft_back_switch_item.show()
         else:
-            self.back_switch_checkbox.hide()
             self.back_switch_rate_selection.hide()
             self.back_switch_rate_label.hide()
-            self.craft_back_switch_item.hide()            
+            self.craft_back_switch_item.hide()  
 
     def load_craft_sequence_button_style(self):
         for i in range(5):
@@ -177,8 +229,8 @@ class MainApp(QMainWindow):
         unv = CONSTANTS.unvisibles(self.get_curr_tier(),backswitch)[i]
         # button
         button = self.findChild(QPushButton, f"sequence_button_{i}") 
-        backswitch_index = (4 - i + self.get_craft_active()) % 5
-        stone_index = (self.get_craft_active() + i) % 5
+        backswitch_index = (self.get_craft_active() - i) % 5
+        stone_index = (i - self.get_craft_active()) % 5
         if not stone and not backswitch:
             button.setText("序列")
         elif (stone and not backswitch):     
@@ -186,14 +238,14 @@ class MainApp(QMainWindow):
         elif not stone and backswitch:
             button.setText(f"反切x{backswitch_index}")
         else:
-            if i > 2:
+            if stone_index > 2:
                 button.setText(f"反切x{backswitch_index}")
             else:
                 button.setText(f"石头x{stone_index}")
         # count label
         sequence = self.get_craft_sequence(i)
         count_label = self.findChild(QLabel, f"sequence_{i}_count_label")
-        count_label.setText(f"共{len(sequence)-unv}个")
+        count_label.setText(f"共 {len(sequence)-unv} 个")
         # sequence_display
         text = " | ".join([f"<span style='color: {CONSTANTS.QUALITIY_COLORS[q]};'>{CONSTANTS.QUALITIES[q]}x{a}</span>" for q, a in sequence[unv:]])
         sequence_display_label = self.findChild(QTextBrowser, f"sequence_{i}_display")

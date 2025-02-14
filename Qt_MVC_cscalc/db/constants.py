@@ -28,8 +28,8 @@ QUALITIY_COLORS = [ "#ffffff",  # 白色
                     "#00ff00",  # 绿色
                     "#4da6ff",  # 蓝色
                     "#a64ca6",  # 紫色
-                    "#ffd700",  # 金色
-                    ]
+                    "#ffd700"  # 金色
+]
 
 GITHUB_UPDATES_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/UPDATES.md'
 GITHUB_README_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/README.md'

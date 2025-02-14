@@ -119,7 +119,7 @@ QCheckBox {
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -150,7 +150,7 @@ QCheckBox {
        <enum>QTabWidget::TabShape::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="elideMode">
        <enum>Qt::TextElideMode::ElideNone</enum>
@@ -971,7 +971,7 @@ border: none;</string>
         <string>传说x2</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="clear">
+      <widget class="QPushButton" name="clear_button">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -987,7 +987,7 @@ border: none;</string>
         <string/>
        </property>
       </widget>
-      <widget class="QPushButton" name="back_space">
+      <widget class="QPushButton" name="back_space_button">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -1003,7 +1003,7 @@ border: none;</string>
         <string>Backspace</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="calculate">
+      <widget class="QPushButton" name="calculate_button">
        <property name="geometry">
         <rect>
          <x>170</x>
