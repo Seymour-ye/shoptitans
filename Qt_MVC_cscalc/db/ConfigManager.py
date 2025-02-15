@@ -14,7 +14,8 @@ class ConfigManager:
             'scores': [1,5,30,200,1500],
             'back_switch': False,
             'back_switch_rate': 0,
-            'sequences': self.generate_tier_default_sequence(tier, False)
+            'sequences': self.generate_tier_default_sequence(tier, False),
+            'marked':[False, False, False, False, False]
         }
     
     def generate_tier_default_sequence(self, tier, backswitch):
@@ -68,6 +69,9 @@ class ConfigManager:
         with open(self.config_file, "w", encoding="utf-8") as file:
             json.dump(self.data, file, ensure_ascii=False, indent=4)
 
+    def get_quality_score(self, tier, quality_index):
+        return self.data[tier]['scores'][quality_index]
+    
     def update_quality_score(self, tier, quality_index, score):
         self.data[tier]['scores'][quality_index] = score 
         self.save_config()
@@ -102,6 +106,9 @@ class ConfigManager:
     def get_craft_sequence(self, tier, sequence_index):
         return self.data[tier]['sequences'][sequence_index]
         
+    def get_craft_sequences(self, tier):
+        return self.data[tier]['sequences']
+    
     def add_sequence_log(self, tier, sequence_index, quality, amount):
         self.data[tier]['sequences'][sequence_index].append((quality, amount))
         self.save_config()
@@ -113,25 +120,27 @@ class ConfigManager:
 
     def reset_sequences(self, tier):
         self.data[tier]['sequences'] = self.generate_tier_default_sequence(tier, self.get_back_switch(tier))
+        self.data[tier]['craft_active'] = 0
         self.save_config()
 
     def craft_item(self, tier):
         for i in range(5):
-            self.data[tier]['sequences'][i].pop(0)
+            if self.data[tier]['sequences'][i]:
+                self.data[tier]['sequences'][i].pop(0)
         self.save_config()
 
     def craft_back_switch(self, tier):
-        self.update_craft_active(tier, (self.get_craft_active(tier) - 1) % 5) 
-        for i in range(5):
-            self.data[tier]['sequences'][i].pop(0)
-            if i == self.get_craft_active(tier):
-                self.data[tier]['sequences'][i].pop(0)
-        self.save_config()
+        curr_craft_active = (self.get_craft_active(tier) - 1) % 5
+        self.update_craft_active(tier, curr_craft_active)  #更新craft active
+        if self.data[tier]['sequences'][curr_craft_active]:
+            self.data[tier]['sequences'][curr_craft_active].pop(0) # 多消耗一个
+        self.craft_item(tier)   #做一个
 
     def craft_stone(self, tier):
         for i in range(5):
             if i != self.get_craft_active(tier):
-                self.data[tier]['sequences'][i].pop(0)
+                if self.data[tier]['sequences'][i]:
+                    self.data[tier]['sequences'][i].pop(0)
         self.update_craft_active(tier, (self.get_craft_active(tier) + 1) % 5)
         self.save_config()
 
@@ -140,4 +149,11 @@ class ConfigManager:
     
     def update_best_sequence(self, tier, sequence):
         self.data[tier]['best_sequence'] = sequence 
+        self.save_config()
+
+    def get_sequence_mark(self, tier, i):
+        return self.data[tier]['marked'][i]
+    
+    def update_sequence_mark(self, tier, i, checked):
+        self.data[tier]['marked'][i] = checked
         self.save_config()
