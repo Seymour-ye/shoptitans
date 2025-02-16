@@ -1,7 +1,12 @@
 ### 更新日志
 
-- V1.0      2025-02-15      
+[最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/main.exe)
+
+- V1.0.0    2025-02-15      Finished First Draft of README.md, First Launch. 先用。报BUG再修。
+
 ----------------------------------------------
+
+- v0.19.1   2025-02-15      Auto-Update
 - V0.19     2025-02-15      Finished enchanting functionalities
 - V0.18     2025-02-15      Finished functionalities of enchantment input & analyze
 - V0.17     2025-02-15      Finished Craft Summary Page Contents

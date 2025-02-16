@@ -1,0 +1,213 @@
+{
+    "summary_tiers": [
+        14,
+        13,
+        12,
+        11
+    ],
+    "active_tier": 14,
+    "14": {
+        "best_sequence": [],
+        "craft_active": 0,
+        "scores": [
+            1,
+            5,
+            30,
+            200,
+            1500
+        ],
+        "back_switch": false,
+        "back_switch_rate": 1,
+        "sequences": [
+            [],
+            [
+                [
+                    0,
+                    0
+                ]
+            ],
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ]
+            ],
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ]
+            ],
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ]
+            ]
+        ],
+        "marked": [
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    },
+    "enchantment": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "result": []
+    },
+    "logs": [],
+    "13": {
+        "best_sequence": [],
+        "craft_active": 0,
+        "scores": [
+            1,
+            5,
+            30,
+            200,
+            1500
+        ],
+        "back_switch": false,
+        "back_switch_rate": 1,
+        "sequences": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "marked": [
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    },
+    "12": {
+        "best_sequence": [],
+        "craft_active": 0,
+        "scores": [
+            1,
+            5,
+            30,
+            200,
+            1500
+        ],
+        "back_switch": false,
+        "back_switch_rate": 1,
+        "sequences": [
+            [],
+            [
+                [
+                    0,
+                    0
+                ]
+            ],
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ]
+            ],
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ]
+            ],
+            [
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0
+                ]
+            ]
+        ],
+        "marked": [
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    },
+    "11": {
+        "best_sequence": [],
+        "craft_active": 0,
+        "scores": [
+            1,
+            5,
+            30,
+            200,
+            1500
+        ],
+        "back_switch": false,
+        "back_switch_rate": 1,
+        "sequences": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "marked": [
+            false,
+            false,
+            false,
+            false,
+            false
+        ]
+    }
+}

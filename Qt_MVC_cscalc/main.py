@@ -20,6 +20,7 @@ class MainApp(QMainWindow):
         self.cm = ConfigManager()
 
         self.setWindowTitle(CONSTANTS.WINDOW_TITLE)
+        self.setWindowIcon(QIcon(CONSTANTS.WINDOW_ICON))
 
         #CONSTANTS ADJUSTMENT
         self.tier_selection_dropbox.addItems([str(i) for i in range(CONSTANTS.MAX_TIER, 0, -1)])
@@ -124,6 +125,8 @@ class MainApp(QMainWindow):
         self.load_summary_page()
         self.load_craft_page()
         self.load_enchantment_page()
+
+        CONSTANTS.check_for_updates()
 
     def enchanting(self):
         self.cm.enchanting(self.enchantment_amount)

@@ -30,10 +30,10 @@ class ConfigManager:
 
     def generate_enchantment_default(self):
         return {
-            1 :[],
-            2 :[],
-            3 :[],
-            4 :[],
+            '1' :[],
+            '2' :[],
+            '3' :[],
+            '4' :[],
             'result':[]
         }
     
