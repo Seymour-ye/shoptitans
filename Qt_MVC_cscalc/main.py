@@ -4,6 +4,7 @@ from db.ConfigManager import ConfigManager
 
 # Functionalities
 import sys
+from datetime import datetime
 
 # PyQt6
 from PyQt6.QtWidgets import QApplication, QMainWindow
@@ -113,7 +114,7 @@ class MainApp(QMainWindow):
     def set_back_switch_rate(self):
         self.cm.update_back_switch_rate(self.get_curr_tier(), self.back_switch_rate_selection.value())
         self.calculate_best_sequence()
-        
+
     def get_back_switch_rate(self):
         return self.cm.get_back_switch_rate(self.get_curr_tier())
 
@@ -134,6 +135,8 @@ class MainApp(QMainWindow):
                                      amount)
         self.reset_multi_entry()
         self.load_craft_sequence(self.craft_input_active)
+        sequence_display_label = self.findChild(QTextBrowser, f"sequence_{self.craft_input_active}_display")
+        sequence_display_label.verticalScrollBar().setValue(sequence_display_label.verticalScrollBar().maximum())
 
     def input_sequence_activate(self):
         self.craft_input_active = self.sender().property('sequence_index')
@@ -148,15 +151,40 @@ class MainApp(QMainWindow):
         self.load_craft_sequences()
 
     def craft_item_button(self):
-        self.cm.craft_item(self.get_curr_tier())
+        crafted = self.cm.craft_item(self.get_curr_tier())
+        if crafted:
+            craft = CONSTANTS.QUALITIES[crafted[0]]
+            amount = crafted[1]
+            color = CONSTANTS.QUALITIY_COLORS[crafted[0]]
+            note =  f"<span style='color: {color};'>{craft}x{amount}</span>"
+        else:
+            craft = '未知'
+            amount = 1
+            note = f"{craft}x{amount}"
+        self.add_log("制作", f"T{self.get_curr_tier()} {note}")
+        self.calculate_best_sequence()
         self.load_craft_sequences()
 
+
     def craft_stone_button(self):
-        self.cm.craft_stone(self.get_curr_tier())
+        crafted = self.cm.craft_stone(self.get_curr_tier())
+        note =  f"<span style='color: {CONSTANTS.STONE_COLOR};'>{crafted[0]}x{crafted[1]}</span>"
+        self.add_log("制作", f"T{self.get_curr_tier()} {note}")
+        self.calculate_best_sequence()
         self.load_craft_sequences()
 
     def craft_back_switch_button(self):
-        self.cm.craft_back_switch(self.get_curr_tier())
+        crafted = self.cm.craft_back_switch(self.get_curr_tier())
+        craft = '反切'
+        if crafted:
+            amount = crafted[1]
+            color = CONSTANTS.QUALITIY_COLORS[crafted[0]]
+            note =  f"<span style='color: {color};'>{craft}x{amount}</span>"
+        else:
+            amount = 1
+            note = f"{craft}x{amount}"
+        self.add_log("制作", f"T{self.get_curr_tier()} {note}")
+        self.calculate_best_sequence()
         self.load_craft_sequences()
 
     def get_best_sequence(self, tier):
@@ -206,7 +234,7 @@ class MainApp(QMainWindow):
                         memo[key] = (0, [])
                         return 0, []
             else:
-                if sequence_indices[0] >= (len(self.get_craft_sequence(0))):
+                if sequence_indices[self.cm.get_craft_active(tier)] >= (len(self.get_craft_sequence(self.cm.get_craft_active(tier)))):
                     memo[key] = (0, [])
                     return 0, []
             # craft item
@@ -251,6 +279,11 @@ class MainApp(QMainWindow):
         self.cm.update_sequence_mark(tier, i, checked)
         self.load_sequence_icon(i, checkbox)
 
+    def add_log(self, action, description):
+        time = datetime.now().strftime(CONSTANTS.LOG_TIME_FORMAT)
+        self.cm.add_log((time, action, description))
+        self.load_logs()
+
     def load_sequence_icon(self, i, checkbox):
         checkbox.setChecked(self.get_sequence_mark(i))
         icon = QIcon(CONSTANTS.MARK_ICON) if checkbox.isChecked() else QIcon()
@@ -263,7 +296,7 @@ class MainApp(QMainWindow):
             quality = rec[1]
             craft = rec[0] if rec[0] else CONSTANTS.QUALITIES[quality] #石头/反切/品质
             amount = rec[2]
-            color = '#AAAAAA' if craft == '石头' else CONSTANTS.QUALITIY_COLORS[quality] 
+            color = CONSTANTS.STONE_COLOR if craft == '石头' else CONSTANTS.QUALITIY_COLORS[quality] 
             result.append((craft, amount, color))
         text = " -> ".join([f"<span style='color: {color};'>{craft}x{amount}</span>" for craft, amount, color in result])
         self.best_sequence_display.setText(text)
@@ -359,7 +392,7 @@ class MainApp(QMainWindow):
         self.load_sequence_icon(i, checkbox)
 
         # hide if not switchable
-        if CONSTANTS.SWITCHABLES[self.get_curr_tier()][0] or self.get_back_switch() or i==0:
+        if CONSTANTS.SWITCHABLES[self.get_curr_tier()][0] or self.get_back_switch() or i==self.get_craft_active():
             button.show()
             count_label.show()
             sequence_display_label.show()

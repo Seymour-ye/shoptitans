@@ -124,17 +124,22 @@ class ConfigManager:
         self.save_config()
 
     def craft_item(self, tier):
+        crafted = None
         for i in range(5):
             if self.data[tier]['sequences'][i]:
-                self.data[tier]['sequences'][i].pop(0)
+                if i == self.get_craft_active(tier):
+                    crafted = self.data[tier]['sequences'][i].pop(0)
+                else:
+                    self.data[tier]['sequences'][i].pop(0)
         self.save_config()
+        return crafted
 
     def craft_back_switch(self, tier):
         curr_craft_active = (self.get_craft_active(tier) - 1) % 5
         self.update_craft_active(tier, curr_craft_active)  #更新craft active
         if self.data[tier]['sequences'][curr_craft_active]:
             self.data[tier]['sequences'][curr_craft_active].pop(0) # 多消耗一个
-        self.craft_item(tier)   #做一个
+        return self.craft_item(tier)   #做一个
 
     def craft_stone(self, tier):
         for i in range(5):
@@ -143,6 +148,7 @@ class ConfigManager:
                     self.data[tier]['sequences'][i].pop(0)
         self.update_craft_active(tier, (self.get_craft_active(tier) + 1) % 5)
         self.save_config()
+        return '石头', 1
 
     def get_best_sequence(self, tier):
         return self.data[tier]['best_sequence']
@@ -156,4 +162,10 @@ class ConfigManager:
     
     def update_sequence_mark(self, tier, i, checked):
         self.data[tier]['marked'][i] = checked
+        self.save_config()
+
+    def add_log(self, log):
+        self.data['logs'].insert(0, log)
+        if len(self.data['logs']) > CONSTANTS.LOG_MAXIMUM:
+            self.data['logs'].pop()
         self.save_config()

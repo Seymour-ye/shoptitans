@@ -23,7 +23,7 @@ SWITCHABLES = {
 }
 
 QUALITIES = ['普通', '优质', '精良', '史诗', '传说']
-
+STONE_COLOR = '#AAAAAA'
 QUALITIY_COLORS = [ "#ffffff",  # 白色
                     "#00ff00",  # 绿色
                     "#4da6ff",  # 蓝色
@@ -31,6 +31,8 @@ QUALITIY_COLORS = [ "#ffffff",  # 白色
                     "#ffd700"  # 金色
 ]
 
+LOG_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+LOG_MAXIMUM = 50
 GITHUB_UPDATES_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/UPDATES.md'
 GITHUB_README_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/README.md'
 UI_PATH = os.path.join(os.path.dirname(__file__), '..','ui', 'main_window.ui')
