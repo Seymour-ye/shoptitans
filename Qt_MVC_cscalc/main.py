@@ -8,7 +8,7 @@ from datetime import datetime
 
 # PyQt6
 from PyQt6.QtWidgets import QApplication, QMainWindow
-from PyQt6.QtWidgets import QSpinBox, QPushButton, QLabel, QTextBrowser, QCheckBox
+from PyQt6.QtWidgets import QSpinBox, QPushButton, QLabel, QTextBrowser, QCheckBox, QComboBox
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt
 from PyQt6 import uic
@@ -23,12 +23,6 @@ class MainApp(QMainWindow):
         self.tier_selection_dropbox.addItems([str(i) for i in range(CONSTANTS.MAX_TIER, 0, -1)])
         self.craft_input_active = 0
         self.multi_entry = 1
-
-        # SET HOME PANE CONTENTS
-        self.updates_display.setText(CONSTANTS.fetch_updates())
-        self.readme_display.setText(CONSTANTS.fetch_readme())
-        self.load_logs()
-        self.load_craft_page()
 
         # SET CRAFT PANE ACTIONS
         # tier selection
@@ -74,6 +68,83 @@ class MainApp(QMainWindow):
         self.craft_back_switch_item.clicked.connect(self.craft_back_switch_button)
         self.craft_item.clicked.connect(self.craft_item_button)
         self.craft_stone.clicked.connect(self.craft_stone_button)
+
+
+        # SET CRAFT SUMMARY
+        for i in range(4):
+            tier_selector = self.findChild(QComboBox, f"craft_summary_tier_selection_box_{i}")
+            tier_selector.setProperty('summary_index', i)
+            tier_selector.addItems([str(i) for i in range(CONSTANTS.MAX_TIER, 0, -1)])
+            tier_selector.currentTextChanged.connect(self.summary_tier_select)
+            
+            stone_craft = self.findChild(QPushButton, f"craft_summary_craft_stone_{i}")
+            stone_craft.setProperty('summary_index', i)
+            stone_craft.clicked.connect(self.summary_craft_stone)
+
+            backswitch_craft = self.findChild(QPushButton, f"craft_summary_craft_backswitch_{i}")
+            backswitch_craft.setProperty('summary_index', i)
+            backswitch_craft.clicked.connect(self.summary_craft_backswitch)
+
+            item_craft = self.findChild(QPushButton, f"craft_summary_craft_item_{i}")
+            item_craft.setProperty('summary_index', i)
+            item_craft.clicked.connect(self.summary_craft_item)
+
+            
+
+
+        # SET HOME PANE CONTENTS
+        self.updates_display.setText(CONSTANTS.fetch_updates())
+        self.readme_display.setText(CONSTANTS.fetch_readme())
+        self.load_logs()
+        self.load_summary_page()
+        self.load_craft_page()
+
+    def get_summary_tiers(self):
+        return self.cm.get_summary_tiers()
+    
+    def summary_tier_select(self):
+        selector = self.sender()
+        value = int(selector.currentText())
+        i = selector.property('summary_index')
+        self.summary_tier_change(i, value)
+
+    def summary_tier_change(self, i, tier):
+        self.cm.update_summary_tiers(i, tier)
+
+        stone = self.findChild(QPushButton, f"craft_summary_craft_stone_{i}")
+        stone.setProperty('tier', tier)
+
+        backswitch = self.findChild(QPushButton, f"craft_summary_craft_backswitch_{i}")
+        backswitch.setProperty('tier', tier)
+
+        item = self.findChild(QPushButton, f"craft_summary_craft_item_{i}")
+        item.setProperty('tier', tier)
+
+        display = self.findChild(QTextBrowser, f"best_sequence_display_{i}")
+        display.setProperty('tier', tier)
+
+        self.load_summary_display(i)
+
+    def summary_craft_stone(self):
+        button = self.sender()
+        tier = button.property('tier')
+        self.stone_craft(tier)
+        self.load_summary_displays()
+        self.load_best_sequence()
+    
+    def summary_craft_backswitch(self):
+        button = self.sender()
+        tier = button.property('tier')
+        self.back_switch_craft(tier)
+        self.load_summary_displays()
+        self.load_best_sequence()
+
+    def summary_craft_item(self):
+        button = self.sender()
+        tier = button.property('tier')
+        self.item_craft(tier)
+        self.load_summary_displays()
+        self.load_best_sequence()
 
     def window_on_top(self):
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, self.window_on_top_checkbox.isChecked())
@@ -150,8 +221,8 @@ class MainApp(QMainWindow):
         self.cm.reset_sequences(self.get_curr_tier())
         self.load_craft_sequences()
 
-    def craft_item_button(self):
-        crafted = self.cm.craft_item(self.get_curr_tier())
+    def item_craft(self,tier):
+        crafted = self.cm.craft_item(tier)
         if crafted:
             craft = CONSTANTS.QUALITIES[crafted[0]]
             amount = crafted[1]
@@ -161,20 +232,27 @@ class MainApp(QMainWindow):
             craft = '未知'
             amount = 1
             note = f"{craft}x{amount}"
-        self.add_log("制作", f"T{self.get_curr_tier()} {note}")
-        self.calculate_best_sequence()
+        self.add_log("制作", f"T{tier} {note}")
+        self.craft_calculator(tier)
+
+    def craft_item_button(self):
+        self.item_craft(self.get_curr_tier())
+        self.load_best_sequence()
         self.load_craft_sequences()
 
+    def stone_craft(self, tier):
+        crafted = self.cm.craft_stone(tier)
+        note =  f"<span style='color: {CONSTANTS.STONE_COLOR};'>{crafted[0]}x{crafted[1]}</span>"
+        self.add_log("制作", f"T{tier} {note}")
+        self.craft_calculator(tier)
 
     def craft_stone_button(self):
-        crafted = self.cm.craft_stone(self.get_curr_tier())
-        note =  f"<span style='color: {CONSTANTS.STONE_COLOR};'>{crafted[0]}x{crafted[1]}</span>"
-        self.add_log("制作", f"T{self.get_curr_tier()} {note}")
-        self.calculate_best_sequence()
+        self.stone_craft(self.get_curr_tier())
+        self.load_best_sequence()
         self.load_craft_sequences()
 
-    def craft_back_switch_button(self):
-        crafted = self.cm.craft_back_switch(self.get_curr_tier())
+    def back_switch_craft(self, tier):
+        crafted = self.cm.craft_back_switch(tier)
         craft = '反切'
         if crafted:
             amount = crafted[1]
@@ -183,8 +261,12 @@ class MainApp(QMainWindow):
         else:
             amount = 1
             note = f"{craft}x{amount}"
-        self.add_log("制作", f"T{self.get_curr_tier()} {note}")
-        self.calculate_best_sequence()
+        self.add_log("制作", f"T{tier} {note}")
+        self.craft_calculator(tier)
+
+    def craft_back_switch_button(self):
+        self.back_switch_craft(self.get_curr_tier())
+        self.load_best_sequence()
         self.load_craft_sequences()
 
     def get_best_sequence(self, tier):
@@ -261,11 +343,12 @@ class MainApp(QMainWindow):
             return full_score, full_sequence
             
         result = dfs([0,0,0,0,0], self.cm.get_craft_active(tier), memo) #(score, sequence)
-        return result[1] # (craft, quality, amount)
+        best_sequence =  result[1] # (craft, quality, amount)
+        self.cm.update_best_sequence(tier, best_sequence)
+        return best_sequence
 
     def calculate_best_sequence(self):
-        result = self.craft_calculator(self.get_curr_tier()) # (craft, quality, amount)
-        self.cm.update_best_sequence(self.get_curr_tier(), result)
+        self.craft_calculator(self.get_curr_tier()) # (craft, quality, amount)
         self.load_best_sequence()
         
     def get_sequence_mark(self, i):
@@ -289,17 +372,40 @@ class MainApp(QMainWindow):
         icon = QIcon(CONSTANTS.MARK_ICON) if checkbox.isChecked() else QIcon()
         checkbox.setIcon(icon)
 
-    def load_best_sequence(self):
-        best_sequence = self.get_best_sequence(self.get_curr_tier())
+    def format_best_sequence(self, tier):
+        sequence = self.get_best_sequence(tier)
         result = []
-        for rec in best_sequence:
+        for rec in sequence:
             quality = rec[1]
             craft = rec[0] if rec[0] else CONSTANTS.QUALITIES[quality] #石头/反切/品质
             amount = rec[2]
             color = CONSTANTS.STONE_COLOR if craft == '石头' else CONSTANTS.QUALITIY_COLORS[quality] 
             result.append((craft, amount, color))
         text = " -> ".join([f"<span style='color: {color};'>{craft}x{amount}</span>" for craft, amount, color in result])
+        return text
+    
+    def load_best_sequence(self):
+        text = self.format_best_sequence(self.get_curr_tier())
         self.best_sequence_display.setText(text)
+
+    def load_summary_displays(self):
+        for i in range(4):
+            self.load_summary_display(i)
+
+    def load_summary_display(self, i):
+        display = self.findChild(QTextBrowser, f"best_sequence_display_{i}")
+        tier = display.property('tier')
+        display.setText(self.format_best_sequence(tier))
+
+    def load_summary_page(self):
+        tiers = self.get_summary_tiers()
+        for i in range(4):
+            tier_selector = self.findChild(QComboBox, f"craft_summary_tier_selection_box_{i}")
+            tier_selector.blockSignals(True)
+            tier_selector.setCurrentText(str(tiers[i]))
+            tier_selector.blockSignals(False)
+            self.summary_tier_change(i, tiers[i])
+
 
     def load_craft_page(self):
         # load tier selection

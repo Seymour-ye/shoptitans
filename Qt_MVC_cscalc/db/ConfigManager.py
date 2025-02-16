@@ -13,7 +13,7 @@ class ConfigManager:
             'craft_active': 0,
             'scores': [1,5,30,200,1500],
             'back_switch': False,
-            'back_switch_rate': 0,
+            'back_switch_rate': 1,
             'sequences': self.generate_tier_default_sequence(tier, False),
             'marked':[False, False, False, False, False]
         }
@@ -39,6 +39,7 @@ class ConfigManager:
     
     def generate_config_default(self):
         return {
+            'summary_tiers':[14,13,12,11],
             'active_tier': 14, 
             14: self.generate_tier_default(14),
             'enchantment': self.generate_enchantment_default(),
@@ -168,4 +169,13 @@ class ConfigManager:
         self.data['logs'].insert(0, log)
         if len(self.data['logs']) > CONSTANTS.LOG_MAXIMUM:
             self.data['logs'].pop()
+        self.save_config()
+
+    def get_summary_tiers(self):
+        return self.data['summary_tiers']
+
+    def update_summary_tiers(self, i, tier):
+        self.data['summary_tiers'][i] = tier
+        if tier not in self.data:
+            self.data[tier] = self.generate_tier_default(tier)
         self.save_config()
