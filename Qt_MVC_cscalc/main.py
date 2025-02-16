@@ -23,6 +23,8 @@ class MainApp(QMainWindow):
         self.tier_selection_dropbox.addItems([str(i) for i in range(CONSTANTS.MAX_TIER, 0, -1)])
         self.craft_input_active = 0
         self.multi_entry = 1
+        self.enchantment_entry = [1,1,1,1]
+        self.enchantment_last_entry = None
 
         # SET CRAFT PANE ACTIONS
         # tier selection
@@ -69,7 +71,6 @@ class MainApp(QMainWindow):
         self.craft_item.clicked.connect(self.craft_item_button)
         self.craft_stone.clicked.connect(self.craft_stone_button)
 
-
         # SET CRAFT SUMMARY
         for i in range(4):
             tier_selector = self.findChild(QComboBox, f"craft_summary_tier_selection_box_{i}")
@@ -89,15 +90,81 @@ class MainApp(QMainWindow):
             item_craft.setProperty('summary_index', i)
             item_craft.clicked.connect(self.summary_craft_item)
 
+        # SET ENCHANTMENT PANE
+        for i in range(1,5):
+            fail_amount = self.findChild(QSpinBox, f"failure_amount_{i}")
+            fail_amount.setProperty('quality', i)
+            fail_amount.valueChanged.connect(self.fail_amount_change)
+
+            fail_button = self.findChild(QPushButton, f"failure_{i}")
+            fail_button.setProperty('quality', i)
+            fail_button.setProperty('success', False)
+            fail_button.clicked.connect(self.add_enchantment_log)
+
+            success_button = self.findChild(QPushButton, f"success_{i}")
+            success_button.setProperty('quality', i)
+            success_button.setProperty('success', True)
+            success_button.clicked.connect(self.add_enchantment_log)
+
+            count_label = self.findChild(QLabel, f"enchantment_count_label_{i}")
+            count_label.setProperty('quality', i)
+        self.enchantment_clear.clicked.connect(self.clear_enchantment_log)
+        self.enchantment_undo.clicked.connect(self.undo_enchantment_log)
+        self.enchantment_calculate.clicked.connect(self.enchantment_analyze)
             
-
-
         # SET HOME PANE CONTENTS
         self.updates_display.setText(CONSTANTS.fetch_updates())
         self.readme_display.setText(CONSTANTS.fetch_readme())
         self.load_logs()
         self.load_summary_page()
         self.load_craft_page()
+        self.load_enchantment_page()
+
+    def enchantment_analyze(self):
+        ench_logs = self.cm.get_enchantment_logs()
+        min_length = min([len(lst) for lst in ench_logs if lst])
+        res = []
+        for i in range(min_length):
+            quality = 0
+            for li in range(4):
+                if i < len(ench_logs[li]) and ench_logs[li][i]:
+                    quality = li + 1
+            res.append(quality)
+        self.cm.update_enchantment_result(res)
+        self.load_enchantment_result()
+
+    def undo_enchantment_log(self):
+        if self.enchantment_last_entry:
+            quality = self.enchantment_last_entry[0]
+            amount = self.enchantment_last_entry[1]
+            self.cm.pop_enchantment_log(quality, amount)
+            self.enchantment_last_entry = (quality, 1)
+            self.load_enchantment_sequence(quality)
+
+    def clear_enchantment_log(self):
+        self.cm.clear_enchantment_log()
+        self.load_enchantment_page()
+
+    def add_enchantment_log(self):    
+        sender = self.sender()
+        success = sender.property('success')
+        quality = sender.property('quality')
+        if success:
+            self.cm.add_enchantment_log(quality, success, 1)
+            self.enchantment_last_entry = (quality, 1)
+        else:
+            amount = self.enchantment_entry[quality-1]
+            self.cm.add_enchantment_log(quality, success, amount)
+            self.enchantment_last_entry = (quality, amount)
+        self.load_enchantment_sequence(quality)
+
+    def get_enchantment_log(self, quality):
+        return self.cm.get_enchantment_log(quality)
+
+    def fail_amount_change(self):
+        sender = self.sender()
+        i = sender.property('quality')-1
+        self.enchantment_entry[i] = sender.value()
 
     def get_summary_tiers(self):
         return self.cm.get_summary_tiers()
@@ -123,6 +190,16 @@ class MainApp(QMainWindow):
         display = self.findChild(QTextBrowser, f"best_sequence_display_{i}")
         display.setProperty('tier', tier)
 
+        # hide craft button for unswitchables:
+        if CONSTANTS.SWITCHABLES[tier][0]:
+            stone.show()
+        else:
+            stone.hide()
+        if self.cm.get_back_switch(tier):
+            backswitch.show()
+        else:
+            backswitch.hide()
+
         self.load_summary_display(i)
 
     def summary_craft_stone(self):
@@ -130,21 +207,24 @@ class MainApp(QMainWindow):
         tier = button.property('tier')
         self.stone_craft(tier)
         self.load_summary_displays()
-        self.load_best_sequence()
+        if tier == self.get_curr_tier():
+            self.load_craft_page()
     
     def summary_craft_backswitch(self):
         button = self.sender()
         tier = button.property('tier')
         self.back_switch_craft(tier)
         self.load_summary_displays()
-        self.load_best_sequence()
+        if tier == self.get_curr_tier():
+            self.load_craft_page()
 
     def summary_craft_item(self):
         button = self.sender()
         tier = button.property('tier')
         self.item_craft(tier)
         self.load_summary_displays()
-        self.load_best_sequence()
+        if tier == self.get_curr_tier():
+            self.load_craft_page()
 
     def window_on_top(self):
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, self.window_on_top_checkbox.isChecked())
@@ -312,11 +392,11 @@ class MainApp(QMainWindow):
             # any sequence reaches end
                 for i in range(5):
                     unv = unvisibles[(i-craft_active)%5]
-                    if sequence_indices[i] >= (len(self.get_craft_sequence(i))-unv):
+                    if sequence_indices[i] >= (len(self.cm.get_craft_sequence(tier,i))-unv):
                         memo[key] = (0, [])
                         return 0, []
             else:
-                if sequence_indices[self.cm.get_craft_active(tier)] >= (len(self.get_craft_sequence(self.cm.get_craft_active(tier)))):
+                if sequence_indices[self.cm.get_craft_active(tier)] >= (len(self.cm.get_craft_sequence(tier,self.cm.get_craft_active(tier)))):
                     memo[key] = (0, [])
                     return 0, []
             # craft item
@@ -387,6 +467,7 @@ class MainApp(QMainWindow):
     def load_best_sequence(self):
         text = self.format_best_sequence(self.get_curr_tier())
         self.best_sequence_display.setText(text)
+        self.load_summary_displays()
 
     def load_summary_displays(self):
         for i in range(4):
@@ -405,7 +486,6 @@ class MainApp(QMainWindow):
             tier_selector.setCurrentText(str(tiers[i]))
             tier_selector.blockSignals(False)
             self.summary_tier_change(i, tiers[i])
-
 
     def load_craft_page(self):
         # load tier selection
@@ -526,6 +606,53 @@ class MainApp(QMainWindow):
             for element in log:
                 text += element + '    '
         self.log_display.setText(text)
+
+    def load_enchantment_sequence(self, quality):
+        display = self.findChild(QTextBrowser, f"enchantment_sequence_{quality}")
+        label = self.findChild(QLabel, f"enchantment_count_label_{quality}")
+        color = CONSTANTS.QUALITIY_COLORS[quality]
+        sequence = self.get_enchantment_log(quality)
+        res = []
+        for result in sequence:
+            if result:
+                res.append( f"<span style='color:{color};'>成功</span>")
+            else:
+                res.append( "失败")
+        text = " | ".join(res)
+        display.setText(text)
+        label.setText(f"共 {len(res)} 次")
+
+    def load_enchantment_sequences(self):
+        for i in range(1,5):
+            self.load_enchantment_sequence(i)
+
+    def load_enchantment_result(self):
+        res = self.cm.get_enchantment_result()
+        ret = []
+        if res:
+            quality = res[0]
+            amount = 1
+            i = 1
+            while i < len(res):
+                if res[i] == quality:
+                    amount += 1
+                else: 
+                    color = CONSTANTS.QUALITIY_COLORS[quality]
+                    quality_text = CONSTANTS.QUALITIES[quality]
+                    ret.append(f"<span style='color:{color};'>{quality_text}x{amount}</span>")
+                    quality = res[i]
+                    amount = 1
+                i += 1
+            color = CONSTANTS.QUALITIY_COLORS[quality]
+            quality_text = CONSTANTS.QUALITIES[quality]
+            ret.append(f"<span style='color:{color};'>{quality_text}x{amount}</span>")
+        text = " -> ".join(ret)
+        self.enchantment_result.setText(text)
+
+    def load_enchantment_page(self):
+        self.load_enchantment_result()
+        self.load_enchantment_sequences()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

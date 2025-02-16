@@ -30,10 +30,10 @@ class ConfigManager:
 
     def generate_enchantment_default(self):
         return {
-            'superior':[],
-            'flawless':[],
-            'epic':[],
-            'legendary':[],
+            1 :[],
+            2 :[],
+            3 :[],
+            4 :[],
             'result':[]
         }
     
@@ -179,3 +179,33 @@ class ConfigManager:
         if tier not in self.data:
             self.data[tier] = self.generate_tier_default(tier)
         self.save_config()
+
+    def add_enchantment_log(self, quality, success, amount):
+        for i in range(amount):
+            self.data['enchantment'][str(quality)].append(success)
+        self.save_config()
+    
+    def get_enchantment_log(self, quality):
+        return self.data['enchantment'][str(quality)]
+    
+    def get_enchantment_logs(self):
+        return [lst for key, lst in self.data['enchantment'].items() if key.isdigit() ]
+
+    def clear_enchantment_log(self):
+        for i in range(1, 5):
+            self.data['enchantment'][str(i)] = []
+        self.data['enchantment']['result'] = []
+        self.save_config()
+    
+    def pop_enchantment_log(self, quality, amount):
+        for i in range(amount):
+            if self.data['enchantment'][str(quality)]:
+                self.data['enchantment'][str(quality)].pop()
+        self.save_config()
+    
+    def update_enchantment_result(self, result):
+        self.data['enchantment']['result'] = result
+        self.save_config()
+
+    def get_enchantment_result(self):
+        return self.data['enchantment']['result']
