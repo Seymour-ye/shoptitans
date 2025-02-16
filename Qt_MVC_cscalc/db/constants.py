@@ -40,7 +40,7 @@ QUALITIY_COLORS = [ "#ffffff",  # 白色
 
 LOG_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 LOG_MAXIMUM = 50
-UPDATE_EXE_URL= "https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/main.exe"
+UPDATE_EXE_URL= "https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe"
 GITHUB_UPDATES_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/UPDATES.md'
 GITHUB_README_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/README.md'
 
@@ -59,7 +59,14 @@ def fetch_readme():
     response = requests.get(GITHUB_README_FILE_URL)
     if response.status_code == 200:
         content = response.text
-        return markdown.markdown(content)
+        return f"""
+    <style>
+        body {{ color: white; word-wrap: break-word; overflow-wrap: break-word;}}
+        a {{ color: #00FFFF; text-decoration: none; }}
+        a:hover {{ color: #FFA500; text-decoration: underline; }}
+    </style>
+    {markdown.markdown(content)}
+"""
     else:
         return "聪明的人才看得见我，看不见说明你傻。"
 
@@ -67,7 +74,14 @@ def fetch_updates():
     response = requests.get(GITHUB_UPDATES_FILE_URL)
     if response.status_code == 200:
         content = response.text
-        return markdown.markdown(content)
+        return f"""
+    <style>
+        body {{ color: white; }}
+        a {{ color: #00FFFF; text-decoration: none; }}
+        a:hover {{ color: #FFA500; text-decoration: underline; }}
+    </style>
+    {markdown.markdown(content)}
+"""
     else:
         return "不联网还想看更新，我快递过去给你？"
 
@@ -100,7 +114,7 @@ def get_current_version():
             
 def download_updates():
     NEW_EXE_PATH = os.path.join(os.path.dirname(sys.executable), "_序列计算器.exe")
-    CURRENT_EXE_PATH = os.path.join(os.path.dirname(sys.executable), "序列计算器.exe")
+    CURRENT_EXE_PATH = sys.executable
     try:
         response = requests.get(UPDATE_EXE_URL, stream=True)
         with open(NEW_EXE_PATH, "wb") as f:
@@ -110,10 +124,13 @@ def download_updates():
         QMessageBox.information(None, "更新完成", "下载完成，程序将自动更新并重启。")
 
         update_script = f"""@echo off
+            chcp 65001 >nul
             timeout /t 2 /nobreak >nul
             del "{CURRENT_EXE_PATH}"
+            for /d %%i in ("%TEMP%\_MEI*") do rd /s /q "%%i"
+
             rename "{NEW_EXE_PATH}" "{os.path.basename(CURRENT_EXE_PATH)}"
-            start "" "{CURRENT_EXE_PATH}"
+            start "" cmd /c "{CURRENT_EXE_PATH}"
             del %0
             """
         update_script_path = os.path.join(os.path.dirname(CURRENT_EXE_PATH), "update.bat")

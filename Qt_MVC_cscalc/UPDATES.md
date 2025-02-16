@@ -1,12 +1,15 @@
 ### 更新日志
 
-[最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/main.exe)
-
-- V1.0.0    2025-02-15      Finished First Draft of README.md, First Launch. 先用。报BUG再修。
+[最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe)
 
 ----------------------------------------------
 
-- v0.19.1   2025-02-15      Auto-Update
+- V1.0.1    2025-02-15      自动更新 (更新完可能会重启失败要手动再打开，明天我再修，困了。)
+- V1.0.0    2025-02-15      Finished First Draft of README.md, Pre-Release. 先用。报BUG再修。
+
+----------------------------------------------
+
+- v0.19.1   2025-02-15      Auto-Update Implemented
 - V0.19     2025-02-15      Finished enchanting functionalities
 - V0.18     2025-02-15      Finished functionalities of enchantment input & analyze
 - V0.17     2025-02-15      Finished Craft Summary Page Contents

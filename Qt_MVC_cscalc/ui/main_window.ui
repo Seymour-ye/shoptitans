@@ -100,6 +100,14 @@ QComboBox QAbstractItemView {
 }
 QCheckBox {
 		color: #ffffff;
+}
+
+QTextBrowser a { 
+		color: #00AFFF; 
+		text-decoration: none; 
+}
+QTextBrowser a:hover { 
+		color: #00FFFF; 
 }</string>
   </property>
   <property name="iconSize">
@@ -156,7 +164,7 @@ QCheckBox {
        <enum>QTabWidget::TabShape::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="elideMode">
        <enum>Qt::TextElideMode::ElideNone</enum>
@@ -173,6 +181,25 @@ QCheckBox {
           <width>471</width>
           <height>441</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextBrowser {
+        color: white; /* 普通文本颜色 */
+    }
+    QTextBrowser a {
+        color: #00FFFF; /* 默认链接颜色（青色） */
+        text-decoration: none; /* 去掉下划线 */
+    }
+    QTextBrowser a:hover {
+        color: #FFA500; /* 鼠标悬浮时变成橙色 */
+        text-decoration: underline; /* 鼠标悬浮时添加下划线 */
+    }</string>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="openExternalLinks">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
@@ -665,6 +692,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <width>471</width>
           <height>441</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextBrowser {
+        color: white; /* 普通文本颜色 */
+    }
+    QTextBrowser a {
+        color: #00FFFF; /* 默认链接颜色（青色） */
+        text-decoration: none; /* 去掉下划线 */
+    }
+    QTextBrowser a:hover {
+        color: #FFA500; /* 鼠标悬浮时变成橙色 */
+        text-decoration: underline; /* 鼠标悬浮时添加下划线 */
+    }</string>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
         </property>
         <property name="openExternalLinks">
          <bool>true</bool>
