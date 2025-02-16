@@ -1,6 +1,7 @@
 import requests
 import markdown
 import os
+import re 
 
 MAX_TIER = 14
 
@@ -37,8 +38,7 @@ GITHUB_UPDATES_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptita
 GITHUB_README_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/README.md'
 UI_PATH = os.path.join(os.path.dirname(__file__), '..','ui', 'main_window.ui')
 MARK_ICON = os.path.join(os.path.dirname(__file__), '..','ui', 'icon_global_timer_sp.png')
-
-
+UPDATES_PATH = os.path.join(os.path.dirname(__file__), '..', 'UPDATES.md')
 def fetch_readme():
     response = requests.get(GITHUB_README_FILE_URL)
     if response.status_code == 200:
@@ -53,7 +53,7 @@ def fetch_updates():
         content = response.text
         return markdown.markdown(content)
     else:
-        return "不联网还想看更新，我快递过去给你啊？"
+        return "不联网还想看更新，我快递过去给你？"
 
 def unvisibles(tier, back_switch):
     if not SWITCHABLES[tier][0] and not back_switch : #not switchable
@@ -64,5 +64,13 @@ def unvisibles(tier, back_switch):
         return [0, 1, 2, 3, 4]
     else: #both
         return [0, 1, 2, 2, 1]
-    
-default_scores = [1, 5, 30, 200, 1500]
+
+def get_latest_version():
+    filepath = UPDATES_PATH
+    with open(filepath, "r", encoding="utf-8") as file:
+        for line in file:
+            match = re.search(r"V\d+\.\d+", line)  # Match version format V0.18
+            if match:
+                return match.group()
+
+WINDOW_TITLE = f"序列计算器(限量版) {get_latest_version()}"

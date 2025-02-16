@@ -1640,7 +1640,7 @@ border: none;</string>
         <string>附魔</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="enchantment_amount">
+      <widget class="QSpinBox" name="enchantment_amount_selection">
        <property name="geometry">
         <rect>
          <x>420</x>
@@ -1656,7 +1656,7 @@ border: none;</string>
         <number>9999</number>
        </property>
        <property name="value">
-        <number>12</number>
+        <number>1</number>
        </property>
       </widget>
       <widget class="QTextBrowser" name="enchantment_result">

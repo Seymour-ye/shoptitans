@@ -19,12 +19,15 @@ class MainApp(QMainWindow):
         uic.loadUi(CONSTANTS.UI_PATH, self)
         self.cm = ConfigManager()
 
+        self.setWindowTitle(CONSTANTS.WINDOW_TITLE)
+
         #CONSTANTS ADJUSTMENT
         self.tier_selection_dropbox.addItems([str(i) for i in range(CONSTANTS.MAX_TIER, 0, -1)])
         self.craft_input_active = 0
         self.multi_entry = 1
         self.enchantment_entry = [1,1,1,1]
         self.enchantment_last_entry = None
+        self.enchantment_amount = 1
 
         # SET CRAFT PANE ACTIONS
         # tier selection
@@ -111,7 +114,9 @@ class MainApp(QMainWindow):
         self.enchantment_clear.clicked.connect(self.clear_enchantment_log)
         self.enchantment_undo.clicked.connect(self.undo_enchantment_log)
         self.enchantment_calculate.clicked.connect(self.enchantment_analyze)
-            
+        self.enchantment_amount_selection.valueChanged.connect(self.set_enchantment_amount)
+        self.enchantment_button.clicked.connect(self.enchanting)
+
         # SET HOME PANE CONTENTS
         self.updates_display.setText(CONSTANTS.fetch_updates())
         self.readme_display.setText(CONSTANTS.fetch_readme())
@@ -119,6 +124,15 @@ class MainApp(QMainWindow):
         self.load_summary_page()
         self.load_craft_page()
         self.load_enchantment_page()
+
+    def enchanting(self):
+        self.cm.enchanting(self.enchantment_amount)
+        self.add_log("附魔", f"x {self.enchantment_amount}")
+        self.enchantment_amount_selection.setValue(1)
+        self.enchantment_analyze()
+
+    def set_enchantment_amount(self):
+        self.enchantment_amount = self.sender().value()
 
     def enchantment_analyze(self):
         ench_logs = self.cm.get_enchantment_logs()

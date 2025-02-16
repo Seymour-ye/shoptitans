@@ -1,4 +1,9 @@
 ### 更新日志
+
+- V1.0      2025-02-15      
+----------------------------------------------
+- V0.19     2025-02-15      Finished enchanting functionalities
+- V0.18     2025-02-15      Finished functionalities of enchantment input & analyze
 - V0.17     2025-02-15      Finished Craft Summary Page Contents
 - V0.16     2025-02-15      Finished log display and craft pane
 - V0.15     2025-02-15      Add Sequence Marks, Finished Sequence Calculator, Add WindowStickOnTop functionality.

@@ -209,3 +209,10 @@ class ConfigManager:
 
     def get_enchantment_result(self):
         return self.data['enchantment']['result']
+    
+    def enchanting(self, amount):
+        for i in range(amount):
+            for q in range(1, 5):
+                if self.data['enchantment'][str(q)]:
+                    self.data['enchantment'][str(q)].pop(0)
+        self.save_config()
