@@ -3,7 +3,7 @@
 [最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe)
 
 ----------------------------------------------
-
+- V1.0.2    2025-02-16      墙内版....
 - V1.0.1    2025-02-15      自动更新 (更新完可能会重启失败要手动再打开，明天我再修，困了。)
 - V1.0.0    2025-02-15      Finished First Draft of README.md, Pre-Release. 先用。报BUG再修。
 

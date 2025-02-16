@@ -54,36 +54,85 @@ UI_PATH = os.path.join(get_base_path(),'ui', 'main_window.ui')
 MARK_ICON = os.path.join(get_base_path(), 'ui', 'icon_global_timer_sp.png')
 WINDOW_ICON = os.path.join(get_base_path(),'ui', 'minte.png')
 UPDATES_PATH = os.path.join(get_base_path(), 'UPDATES.md')
+README_PATH = os.path.join(get_base_path(), 'README.md')
 
 def fetch_readme():
-    response = requests.get(GITHUB_README_FILE_URL)
-    if response.status_code == 200:
-        content = response.text
-        return f"""
-    <style>
-        body {{ color: white; word-wrap: break-word; overflow-wrap: break-word;}}
-        a {{ color: #00FFFF; text-decoration: none; }}
-        a:hover {{ color: #FFA500; text-decoration: underline; }}
-    </style>
-    {markdown.markdown(content)}
-"""
-    else:
-        return "聪明的人才看得见我，看不见说明你傻。"
+    try:
+        response = requests.get(GITHUB_README_FILE_URL, timeout=5)
+        if response.status_code == 200:
+            content = response.text
+            return f"""
+        <style>
+            body {{ color: white; word-wrap: break-word; overflow-wrap: break-word;}}
+            a {{ color: #00FFFF; text-decoration: none; }}
+            a:hover {{ color: #FFA500; text-decoration: underline; }}
+        </style>
+        {markdown.markdown(content)}
+    """
+        else:
+            # return "聪明的人才看得见我，看不见说明你傻。" + 
+            return local_readme()
+    except requests.exceptions.Timeout:
+        # return "网络请求超时，实在看不见就别看了<br>" + 
+        return local_readme()
+    except requests.exceptions.RequestException as e:
+        # return f"请求失败: {e}" + 
+        return local_readme()
+
+def local_readme():
+    filepath = README_PATH
+    with open(filepath, "r", encoding="utf-8") as file:
+        for line in file:
+            md_content = file.read()
+        html_content = markdown.markdown(md_content, extensions=['extra', 'nl2br'])
+        styled_html = f"""
+        <style>
+            body {{ color: white; }}
+            a {{ color: #00FFFF; text-decoration: none; }}
+            a:hover {{ color: #FFA500; text-decoration: underline; }}
+        </style>
+        {html_content}
+    """
+    return styled_html
 
 def fetch_updates():
-    response = requests.get(GITHUB_UPDATES_FILE_URL)
-    if response.status_code == 200:
-        content = response.text
-        return f"""
-    <style>
-        body {{ color: white; }}
-        a {{ color: #00FFFF; text-decoration: none; }}
-        a:hover {{ color: #FFA500; text-decoration: underline; }}
-    </style>
-    {markdown.markdown(content)}
-"""
-    else:
-        return "不联网还想看更新，我快递过去给你？"
+    try:
+        response = requests.get(GITHUB_UPDATES_FILE_URL, timeout=5)
+        if response.status_code == 200:
+            content = response.text
+            return f"""
+        <style>
+            body {{ color: white; }}
+            a {{ color: #00FFFF; text-decoration: none; }}
+            a:hover {{ color: #FFA500; text-decoration: underline; }}
+        </style>
+        {markdown.markdown(content)}
+    """
+        else:
+            # return "不联网还想看更新，我快递过去给你？" + 
+            return local_updates()
+    except requests.exceptions.Timeout:
+        # return "<h1>网络请求超时，实在看不见就别看了</h1>" + 
+        return local_updates()
+    except requests.exceptions.RequestException as e:
+        # return f"<h1>请求失败: {e}</h1>" + 
+        return local_updates()
+
+def local_updates():
+    filepath = UPDATES_PATH
+    with open(filepath, "r", encoding="utf-8") as file:
+        for line in file:
+            md_content = file.read()
+        html_content = markdown.markdown(md_content, extensions=['extra', 'nl2br'])
+        styled_html = f"""
+        <style>
+            body {{ color: white; }}
+            a {{ color: #00FFFF; text-decoration: none; }}
+            a:hover {{ color: #FFA500; text-decoration: underline; }}
+        </style>
+        {html_content}
+    """
+    return styled_html
 
 def unvisibles(tier, back_switch):
     if not SWITCHABLES[tier][0] and not back_switch : #not switchable
@@ -96,13 +145,18 @@ def unvisibles(tier, back_switch):
         return [0, 1, 2, 2, 1]
     
 def get_latest_version():
-    response = requests.get(GITHUB_UPDATES_FILE_URL)
-    if response.status_code == 200:
-        content = response.text.split('\r\n')
-        for line in content:
-            match = re.search(r"V\d+\.\d+(?:\.\d+)?", line)  # Match version format V0.18
-            if match:
-                return match.group()
+    try:
+        response = requests.get(GITHUB_UPDATES_FILE_URL, timeout=5)
+        if response.status_code == 200:
+            content = response.text.split('\r\n')
+            for line in content:
+                match = re.search(r"V\d+\.\d+(?:\.\d+)?", line)  # Match version format V0.18
+                if match:
+                    return match.group()
+    except requests.exceptions.Timeout:
+        return get_current_version()
+    except requests.exceptions.RequestException as e:
+        return get_current_version()
 
 def get_current_version():
     filepath = UPDATES_PATH
