@@ -462,6 +462,7 @@ class MainApp(QMainWindow):
     def add_log(self, action, description):
         time = datetime.now().strftime(CONSTANTS.LOG_TIME_FORMAT)
         self.cm.add_log((time, action, description))
+        self.statusBar.showMessage(self.cm.get_last_log())
         self.load_logs()
 
     def load_sequence_icon(self, i, checkbox):

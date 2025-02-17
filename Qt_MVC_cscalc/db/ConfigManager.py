@@ -171,6 +171,9 @@ class ConfigManager:
             self.data['logs'].pop()
         self.save_config()
 
+    def get_last_log(self):
+        return "  ".join(self.data['logs'][0])
+    
     def get_summary_tiers(self):
         return self.data['summary_tiers']
 
