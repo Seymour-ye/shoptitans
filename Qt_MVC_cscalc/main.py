@@ -29,6 +29,10 @@ class MainApp(QMainWindow):
         self.enchantment_entry = [1,1,1,1]
         self.enchantment_last_entry = None
         self.enchantment_amount = 1
+        self.status_bar = QLabel()
+        self.status_bar.setFixedWidth(self.tabWidget.width())
+        self.statusBar.addWidget(self.status_bar)
+
 
         # SET CRAFT PANE ACTIONS
         # tier selection
@@ -133,13 +137,14 @@ class MainApp(QMainWindow):
         self.add_log("附魔", f"x {self.enchantment_amount}")
         self.enchantment_amount_selection.setValue(1)
         self.enchantment_analyze()
+        self.load_enchantment_sequences()
 
     def set_enchantment_amount(self):
         self.enchantment_amount = self.sender().value()
 
     def enchantment_analyze(self):
         ench_logs = self.cm.get_enchantment_logs()
-        min_length = min([len(lst) for lst in ench_logs if lst])
+        min_length = min([len(lst) for lst in ench_logs if lst]+[0])
         res = []
         for i in range(min_length):
             quality = 0
@@ -462,7 +467,7 @@ class MainApp(QMainWindow):
     def add_log(self, action, description):
         time = datetime.now().strftime(CONSTANTS.LOG_TIME_FORMAT)
         self.cm.add_log((time, action, description))
-        self.statusBar.showMessage(self.cm.get_last_log())
+        self.status_bar.setText(self.cm.get_last_log())
         self.load_logs()
 
     def load_sequence_icon(self, i, checkbox):
