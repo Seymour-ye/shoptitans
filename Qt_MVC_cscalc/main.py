@@ -144,7 +144,7 @@ class MainApp(QMainWindow):
 
     def enchantment_analyze(self):
         ench_logs = self.cm.get_enchantment_logs()
-        min_length = min([len(lst) for lst in ench_logs if lst]+[0])
+        min_length = min([len(lst) for lst in ench_logs if lst], default=0)
         res = []
         for i in range(min_length):
             quality = 0
