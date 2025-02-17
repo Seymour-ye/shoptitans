@@ -125,7 +125,7 @@ class ConfigManager:
         self.save_config()
     
     def sequence_log_backspace(self, tier, sequence_index):
-        if len(self.data[tier]['sequences'][sequence_index]) > CONSTANTS.unvisibles(tier, self.get_back_switch(tier))[sequence_index]:
+        if len(self.data[tier]['sequences'][sequence_index]) > CONSTANTS.unvisibles(tier, self.get_back_switch(tier))[sequence_index-self.get_craft_active(tier)]:
             self.data[tier]['sequences'][sequence_index].pop()
         self.save_config()
 
