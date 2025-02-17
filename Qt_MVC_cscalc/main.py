@@ -167,11 +167,11 @@ class MainApp(QMainWindow):
         timer_label = self.findChild(QLabel, f"{npc}_timer")
         interval = CONSTANTS.TIMER_INTERVALS[npc]
         elapsed = (datetime.now() - self.last_occurs[npc]).total_seconds()
-        remaining = max(interval - elapsed, 0)
+        remaining = int(max(interval - elapsed, 0))
 
-        hours = int(remaining // 3600)
-        minutes = int((remaining % 3600) // 60)
-        seconds = int(remaining % 60)
+        hours = remaining // 3600
+        minutes = (remaining % 3600) // 60
+        seconds = remaining % 60
 
         # timer_label.setText(f"{hours:02}:{minutes:02}:{seconds:02}")
         timer_label.setText(f"<span style='color: #32CD32;'>{hours:02}:{minutes:02}:{seconds:02}</span>")
@@ -179,13 +179,14 @@ class MainApp(QMainWindow):
         if remaining <= 0:
             self.timers[npc].stop()
             timer_label.setText("00:00:00")
+            # self.add_log("计时器", f"<span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{CONSTANTS.NPC_NAMES[npc]}</span> 将在 <span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{hours} 小时 {minutes} 分钟</span>后到来！记得重置计时器哦")
             # timer_label.setText("<span style='color:#ffffff;'>00:00:00</span>")
-        elif remaining % 60*30 == 0:
-            self.add_log("计时器", f"{CONSTANTS.NPC_NAMES[npc]} 将在 {hours} 小时 {minutes} 分钟后到来！")
-        elif remaining % 60*10 == 0:
-            self.add_log("计时器", f"{CONSTANTS.NPC_NAMES[npc]} 将在 {hours} 小时 {minutes} 分钟后到来！")
-        elif remaining % 60*5 == 0:            
-            self.add_log("计时器", f"{CONSTANTS.NPC_NAMES[npc]} 将在 {hours} 小时 {minutes} 分钟后到来！")
+        elif remaining % (60*30) == 0:
+            self.add_log("计时器", f"<span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{CONSTANTS.NPC_NAMES[npc]}</span> 将在 <span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{hours} 小时 {minutes} 分钟</span>后到来！")
+        elif remaining < (60*30) and remaining % (60*10) == 0:
+            self.add_log("计时器", f"<span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{CONSTANTS.NPC_NAMES[npc]}</span> 将在 <span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{hours} 小时 {minutes} 分钟</span>后到来！")
+        elif remaining < (60*10) and remaining % (60*5) == 0:    
+            self.add_log("计时器", f"<span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{CONSTANTS.NPC_NAMES[npc]}</span> 将在 <span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{hours} 小时 {minutes} 分钟</span>后到来！记得重置计时器哦")
 
     def enchanting(self):
         self.cm.enchanting(self.enchantment_amount)
