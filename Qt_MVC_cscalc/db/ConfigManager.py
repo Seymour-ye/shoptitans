@@ -1,5 +1,6 @@
 import json
 import db.constants as CONSTANTS
+from datetime import datetime 
 
 class ConfigManager:
     def __init__(self):
@@ -38,12 +39,21 @@ class ConfigManager:
         }
     
     def generate_config_default(self):
+        tier = CONSTANTS.MAX_TIER
         return {
-            'summary_tiers':[14,13,12,11],
-            'active_tier': 14, 
-            14: self.generate_tier_default(14),
+            'summary_tiers':[i for i in range(tier, tier-4, -1)],
+            'active_tier': tier, 
+            tier: self.generate_tier_default(tier),
             'enchantment': self.generate_enchantment_default(),
-            'logs':[] #'YYYY-MM-DD HH:MM action description',...
+            'logs':[], #'YYYY-MM-DD HH:MM action description',...
+            'timer': self.generate_timer_default()
+        }
+    
+    def generate_timer_default(self):
+        return {
+            'king': datetime.min.isoformat(),
+            'resource': datetime.min.isoformat(),
+            'craft': datetime.min.isoformat()
         }
 
     def load_config(self):
@@ -219,3 +229,18 @@ class ConfigManager:
                 if self.data['enchantment'][str(q)]:
                     self.data['enchantment'][str(q)].pop(0)
         self.save_config()
+    
+    def set_occur_of(self, npc, timestamp):
+        if 'timer' not in self.data.keys():
+            self.data['timer'] = self.generate_timer_default()
+        self.data['timer'][npc] = timestamp.isoformat()
+        self.save_config()
+        
+    def get_last_occurs(self):
+        if 'timer' not in self.data.keys():
+            self.data['timer'] = self.generate_timer_default()
+            self.save_config()
+        ret = {}
+        for k, v in self.data['timer'].items():
+            ret[k] = datetime.fromisoformat(v)
+        return ret

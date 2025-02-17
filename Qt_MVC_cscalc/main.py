@@ -10,7 +10,7 @@ from datetime import datetime
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtWidgets import QSpinBox, QPushButton, QLabel, QTextBrowser, QCheckBox, QComboBox
 from PyQt6.QtGui import QIcon
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6 import uic
 
 class MainApp(QMainWindow):
@@ -32,9 +32,29 @@ class MainApp(QMainWindow):
         self.status_bar = QLabel()
         self.status_bar.setFixedWidth(self.tabWidget.width())
         self.statusBar.addWidget(self.status_bar)
+        self.timers = {}
+        self.last_occurs = self.cm.get_last_occurs()
 
+        # SETUP CONNECTIONS
+        self.setup_craft_pane()
+        self.setup_craft_summary()
+        self.setup_enchantment_pane()
+        for npc in CONSTANTS.TIMER_INTERVALS.keys():
+            self.setup_npc_timer(npc)
 
-        # SET CRAFT PANE ACTIONS
+        # LOAD CONTENTS
+        self.updates_display.setText(CONSTANTS.fetch_updates())
+        self.readme_display.setText(CONSTANTS.fetch_readme())
+        self.load_logs()
+        self.load_summary_page()
+        self.load_craft_page()
+        self.load_enchantment_page()
+        self.load_timers()
+
+        # CHECK FOR UPDATES
+        CONSTANTS.check_for_updates()
+
+    def setup_craft_pane(self):
         # tier selection
         self.tier_selection_dropbox.currentTextChanged.connect(self.set_curr_tier)
         # quality score spinboxes
@@ -79,7 +99,7 @@ class MainApp(QMainWindow):
         self.craft_item.clicked.connect(self.craft_item_button)
         self.craft_stone.clicked.connect(self.craft_stone_button)
 
-        # SET CRAFT SUMMARY
+    def setup_craft_summary(self):
         for i in range(4):
             tier_selector = self.findChild(QComboBox, f"craft_summary_tier_selection_box_{i}")
             tier_selector.setProperty('summary_index', i)
@@ -98,7 +118,7 @@ class MainApp(QMainWindow):
             item_craft.setProperty('summary_index', i)
             item_craft.clicked.connect(self.summary_craft_item)
 
-        # SET ENCHANTMENT PANE
+    def setup_enchantment_pane(self):
         for i in range(1,5):
             fail_amount = self.findChild(QSpinBox, f"failure_amount_{i}")
             fail_amount.setProperty('quality', i)
@@ -122,15 +142,50 @@ class MainApp(QMainWindow):
         self.enchantment_amount_selection.valueChanged.connect(self.set_enchantment_amount)
         self.enchantment_button.clicked.connect(self.enchanting)
 
-        # SET HOME PANE CONTENTS
-        self.updates_display.setText(CONSTANTS.fetch_updates())
-        self.readme_display.setText(CONSTANTS.fetch_readme())
-        self.load_logs()
-        self.load_summary_page()
-        self.load_craft_page()
-        self.load_enchantment_page()
+    def setup_npc_timer(self, npc):
+        reset_button = self.findChild(QPushButton, f"{npc}_reset_button")
+        reset_button.setProperty('npc', npc)
+        reset_button.clicked.connect(self.reset_timer)
 
-        CONSTANTS.check_for_updates()
+        self.timers[npc] = QTimer(self)
+        self.timers[npc].setProperty('npc', npc)
+        self.timers[npc].timeout.connect(self.update_timer)
+
+    def load_timers(self):
+        for npc in self.last_occurs.keys():
+            self.timers[npc].start(1000)
+
+    def reset_timer(self):
+        npc = self.sender().property('npc')
+        now = datetime.now()
+        self.last_occurs[npc] = now
+        self.cm.set_occur_of(npc, now)
+        self.timers[npc].start(1000)
+
+    def update_timer(self):
+        npc = self.sender().property('npc')
+        timer_label = self.findChild(QLabel, f"{npc}_timer")
+        interval = CONSTANTS.TIMER_INTERVALS[npc]
+        elapsed = (datetime.now() - self.last_occurs[npc]).total_seconds()
+        remaining = max(interval - elapsed, 0)
+
+        hours = int(remaining // 3600)
+        minutes = int((remaining % 3600) // 60)
+        seconds = int(remaining % 60)
+
+        # timer_label.setText(f"{hours:02}:{minutes:02}:{seconds:02}")
+        timer_label.setText(f"<span style='color: #32CD32;'>{hours:02}:{minutes:02}:{seconds:02}</span>")
+
+        if remaining <= 0:
+            self.timers[npc].stop()
+            timer_label.setText("00:00:00")
+            # timer_label.setText("<span style='color:#ffffff;'>00:00:00</span>")
+        elif remaining % 60*30 == 0:
+            self.add_log("计时器", f"{CONSTANTS.NPC_NAMES[npc]} 将在 {hours} 小时 {minutes} 分钟后到来！")
+        elif remaining % 60*10 == 0:
+            self.add_log("计时器", f"{CONSTANTS.NPC_NAMES[npc]} 将在 {hours} 小时 {minutes} 分钟后到来！")
+        elif remaining % 60*5 == 0:            
+            self.add_log("计时器", f"{CONSTANTS.NPC_NAMES[npc]} 将在 {hours} 小时 {minutes} 分钟后到来！")
 
     def enchanting(self):
         self.cm.enchanting(self.enchantment_amount)

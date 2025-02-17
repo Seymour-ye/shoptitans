@@ -3,6 +3,7 @@
 [最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe)
 
 ----------------------------------------------
+- V2.0.0    2025-02-17      添加NPC来访倒计时。
 - V1.1.2    2025-02-17      MINOR CHANGE:序列录入撤销后滚动条自动滚至末尾
 - V1.1.1    2025-02-17      修复了附魔序列计算失效的bug
 - V1.1.0    2025-02-16      修复了1个BUG,更改了UI

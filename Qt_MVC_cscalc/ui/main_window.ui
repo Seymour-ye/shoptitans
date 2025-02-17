@@ -142,6 +142,10 @@ QTextBrowser a:hover {
      <property name="styleSheet">
       <string notr="true"/>
      </property>
+     <attribute name="icon">
+      <iconset>
+       <normaloff>minte.png</normaloff>minte.png</iconset>
+     </attribute>
      <attribute name="title">
       <string>Home</string>
      </attribute>
@@ -717,6 +721,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
     </widget>
     <widget class="QWidget" name="crafting_tab">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>icon_global_craft.png</normaloff>icon_global_craft.png</iconset>
+     </attribute>
      <attribute name="title">
       <string>制作</string>
      </attribute>
@@ -1599,6 +1607,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
     </widget>
     <widget class="QWidget" name="enchantment_tab">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>icon_global_element_all.png</normaloff>icon_global_element_all.png</iconset>
+     </attribute>
      <attribute name="title">
       <string>附魔</string>
      </attribute>
@@ -2145,6 +2157,381 @@ border: none;</string>
        <string>Return</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QWidget" name="timer_tab">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>icon_global_timer_sp.png</normaloff>icon_global_timer_sp.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>计时器</string>
+     </attribute>
+     <widget class="QLabel" name="craft_label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>120</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+        background-color: #9B3A84;  /* 设置背景颜色（紫色） */
+        color: white;  /* 文字颜色 */
+        font: bold 16px &quot;Microsoft YaHei&quot;;  /* 字体加粗，大小16px */
+        border: 4px solid #7A2B66;  /* 设置边框颜色 */
+        border-radius: 6px;  /* 让边框有一点圆角 */
+        padding: 4px 12px;  /* 调整内边距，让文字更贴合 */
+    }</string>
+      </property>
+      <property name="text">
+       <string>制作工人</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="craft_arriving_in">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>140</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;  /* 透明背景 */
+        color: #90EE90;  /* 亮绿色，和时间颜色相近但稍微弱一点 */
+        font: bold 20px &quot;Microsoft YaHei&quot;;  /* 字体稍小，但加粗 */
+        padding: 5px;
+		border: none</string>
+      </property>
+      <property name="text">
+       <string>甩卖倒计时</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="craft_timer">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: black;  /* 黑色背景 */
+        color: #ffffff;  /* 绿色数字（类似电子钟） */
+        font: bold 26px &quot;Consolas&quot;;  /* 字体加粗，大小28px，类似数字钟 */
+        border: 2px solid #228B22;  /* 绿色边框 */
+        border-radius: 8px;  /* 圆角边框 */
+        padding: 10px;  /* 内边距，让文字更居中 */
+        text-align: center;
+        qproperty-alignment: AlignCenter;</string>
+      </property>
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="resource_arriving_in">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>130</y>
+        <width>140</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;  /* 透明背景 */
+        color: #90EE90;  /* 亮绿色，和时间颜色相近但稍微弱一点 */
+        font: bold 20px &quot;Microsoft YaHei&quot;;  /* 字体稍小，但加粗 */
+        padding: 5px;
+		border: none</string>
+      </property>
+      <property name="text">
+       <string>送温暖倒计时</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="resource_timer">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>160</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: black;  /* 黑色背景 */
+        color: #ffffff;  /* 绿色数字（类似电子钟） */
+        font: bold 26px &quot;Consolas&quot;;  /* 字体加粗，大小28px，类似数字钟 */
+        border: 2px solid #228B22;  /* 绿色边框 */
+        border-radius: 8px;  /* 圆角边框 */
+        padding: 10px;  /* 内边距，让文字更居中 */
+        text-align: center;
+        qproperty-alignment: AlignCenter;</string>
+      </property>
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="king_arriving_in">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>130</y>
+        <width>140</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: transparent;  /* 透明背景 */
+        color: #90EE90;  /* 亮绿色，和时间颜色相近但稍微弱一点 */
+        font: bold 20px &quot;Microsoft YaHei&quot;;  /* 字体稍小，但加粗 */
+        padding: 5px;
+		border: none</string>
+      </property>
+      <property name="text">
+       <string>莅临倒计时</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="king_timer">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>160</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: black;  /* 黑色背景 */
+        color: #ffffff;  /* 绿色数字（类似电子钟） */
+        font: bold 26px &quot;Consolas&quot;;  /* 字体加粗，大小28px，类似数字钟 */
+        border: 2px solid #228B22;  /* 绿色边框 */
+        border-radius: 8px;  /* 圆角边框 */
+        padding: 10px;  /* 内边距，让文字更居中 */
+        text-align: center;
+        qproperty-alignment: AlignCenter;</string>
+      </property>
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="resource_label">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>120</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+        background-color: #9B3A84;  /* 设置背景颜色（紫色） */
+        color: white;  /* 文字颜色 */
+        font: bold 16px &quot;Microsoft YaHei&quot;;  /* 字体加粗，大小16px */
+        border: 4px solid #7A2B66;  /* 设置边框颜色 */
+        border-radius: 6px;  /* 让边框有一点圆角 */
+        padding: 4px 12px;  /* 调整内边距，让文字更贴合 */
+    }</string>
+      </property>
+      <property name="text">
+       <string>资源工人</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="king_label">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>100</y>
+        <width>120</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+        background-color: #9B3A84;  /* 设置背景颜色（紫色） */
+        color: white;  /* 文字颜色 */
+        font: bold 16px &quot;Microsoft YaHei&quot;;  /* 字体加粗，大小16px */
+        border: 4px solid #7A2B66;  /* 设置边框颜色 */
+        border-radius: 6px;  /* 让边框有一点圆角 */
+        padding: 4px 12px;  /* 调整内边距，让文字更贴合 */
+    }</string>
+      </property>
+      <property name="text">
+       <string>国王</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="king_reset_button">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>0</y>
+        <width>120</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: none;
+    background: transparent;
+}
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);  /* 悬停时出现背景 */
+    border-radius: 5px;  /* 圆角边框，可根据需要调整 */
+}
+QPushButton:pressed {
+    background-color: rgba(255, 255, 255, 0.4);  /* 按下时背景更明显 */
+    border-radius: 5px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>king_head.png</normaloff>king_head.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>120</width>
+        <height>120</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="resource_reset_button">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>10</y>
+        <width>120</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: none;
+    background: transparent;
+}
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);  /* 悬停时出现背景 */
+    border-radius: 5px;  /* 圆角边框，可根据需要调整 */
+}
+QPushButton:pressed {
+    background-color: rgba(255, 255, 255, 0.4);  /* 按下时背景更明显 */
+    border-radius: 5px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icon_global_boost_resboost.png</normaloff>icon_global_boost_resboost.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>120</width>
+        <height>120</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="craft_reset_button">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>120</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: none;
+    background: transparent;
+}
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);  /* 悬停时出现背景 */
+    border-radius: 5px;  /* 圆角边框，可根据需要调整 */
+}
+QPushButton:pressed {
+    background-color: rgba(255, 255, 255, 0.4);  /* 按下时背景更明显 */
+    border-radius: 5px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icon_global_boost_craftboost.png</normaloff>icon_global_boost_craftboost.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>120</width>
+        <height>120</height>
+       </size>
+      </property>
+     </widget>
+     <zorder>craft_reset_button</zorder>
+     <zorder>resource_reset_button</zorder>
+     <zorder>king_reset_button</zorder>
+     <zorder>craft_label</zorder>
+     <zorder>craft_timer</zorder>
+     <zorder>resource_timer</zorder>
+     <zorder>king_timer</zorder>
+     <zorder>resource_label</zorder>
+     <zorder>king_label</zorder>
+     <zorder>craft_arriving_in</zorder>
+     <zorder>king_arriving_in</zorder>
+     <zorder>resource_arriving_in</zorder>
     </widget>
    </widget>
   </widget>

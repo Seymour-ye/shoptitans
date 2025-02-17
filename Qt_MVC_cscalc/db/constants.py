@@ -10,6 +10,18 @@ from PyQt6.QtGui import QPixmap, QIcon
 from PyQt6.QtWidgets import QMessageBox
 
 MAX_TIER = 14
+LOG_MAXIMUM = 50
+
+TIMER_INTERVALS = {
+    'resource': 60 * 60 * 1.5,
+    'craft': 60 * 60 * 1.5,
+    'king': 60 * 60 * 24
+}
+NPC_NAMES = {
+    'resource': "资源工人",
+    'craft': "制作工人",
+    'king': "国王"
+}
 
 SWITCHABLES = {
     #Tier: Stone, Sigil
@@ -37,9 +49,8 @@ QUALITIY_COLORS = [ "#ffffff",  # 白色
                     "#a64ca6",  # 紫色
                     "#ffd700"  # 金色
 ]
-
+COUNT_DOWN_FORMAT = "%H:%M:%S"
 LOG_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-LOG_MAXIMUM = 50
 UPDATE_EXE_URL= "https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe"
 GITHUB_UPDATES_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/UPDATES.md'
 GITHUB_README_FILE_URL = 'https://raw.githubusercontent.com/Seymour-ye/shoptitans/refs/heads/main/Qt_MVC_cscalc/README.md'
