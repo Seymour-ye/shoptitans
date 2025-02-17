@@ -162,6 +162,9 @@ class MainApp(QMainWindow):
             self.cm.pop_enchantment_log(quality, amount)
             self.enchantment_last_entry = (quality, 1)
             self.load_enchantment_sequence(quality)
+        display = self.findChild(QTextBrowser, f"enchantment_sequence_{quality}")
+        display.verticalScrollBar().setValue(display.verticalScrollBar().maximum())
+
 
     def clear_enchantment_log(self):
         self.cm.clear_enchantment_log()
@@ -179,6 +182,9 @@ class MainApp(QMainWindow):
             self.cm.add_enchantment_log(quality, success, amount)
             self.enchantment_last_entry = (quality, amount)
         self.load_enchantment_sequence(quality)
+        display = self.findChild(QTextBrowser, f"enchantment_sequence_{quality}")
+        display.verticalScrollBar().setValue(display.verticalScrollBar().maximum())
+
 
     def get_enchantment_log(self, quality):
         return self.cm.get_enchantment_log(quality)
@@ -318,6 +324,9 @@ class MainApp(QMainWindow):
     def backspace(self):
         self.cm.sequence_log_backspace(self.get_curr_tier(), self.craft_input_active)
         self.load_craft_sequence(self.craft_input_active)
+        sequence_display_label = self.findChild(QTextBrowser, f"sequence_{self.craft_input_active}_display")
+        sequence_display_label.verticalScrollBar().setValue(sequence_display_label.verticalScrollBar().maximum())
+
 
     def clear_sequences(self):
         self.cm.reset_sequences(self.get_curr_tier())
