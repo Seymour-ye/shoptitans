@@ -274,18 +274,6 @@ class MainApp(QMainWindow):
         display = self.findChild(QTextBrowser, f"best_sequence_display_{i}")
         display.setProperty('tier', tier)
 
-        epic = self.findChild(QLabel, f"craft_summary_tier_epic_{i}")
-        if self.cm.epic_to_be_craft(tier):
-            epic.show()
-        else:
-            epic.hide()
-
-        legendary = self.findChild(QLabel, f"craft_summary_tier_legendary_{i}")
-        if self.cm.legendary_to_be_craft(tier):
-            legendary.show()
-        else:
-            legendary.hide()
-
         # hide craft button for unswitchables:
         if CONSTANTS.SWITCHABLES[tier][0]:
             stone.show()
@@ -577,6 +565,18 @@ class MainApp(QMainWindow):
         display = self.findChild(QTextBrowser, f"best_sequence_display_{i}")
         tier = display.property('tier')
         display.setText(self.format_best_sequence(tier))
+        
+        epic = self.findChild(QLabel, f"craft_summary_tier_epic_{i}")
+        if self.cm.epic_to_be_craft(tier):
+            epic.show()
+        else:
+            epic.hide()
+
+        legendary = self.findChild(QLabel, f"craft_summary_tier_legendary_{i}")
+        if self.cm.legendary_to_be_craft(tier):
+            legendary.show()
+        else:
+            legendary.hide()
 
     def load_summary_page(self):
         tiers = self.get_summary_tiers()

@@ -494,7 +494,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <x>25</x>
             <y>70</y>
             <width>15</width>
-            <height>21</height>
+            <height>15</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -649,7 +649,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <x>25</x>
             <y>70</y>
             <width>15</width>
-            <height>21</height>
+            <height>15</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -802,9 +802,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <property name="geometry">
            <rect>
             <x>25</x>
-            <y>60</y>
+            <y>70</y>
             <width>15</width>
-            <height>21</height>
+            <height>15</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -824,7 +824,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>60</y>
+            <y>70</y>
             <width>15</width>
             <height>15</height>
            </rect>
