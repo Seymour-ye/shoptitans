@@ -244,3 +244,15 @@ class ConfigManager:
         for k, v in self.data['timer'].items():
             ret[k] = datetime.fromisoformat(v)
         return ret
+    
+    def epic_to_be_craft(self, tier):
+        for sequence in self.data[tier]['sequences']:
+            if 3 in [quality for quality, amount in sequence]:
+                return True 
+        return False
+    
+    def legendary_to_be_craft(self, tier):
+        for sequence in self.data[tier]['sequences']:
+            if 4 in [quality for quality, amount in sequence]:
+                return True
+        return False 

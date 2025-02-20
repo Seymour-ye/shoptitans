@@ -274,6 +274,18 @@ class MainApp(QMainWindow):
         display = self.findChild(QTextBrowser, f"best_sequence_display_{i}")
         display.setProperty('tier', tier)
 
+        epic = self.findChild(QLabel, f"craft_summary_tier_epic_{i}")
+        if self.cm.epic_to_be_craft(tier):
+            epic.show()
+        else:
+            epic.hide()
+
+        legendary = self.findChild(QLabel, f"craft_summary_tier_legendary_{i}")
+        if self.cm.legendary_to_be_craft(tier):
+            legendary.show()
+        else:
+            legendary.hide()
+
         # hide craft button for unswitchables:
         if CONSTANTS.SWITCHABLES[tier][0]:
             stone.show()
@@ -386,7 +398,7 @@ class MainApp(QMainWindow):
 
     def clear_sequences(self):
         self.cm.reset_sequences(self.get_curr_tier())
-        self.load_craft_sequences()
+        self.load_craft_page()
 
     def item_craft(self,tier):
         crafted = self.cm.craft_item(tier)
@@ -555,7 +567,7 @@ class MainApp(QMainWindow):
     def load_best_sequence(self):
         text = self.format_best_sequence(self.get_curr_tier())
         self.best_sequence_display.setText(text)
-        self.load_summary_displays()
+        self.load_summary_page()
 
     def load_summary_displays(self):
         for i in range(4):
