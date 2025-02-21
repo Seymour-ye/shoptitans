@@ -34,6 +34,8 @@ class MainApp(QMainWindow):
         self.statusBar.addWidget(self.status_bar)
         self.timers = {}
         self.last_occurs = self.cm.get_last_occurs()
+        # set up window-on-top
+        self.window_on_top_checkbox.stateChanged.connect(self.window_on_top)
 
         # SETUP CONNECTIONS
         self.setup_craft_pane()
@@ -92,8 +94,6 @@ class MainApp(QMainWindow):
         self.back_space_button.clicked.connect(self.backspace)
         # calculate
         self.calculate_button.clicked.connect(self.calculate_best_sequence)
-        # window-on-top
-        self.window_on_top_checkbox.stateChanged.connect(self.window_on_top)
         # craft buttons
         self.craft_back_switch_item.clicked.connect(self.craft_back_switch_button)
         self.craft_item.clicked.connect(self.craft_item_button)

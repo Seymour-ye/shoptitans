@@ -121,7 +121,7 @@ QTextBrowser a:hover {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
+      <y>0</y>
       <width>521</width>
       <height>481</height>
      </rect>
@@ -168,7 +168,7 @@ QTextBrowser a:hover {
        <enum>QTabWidget::TabShape::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="elideMode">
        <enum>Qt::TextElideMode::ElideNone</enum>
@@ -1268,19 +1268,6 @@ border: none;</string>
         <string>包含反切</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="window_on_top_checkbox">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>290</y>
-         <width>80</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>窗口前置</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="back_switch_rate_label">
        <property name="geometry">
         <rect>
@@ -1710,7 +1697,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>320</y>
+        <y>330</y>
         <width>501</width>
         <height>111</height>
        </rect>
@@ -1859,7 +1846,7 @@ border: none;</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>310</y>
+        <y>330</y>
         <width>501</width>
         <height>111</height>
        </rect>
@@ -1991,7 +1978,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>280</y>
+        <y>290</y>
         <width>81</width>
         <height>23</height>
        </rect>
@@ -2007,7 +1994,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>280</y>
+        <y>290</y>
         <width>81</width>
         <height>23</height>
        </rect>
@@ -2321,7 +2308,7 @@ border: none;</string>
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>280</y>
+        <y>290</y>
         <width>81</width>
         <height>23</height>
        </rect>
@@ -2709,6 +2696,19 @@ QPushButton:pressed {
      <zorder>king_arriving_in</zorder>
      <zorder>resource_arriving_in</zorder>
     </widget>
+   </widget>
+   <widget class="QCheckBox" name="window_on_top_checkbox">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>5</y>
+      <width>80</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>窗口前置</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
