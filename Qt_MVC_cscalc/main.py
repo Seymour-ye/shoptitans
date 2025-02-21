@@ -443,9 +443,10 @@ class MainApp(QMainWindow):
         for i in range(5):
             if i != craft_active:
                 sequence_indices[i] = sequence_indices[i]+1
-        return (craft_active+1)%5, sequence_indices, ['石头', -1, 1], 0
+        return (craft_active+1)%5, sequence_indices, ['石头', -1, 1, False], 0
 
     def _craft_item(self, tier, craft_active, sequence_indices, sequences):
+        marked = self.cm.get_sequence_mark(tier, craft_active)
         curr_sequence = sequences[craft_active]
         result_index = sequence_indices[craft_active]
         if result_index < len(curr_sequence):
@@ -455,7 +456,7 @@ class MainApp(QMainWindow):
             score = self.cm.get_quality_score(tier, quality) * amount
             for i in range(5):
                 sequence_indices[i] = sequence_indices[i] + 1
-        return craft_active, sequence_indices, [None, quality, amount], score
+        return craft_active, sequence_indices, [None, quality, amount, marked], score
 
     def _craft_back_switch(self, tier, craft_active, sequence_indices, sequences):
         craft_active = (craft_active - 1)%5 #更新
@@ -510,12 +511,12 @@ class MainApp(QMainWindow):
             return full_score, full_sequence
             
         result = dfs([0,0,0,0,0], self.cm.get_craft_active(tier), memo) #(score, sequence)
-        best_sequence =  result[1] # (craft, quality, amount)
+        best_sequence =  result[1] # (craft, quality, amount, marked)
         self.cm.update_best_sequence(tier, best_sequence)
         return best_sequence
 
     def calculate_best_sequence(self):
-        self.craft_calculator(self.get_curr_tier()) # (craft, quality, amount)
+        self.craft_calculator(self.get_curr_tier()) # (craft, quality, amount, marked)
         self.load_best_sequence()
         
     def get_sequence_mark(self, i):
@@ -528,6 +529,7 @@ class MainApp(QMainWindow):
         checked = checkbox.isChecked()
         self.cm.update_sequence_mark(tier, i, checked)
         self.load_sequence_icon(i, checkbox)
+        self.calculate_best_sequence()
 
     def add_log(self, action, description):
         time = datetime.now().strftime(CONSTANTS.LOG_TIME_FORMAT)
@@ -544,12 +546,16 @@ class MainApp(QMainWindow):
         sequence = self.get_best_sequence(tier)
         result = []
         for rec in sequence:
+            if len(rec) < 4:
+                marked = ""
+            else:
+                marked = f"<img src='{CONSTANTS.MARK_ICON}' width=12 height=12 >" if rec[3] else ""
             quality = rec[1]
             craft = rec[0] if rec[0] else CONSTANTS.QUALITIES[quality] #石头/反切/品质
             amount = rec[2]
             color = CONSTANTS.STONE_COLOR if craft == '石头' else CONSTANTS.QUALITIY_COLORS[quality] 
-            result.append((craft, amount, color))
-        text = " -> ".join([f"<span style='color: {color};'>{craft}x{amount}</span>" for craft, amount, color in result])
+            result.append((craft, amount, color, marked))
+        text = " -> ".join([f"<span style='color: {color};'>{marked}{craft}x{amount}</span>" for craft, amount, color, marked in result])
         return text
     
     def load_best_sequence(self):
