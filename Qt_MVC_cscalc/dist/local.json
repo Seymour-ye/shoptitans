@@ -478,6 +478,11 @@
     },
     "logs": [
         [
+            "2025-02-23 06:09:17",
+            "计时器",
+            "<span style='color: #ffd700;'>国王</span> 将在 <span style='color: #ffd700;'>10 小时 0 分钟</span>后到来！"
+        ],
+        [
             "2025-02-23 05:54:42",
             "制作",
             "T7 <span style='color: #00ff00;'>优质x1</span>"
@@ -721,11 +726,6 @@
             "2025-02-23 05:13:33",
             "制作",
             "T9 <span style='color: #4da6ff;'>精良x1</span>"
-        ],
-        [
-            "2025-02-23 05:13:24",
-            "制作",
-            "T9 <span style='color: #AAAAAA;'>石头x1</span>"
         ]
     ],
     "13": {
