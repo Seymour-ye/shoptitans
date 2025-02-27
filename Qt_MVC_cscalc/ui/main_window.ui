@@ -168,7 +168,7 @@ QTextBrowser a:hover {
        <enum>QTabWidget::TabShape::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <property name="elideMode">
        <enum>Qt::TextElideMode::ElideNone</enum>
@@ -842,6 +842,57 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <bool>true</bool>
           </property>
          </widget>
+        </widget>
+        <widget class="QPushButton" name="summary_craft_reset_button">
+         <property name="geometry">
+          <rect>
+           <x>170</x>
+           <y>0</y>
+           <width>40</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #ffffff;  /* 设置边框颜色 */
+        border-radius: 6px;  /* 让边框有一点圆角 */</string>
+         </property>
+         <property name="text">
+          <string>制作</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="summary_resource_reset_button">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>0</y>
+           <width>40</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #ffffff;  /* 设置边框颜色 */
+        border-radius: 6px;  /* 让边框有一点圆角 */</string>
+         </property>
+         <property name="text">
+          <string>资源</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="summary_king_reset_button">
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>0</y>
+           <width>40</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid #ffffff;  /* 设置边框颜色 */
+        border-radius: 6px;  /* 让边框有一点圆角 */</string>
+         </property>
+         <property name="text">
+          <string>国王</string>
+         </property>
         </widget>
        </widget>
       </widget>

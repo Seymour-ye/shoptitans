@@ -146,6 +146,10 @@ class MainApp(QMainWindow):
         reset_button = self.findChild(QPushButton, f"{npc}_reset_button")
         reset_button.setProperty('npc', npc)
         reset_button.clicked.connect(self.reset_timer)
+        
+        summary_reset = self.findChild(QPushButton, f"summary_{npc}_reset_button")
+        summary_reset.setProperty('npc', npc)
+        summary_reset.clicked.connect(self.reset_timer)
 
         self.timers[npc] = QTimer(self)
         self.timers[npc].setProperty('npc', npc)
