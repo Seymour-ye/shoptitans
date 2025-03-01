@@ -193,8 +193,13 @@ class MainApp(QMainWindow):
             self.add_log("计时器", f"<span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{CONSTANTS.NPC_NAMES[npc]}</span> 将在 <span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{hours} 小时 {minutes} 分钟</span>后到来！记得重置计时器哦")
 
     def enchanting(self):
-        self.cm.enchanting(self.enchantment_amount)
-        self.add_log("附魔", f"x {self.enchantment_amount}")
+        quality = self.cm.enchanting(self.enchantment_amount)
+        print(quality)
+        log_text = ""
+        for i in range(5):
+            if quality[i] > 0:
+                log_text += f"<span style='color:{CONSTANTS.QUALITIY_COLORS[i]};'>{CONSTANTS.QUALITIES[i]} x {quality[i]}</span> "
+        self.add_log("附魔", log_text)
         self.enchantment_amount_selection.setValue(1)
         self.enchantment_analyze()
         self.load_enchantment_sequences()

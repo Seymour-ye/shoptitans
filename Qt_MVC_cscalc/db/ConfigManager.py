@@ -224,11 +224,16 @@ class ConfigManager:
         return self.data['enchantment']['result']
     
     def enchanting(self, amount):
+        ret = [0,0,0,0,0]
         for i in range(amount):
+            quality = 0
             for q in range(1, 5):
                 if self.data['enchantment'][str(q)]:
-                    self.data['enchantment'][str(q)].pop(0)
+                    if self.data['enchantment'][str(q)].pop(0):
+                        quality = q
+            ret[quality] += 1
         self.save_config()
+        return ret
     
     def set_occur_of(self, npc, timestamp):
         if 'timer' not in self.data.keys():
