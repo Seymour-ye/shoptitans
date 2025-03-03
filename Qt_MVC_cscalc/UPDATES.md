@@ -3,6 +3,7 @@
 [最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe)
 
 ----------------------------------------------
+- V2.1.4    2025-03-03      Adjusted Warning trigger amount.
 - V2.1.3    2025-03-03      针对反切序列优化了提醒信息显示
 - V2.1.2    2025-03-03      在提醒信息中添加了序列名称
 - V2.1.1    2025-03-02      修复了提醒信息显示错误

@@ -552,7 +552,7 @@ class MainApp(QMainWindow):
         checkbox.setIcon(icon)
 
     def best_sequence_warning(self, tier):
-        warn_count = 0
+        warn_count = -1
         if CONSTANTS.SWITCHABLES[tier][0]:
             warn_count = 4
         if self.cm.get_back_switch(tier):
@@ -562,7 +562,7 @@ class MainApp(QMainWindow):
             if len(self.cm.get_craft_sequence(tier, i)) <= warn_count:
                 seq_lst.append(self.get_button_name(tier, i))
         if len(seq_lst) > 0:
-            return f"<span style='color: #ff0000;'>序列过短可能导致最优序列计算有误，请延长T{tier}序列:<br> {", ".join(seq_lst)}</span><br>"
+            return f"{warn_count}<br><span style='color: #ff0000;'>序列过短可能导致最优序列计算有误，请延长T{tier}序列:<br> {", ".join(seq_lst)}</span><br>"
         return ""
     
     def format_best_sequence(self, tier):
