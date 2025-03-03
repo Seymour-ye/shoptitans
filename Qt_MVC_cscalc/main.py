@@ -555,7 +555,8 @@ class MainApp(QMainWindow):
         for i in range(5):
             if len(self.get_craft_sequence(i)) <= 4:
                 return f"<span style='color: #ff0000;'>已录入序列过短，可能导致最优序列计算有误，请延长T{tier}序列</span><br>"
-
+        return ""
+    
     def format_best_sequence(self, tier):
         sequence = self.get_best_sequence(tier)
         warning = self.best_sequence_warning(tier)
