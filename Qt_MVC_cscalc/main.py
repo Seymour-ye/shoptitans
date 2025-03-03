@@ -552,9 +552,10 @@ class MainApp(QMainWindow):
         checkbox.setIcon(icon)
 
     def best_sequence_warning(self, tier):
-        for i in range(5):
-            if len(self.get_craft_sequence(i)) <= 4:
-                return f"<span style='color: #ff0000;'>已录入序列过短，可能导致最优序列计算有误，请延长T{tier}序列</span><br>"
+        if CONSTANTS.SWITCHABLES[tier][0] or self.cm.get_back_switch(tier):
+            for i in range(5):
+                if len(self.cm.get_craft_sequence(tier, i)) <= 4:
+                    return f"<span style='color: #ff0000;'>已录入序列过短，可能导致最优序列计算有误，请延长T{tier}序列</span><br>"
         return ""
     
     def format_best_sequence(self, tier):
