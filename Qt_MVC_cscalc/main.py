@@ -553,9 +553,12 @@ class MainApp(QMainWindow):
 
     def best_sequence_warning(self, tier):
         if CONSTANTS.SWITCHABLES[tier][0] or self.cm.get_back_switch(tier):
+            seq_lst = []
             for i in range(5):
                 if len(self.cm.get_craft_sequence(tier, i)) <= 4:
-                    return f"<span style='color: #ff0000;'>已录入序列过短，可能导致最优序列计算有误，请延长T{tier}序列</span><br>"
+                    seq_lst.append(self.get_button_name(tier, i))
+            if len(seq_lst) > 0:
+                return f"<span style='color: #ff0000;'>序列过短可能导致最优序列计算有误，请延长T{tier}序列:<br> {", ".join(seq_lst)}</span><br>"
         return ""
     
     def format_best_sequence(self, tier):
@@ -665,29 +668,43 @@ class MainApp(QMainWindow):
     def load_craft_sequences(self):
         for i in range(5):
             self.load_craft_sequence(i)
+
+    def get_stone_index(self, tier, i):
+        return (i - self.cm.get_craft_active(tier)) % 5
+    
+    def get_backswitch_index(self, tier, i):
+        return (self.cm.get_craft_active(tier) - i) % 5
+
+    def get_button_name(self, tier, i):
+        backswitch_index = self.get_backswitch_index(tier, i)
+        stone_index = self.get_stone_index(tier, i)
+
+        backswitch = self.cm.get_back_switch(tier)
+        stone = CONSTANTS.SWITCHABLES[tier][0]
+
+        if not stone and not backswitch:
+            return "序列"
+        elif stone and not backswitch:
+            return f"石头x{stone_index}"
+        elif not stone and backswitch:
+            return f"反切x{backswitch_index}"
+        else:
+            if stone_index > 2:
+                return f"反切x{backswitch_index}"
+            else:
+                return f"石头x{stone_index}"
             
     def load_craft_sequence(self, i):
         # button
         button = self.findChild(QPushButton, f"sequence_button_{i}") 
-        backswitch_index = (self.get_craft_active() - i) % 5
-        stone_index = (i - self.get_craft_active()) % 5
+        button.setText(self.get_button_name(self.get_curr_tier(), i))
 
         # constants
         backswitch = self.get_back_switch()
-        stone = CONSTANTS.SWITCHABLES[self.get_curr_tier()][0]
+        stone_index = self.get_stone_index(self.get_curr_tier(),i)
         unv = CONSTANTS.unvisibles(self.get_curr_tier(),backswitch)[stone_index]
 
-        if not stone and not backswitch:
-            button.setText("序列")
-        elif (stone and not backswitch):     
-            button.setText(f"石头x{stone_index}")
-        elif not stone and backswitch:
-            button.setText(f"反切x{backswitch_index}")
-        else:
-            if stone_index > 2:
-                button.setText(f"反切x{backswitch_index}")
-            else:
-                button.setText(f"石头x{stone_index}")
+        
         # count label
         sequence = self.get_craft_sequence(i)
         count_label = self.findChild(QLabel, f"sequence_{i}_count_label")
