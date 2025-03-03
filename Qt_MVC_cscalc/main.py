@@ -551,8 +551,14 @@ class MainApp(QMainWindow):
         icon = QIcon(CONSTANTS.MARK_ICON) if checkbox.isChecked() else QIcon()
         checkbox.setIcon(icon)
 
+    def best_sequence_warning(self, tier):
+        for i in range(5):
+            if len(self.get_craft_sequence(i)) <= 4:
+                return f"<span style='color: #ff0000;'>已录入序列过短，可能导致最优序列计算有误，请延长T{tier}序列</span><br>"
+
     def format_best_sequence(self, tier):
         sequence = self.get_best_sequence(tier)
+        warning = self.best_sequence_warning(tier)
         result = []
         for rec in sequence:
             if len(rec) < 4:
@@ -565,7 +571,7 @@ class MainApp(QMainWindow):
             color = CONSTANTS.STONE_COLOR if craft == '石头' else CONSTANTS.QUALITIY_COLORS[quality] 
             result.append((craft, amount, color, marked))
         text = " -> ".join([f"<span style='color: {color};'>{marked}{craft}x{amount}</span>" for craft, amount, color, marked in result])
-        return text
+        return warning + text
     
     def load_best_sequence(self):
         text = self.format_best_sequence(self.get_curr_tier())

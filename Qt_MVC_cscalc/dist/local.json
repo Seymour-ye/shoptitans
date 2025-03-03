@@ -1,6 +1,6 @@
 {
     "summary_tiers": [
-        14,
+        12,
         11,
         10,
         9
@@ -9,49 +9,31 @@
     "14": {
         "best_sequence": [
             [
-                null,
-                0,
+                "石头",
+                -1,
                 1,
-                true
+                false
+            ],
+            [
+                null,
+                1,
+                1,
+                false
             ],
             [
                 null,
                 0,
                 1,
-                true
+                false
             ],
             [
                 null,
-                3,
+                2,
                 1,
-                true
-            ],
-            [
-                null,
-                0,
-                1,
-                true
-            ],
-            [
-                null,
-                0,
-                1,
-                true
-            ],
-            [
-                null,
-                0,
-                1,
-                true
-            ],
-            [
-                null,
-                1,
-                1,
-                true
+                false
             ]
         ],
-        "craft_active": 4,
+        "craft_active": 1,
         "scores": [
             1,
             5,
@@ -73,10 +55,6 @@
                 ],
                 [
                     0,
-                    2
-                ],
-                [
-                    0,
                     1
                 ],
                 [
@@ -84,88 +62,12 @@
                     1
                 ],
                 [
-                    0,
+                    1,
                     1
                 ],
                 [
                     0,
                     1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ]
-            ],
-            [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    3,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    3,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ]
-            ],
-            [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
                 ],
                 [
                     0,
@@ -203,63 +105,7 @@
                 ],
                 [
                     0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
                     2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
                 ],
                 [
                     0,
@@ -286,8 +132,16 @@
                     1
                 ],
                 [
-                    1,
+                    0,
                     1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    2
                 ],
                 [
                     0,
@@ -295,10 +149,34 @@
                 ],
                 [
                     1,
+                    2
+                ],
+                [
+                    0,
                     1
                 ],
                 [
-                    1,
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
                     1
                 ],
                 [
@@ -319,94 +197,14 @@
                 ],
                 [
                     0,
-                    2
-                ],
-                [
-                    0,
                     1
                 ],
                 [
                     0,
                     1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    3,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    2,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     1
@@ -422,6 +220,32 @@
                 [
                     2,
                     1
+                ]
+            ],
+            [
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
                 ],
                 [
                     0,
@@ -457,6 +281,84 @@
                 ],
                 [
                     0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ]
+            ],
+            [
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
                     1
                 ],
                 [
@@ -464,7 +366,99 @@
                     2
                 ],
                 [
-                    4,
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
                     1
                 ]
             ]
@@ -478,170 +472,10 @@
         ]
     },
     "enchantment": {
-        "1": [
-            false,
-            false,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            false,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            false,
-            true,
-            true,
-            false,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            false,
-            false,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            true,
-            false,
-            false,
-            false,
-            false,
-            false
-        ],
+        "1": [],
         "2": [],
         "3": [],
         "4": [
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
             false,
             false,
             false,
@@ -688,7 +522,6 @@
         "result": [
             0,
             0,
-            1,
             0,
             0,
             0,
@@ -698,37 +531,6 @@
             0,
             0,
             0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            1,
-            1,
-            0,
-            1,
             0,
             0,
             0,
@@ -738,17 +540,6 @@
             0,
             0,
             0,
-            1,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
             0,
             0,
             0,
@@ -756,7 +547,16 @@
             0,
             0,
             0,
-            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -766,276 +566,258 @@
     },
     "logs": [
         [
-            "2025-03-01 17:58:20",
-            "附魔",
-            "x 1"
+            "2025-03-02 12:01:38",
+            "计时器",
+            "<span style='color: #ffd700;'>制作工人</span> 将在 <span style='color: #ffd700;'>0 小时 5 分钟</span>后到来！记得重置计时器哦"
         ],
         [
-            "2025-03-01 17:57:30",
-            "附魔",
-            "x 1"
+            "2025-03-02 11:56:38",
+            "计时器",
+            "<span style='color: #ffd700;'>制作工人</span> 将在 <span style='color: #ffd700;'>0 小时 10 分钟</span>后到来！"
         ],
         [
-            "2025-03-01 17:57:19",
-            "附魔",
-            "x 1"
+            "2025-03-02 11:46:38",
+            "计时器",
+            "<span style='color: #ffd700;'>制作工人</span> 将在 <span style='color: #ffd700;'>0 小时 20 分钟</span>后到来！"
         ],
         [
-            "2025-03-01 17:57:09",
+            "2025-03-02 11:36:38",
+            "计时器",
+            "<span style='color: #ffd700;'>制作工人</span> 将在 <span style='color: #ffd700;'>0 小时 30 分钟</span>后到来！"
+        ],
+        [
+            "2025-03-02 11:06:38",
+            "计时器",
+            "<span style='color: #ffd700;'>制作工人</span> 将在 <span style='color: #ffd700;'>1 小时 0 分钟</span>后到来！"
+        ],
+        [
+            "2025-03-02 10:49:06",
             "制作",
-            "T10 <span style='color: #ffffff;'>普通x1</span>"
+            "T13 <span style='color: #ffffff;'>普通x1</span>"
         ],
         [
-            "2025-03-01 17:57:05",
-            "制作",
-            "T10 <span style='color: #ffffff;'>普通x2</span>"
-        ],
-        [
-            "2025-03-01 17:56:54",
-            "制作",
-            "T10 <span style='color: #00ff00;'>优质x2</span>"
-        ],
-        [
-            "2025-03-01 17:54:50",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:54:40",
-            "制作",
-            "T10 <span style='color: #4da6ff;'>精良x1</span>"
-        ],
-        [
-            "2025-03-01 17:48:30",
-            "制作",
-            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-03-01 17:45:07",
-            "制作",
-            "T12 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:45:01",
-            "制作",
-            "T12 <span style='color: #ffffff;'>普通x2</span>"
-        ],
-        [
-            "2025-03-01 17:42:52",
-            "附魔",
-            "x 2"
-        ],
-        [
-            "2025-03-01 17:42:39",
+            "2025-03-02 10:48:40",
             "制作",
             "T12 <span style='color: #00ff00;'>优质x1</span>"
         ],
         [
-            "2025-03-01 17:41:38",
+            "2025-03-02 10:45:13",
             "制作",
-            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
+            "T11 <span style='color: #00ff00;'>优质x1</span>"
         ],
         [
-            "2025-03-01 17:41:37",
-            "制作",
-            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-03-01 17:41:23",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:41:22",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:41:22",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:40:25",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:39:46",
-            "制作",
-            "T9 <span style='color: #00ff00;'>优质x2</span>"
-        ],
-        [
-            "2025-03-01 17:20:15",
-            "制作",
-            "T10 <span style='color: #a64ca6;'>史诗x1</span>"
-        ],
-        [
-            "2025-03-01 17:18:40",
-            "制作",
-            "T12 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-03-01 17:18:36",
-            "制作",
-            "T12 <span style='color: #00ff00;'>优质x2</span>"
-        ],
-        [
-            "2025-03-01 17:18:22",
-            "制作",
-            "T12 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-03-01 17:18:16",
-            "制作",
-            "T12 <span style='color: #00ff00;'>优质x1</span>"
-        ],
-        [
-            "2025-03-01 17:17:40",
-            "制作",
-            "T10 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:17:30",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:17:28",
-            "制作",
-            "T9 <span style='color: #4da6ff;'>精良x1</span>"
-        ],
-        [
-            "2025-03-01 17:17:15",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x2</span>"
-        ],
-        [
-            "2025-03-01 17:17:15",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 17:16:49",
-            "附魔",
-            "x 1"
-        ],
-        [
-            "2025-03-01 17:16:39",
-            "附魔",
-            "x 1"
-        ],
-        [
-            "2025-03-01 16:35:04",
-            "制作",
-            "T10 <span style='color: #a64ca6;'>史诗x1</span>"
-        ],
-        [
-            "2025-03-01 16:34:08",
-            "制作",
-            "T9 <span style='color: #00ff00;'>优质x1</span>"
-        ],
-        [
-            "2025-03-01 16:33:41",
-            "制作",
-            "T10 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 16:31:48",
-            "制作",
-            "T12 <span style='color: #4da6ff;'>精良x2</span>"
-        ],
-        [
-            "2025-03-01 16:31:07",
-            "制作",
-            "T9 <span style='color: #00ff00;'>优质x1</span>"
-        ],
-        [
-            "2025-03-01 16:30:10",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 16:28:47",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 16:28:47",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 16:28:46",
-            "制作",
-            "T9 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 16:15:06",
-            "制作",
-            "T12 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-03-01 16:14:56",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x2</span>"
-        ],
-        [
-            "2025-03-01 16:14:51",
+            "2025-03-02 10:44:42",
             "制作",
             "T11 <span style='color: #ffffff;'>普通x1</span>"
         ],
         [
-            "2025-03-01 16:14:36",
+            "2025-03-02 10:44:05",
             "制作",
-            "T12 <span style='color: #00ff00;'>优质x1</span>"
+            "T11 <span style='color: #ffffff;'>普通x1</span>"
         ],
         [
-            "2025-03-01 16:14:11",
+            "2025-03-02 10:43:42",
             "制作",
-            "T9 <span style='color: #ffffff;'>普通x2</span>"
+            "T14 <span style='color: #ffffff;'>普通x1</span>"
         ],
         [
-            "2025-03-01 16:14:11",
+            "2025-03-02 10:42:58",
+            "制作",
+            "T14 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 10:41:54",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 26</span> "
+        ],
+        [
+            "2025-03-02 10:41:24",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 30</span> "
+        ],
+        [
+            "2025-03-02 10:36:22",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 10:36:22",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 10:35:49",
+            "制作",
+            "T9 <span style='color: #4da6ff;'>精良x1</span>"
+        ],
+        [
+            "2025-03-02 10:35:41",
             "制作",
             "T9 <span style='color: #ffffff;'>普通x1</span>"
         ],
         [
-            "2025-03-01 16:14:04",
+            "2025-03-02 10:35:41",
+            "制作",
+            "T9 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 10:35:22",
+            "制作",
+            "T9 <span style='color: #a64ca6;'>史诗x1</span>"
+        ],
+        [
+            "2025-03-02 10:34:23",
+            "制作",
+            "T9 <span style='color: #AAAAAA;'>石头x1</span>"
+        ],
+        [
+            "2025-03-02 10:34:23",
+            "制作",
+            "T9 <span style='color: #AAAAAA;'>石头x1</span>"
+        ],
+        [
+            "2025-03-02 10:34:19",
+            "制作",
+            "T9 <span style='color: #4da6ff;'>精良x1</span>"
+        ],
+        [
+            "2025-03-02 10:34:12",
+            "制作",
+            "T10 <span style='color: #4da6ff;'>精良x1</span>"
+        ],
+        [
+            "2025-03-02 10:33:57",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 10:33:56",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 10:33:33",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 10:33:26",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 10:31:31",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 10</span> "
+        ],
+        [
+            "2025-03-02 09:24:38",
+            "制作",
+            "T10 <span style='color: #00ff00;'>优质x1</span>"
+        ],
+        [
+            "2025-03-02 09:23:21",
+            "制作",
+            "T14 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 09:22:00",
+            "制作",
+            "T14 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 09:21:12",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:21:12",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:20:50",
+            "制作",
+            "T9 <span style='color: #AAAAAA;'>石头x1</span>"
+        ],
+        [
+            "2025-03-02 09:20:06",
             "制作",
             "T9 <span style='color: #00ff00;'>优质x1</span>"
         ],
         [
-            "2025-03-01 16:13:57",
-            "制作",
-            "T11 <span style='color: #4da6ff;'>精良x2</span>"
+            "2025-03-02 09:18:13",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
         ],
         [
-            "2025-03-01 16:13:57",
+            "2025-03-02 09:18:13",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:17:53",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:17:52",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:17:15",
             "制作",
-            "T11 <span style='color: #00ff00;'>优质x1</span>"
+            "T14 <span style='color: #00ff00;'>优质x2</span>"
+        ],
+        [
+            "2025-03-02 09:16:08",
+            "制作",
+            "T14 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 09:15:43",
+            "制作",
+            "T11 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 09:14:56",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x2</span>"
+        ],
+        [
+            "2025-03-02 09:14:40",
+            "制作",
+            "T10 <span style='color: #00ff00;'>优质x1</span>"
+        ],
+        [
+            "2025-03-02 09:13:54",
+            "制作",
+            "T14 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-03-02 09:08:34",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:08:33",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:07:56",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
+        ],
+        [
+            "2025-03-02 09:07:55",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 1</span> "
         ]
     ],
     "13": {
         "best_sequence": [
-            [
-                null,
-                1,
-                1,
-                true
-            ],
-            [
-                null,
-                0,
-                1,
-                true
-            ],
-            [
-                null,
-                0,
-                1,
-                true
-            ],
             [
                 null,
                 0,
@@ -1181,18 +963,6 @@
         "back_switch_rate": 1,
         "sequences": [
             [
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     1
@@ -1298,25 +1068,13 @@
     "12": {
         "best_sequence": [
             [
-                "石头",
-                -1,
-                1,
-                false
-            ],
-            [
-                null,
-                1,
-                1,
-                false
-            ],
-            [
                 null,
                 0,
                 1,
                 false
             ]
         ],
-        "craft_active": 3,
+        "craft_active": 4,
         "scores": [
             1,
             5,
@@ -1335,25 +1093,9 @@
                 [
                     0,
                     1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     2
@@ -1429,14 +1171,6 @@
             ],
             [
                 [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
                     3,
                     1
                 ],
@@ -1472,10 +1206,6 @@
             [
                 [
                     0,
-                    1
-                ],
-                [
-                    0,
                     2
                 ],
                 [
@@ -1524,14 +1254,6 @@
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
                 [
                     0,
                     1
@@ -1607,116 +1329,7 @@
         ]
     },
     "11": {
-        "best_sequence": [
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                2,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                2,
-                false
-            ],
-            [
-                null,
-                0,
-                2,
-                false
-            ],
-            [
-                null,
-                1,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                1,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                1,
-                1,
-                false
-            ]
-        ],
+        "best_sequence": [],
         "craft_active": 0,
         "scores": [
             1,
@@ -1728,80 +1341,7 @@
         "back_switch": false,
         "back_switch_rate": 1,
         "sequences": [
-            [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ]
-            ],
+            [],
             [],
             [],
             [],
@@ -1816,32 +1356,7 @@
         ]
     },
     "10": {
-        "best_sequence": [
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                "石头",
-                -1,
-                1,
-                false
-            ],
-            [
-                "石头",
-                -1,
-                1,
-                false
-            ],
-            [
-                null,
-                2,
-                1,
-                false
-            ]
-        ],
+        "best_sequence": [],
         "craft_active": 1,
         "scores": [
             1,
@@ -1855,52 +1370,12 @@
         "sequences": [
             [
                 [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
                     1,
                     2
+                ],
+                [
+                    0,
+                    1
                 ],
                 [
                     0,
@@ -1918,196 +1393,12 @@
                 ],
                 [
                     0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
                     2
                 ],
                 [
                     0,
                     1
                 ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ]
-            ],
-            [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    1,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ]
-            ],
-            [
                 [
                     0,
                     1
@@ -2125,26 +1416,6 @@
                     1
                 ],
                 [
-                    3,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
                     0,
                     1
                 ],
@@ -2158,75 +1429,11 @@
                 ],
                 [
                     0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    2,
                     2
                 ],
                 [
                     0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
                     2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
                 ],
                 [
                     0,
@@ -2267,7 +1474,145 @@
                     1
                 ],
                 [
+                    2,
+                    1
+                ],
+                [
                     0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    4,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    2,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    2,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ]
+            ],
+            [
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
                     1
                 ],
                 [
@@ -2281,11 +1626,153 @@
                 [
                     0,
                     2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    2,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    1,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ]
+            ],
+            [
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
                 ]
             ]
         ],
         "marked": [
-            true,
+            false,
             false,
             false,
             false,
@@ -2305,21 +1792,9 @@
                 0,
                 1,
                 false
-            ],
-            [
-                null,
-                0,
-                2,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
             ]
         ],
-        "craft_active": 4,
+        "craft_active": 3,
         "scores": [
             1,
             5,
@@ -2340,148 +1815,6 @@
                     1
                 ],
                 [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ]
-            ],
-            [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    3,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
                     0,
                     1
                 ],
@@ -2492,140 +1825,6 @@
                 [
                     0,
                     2
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    1,
-                    1
-                ]
-            ],
-            [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    4,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
                 ],
                 [
                     0,
@@ -2651,7 +1850,7 @@
                 ],
                 [
                     1,
-                    1
+                    2
                 ],
                 [
                     0,
@@ -2671,46 +1870,10 @@
                 ],
                 [
                     0,
-                    1
+                    2
                 ],
                 [
                     0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    3,
                     1
                 ],
                 [
@@ -2728,6 +1891,190 @@
                 [
                     2,
                     2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ]
+            ],
+            [
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    2,
+                    2
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    4,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    3,
+                    1
+                ],
+                [
+                    1,
+                    1
+                ]
+            ],
+            [
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
                 ]
             ],
             [
@@ -2741,7 +2088,111 @@
                 ],
                 [
                     0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
                     2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    2,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
                 ],
                 [
                     0,
@@ -2889,30 +2340,6 @@
                 0,
                 1,
                 false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                1,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
-            ],
-            [
-                null,
-                0,
-                1,
-                false
             ]
         ],
         "craft_active": 0,
@@ -2934,41 +2361,9 @@
                 [
                     0,
                     1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     1
@@ -2991,22 +2386,6 @@
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     2
@@ -3058,22 +2437,6 @@
                     1
                 ],
                 [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
                     1,
                     1
                 ],
@@ -3091,22 +2454,6 @@
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     2
@@ -3215,8 +2562,8 @@
     },
     "timer": {
         "king": "2025-02-27T22:54:38.275013",
-        "resource": "2025-02-28T07:51:49.230036",
-        "craft": "2025-03-01T00:47:17.958359"
+        "resource": "2025-03-01T22:14:00.239700",
+        "craft": "2025-03-02T10:36:39.000008"
     },
     "6": {
         "best_sequence": [],
