@@ -56,6 +56,8 @@ class MainApp(QMainWindow):
         # CHECK FOR UPDATES
         CONSTANTS.check_for_updates()
 
+
+# SET UP
     def setup_craft_pane(self):
         # tier selection
         self.tier_selection_dropbox.currentTextChanged.connect(self.set_curr_tier)
@@ -155,6 +157,7 @@ class MainApp(QMainWindow):
         self.timers[npc].setProperty('npc', npc)
         self.timers[npc].timeout.connect(self.update_timer)
 
+# TIMER
     def load_timers(self):
         for npc in self.last_occurs.keys():
             self.timers[npc].start(1000)
@@ -192,6 +195,7 @@ class MainApp(QMainWindow):
         elif remaining < (60*10) and remaining % (60*5) == 0:    
             self.add_log("计时器", f"<span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{CONSTANTS.NPC_NAMES[npc]}</span> 将在 <span style='color: {CONSTANTS.QUALITIY_COLORS[4]};'>{hours} 小时 {minutes} 分钟</span>后到来！记得重置计时器哦")
 
+# ENCHANTMENT
     def enchanting(self):
         quality = self.cm.enchanting(self.enchantment_amount)
         print(quality)
@@ -230,7 +234,6 @@ class MainApp(QMainWindow):
         display = self.findChild(QTextBrowser, f"enchantment_sequence_{quality}")
         display.verticalScrollBar().setValue(display.verticalScrollBar().maximum())
 
-
     def clear_enchantment_log(self):
         self.cm.clear_enchantment_log()
         self.load_enchantment_page()
@@ -250,7 +253,6 @@ class MainApp(QMainWindow):
         display = self.findChild(QTextBrowser, f"enchantment_sequence_{quality}")
         display.verticalScrollBar().setValue(display.verticalScrollBar().maximum())
 
-
     def get_enchantment_log(self, quality):
         return self.cm.get_enchantment_log(quality)
 
@@ -259,6 +261,7 @@ class MainApp(QMainWindow):
         i = sender.property('quality')-1
         self.enchantment_entry[i] = sender.value()
 
+# SUMMARY
     def get_summary_tiers(self):
         return self.cm.get_summary_tiers()
     
@@ -319,10 +322,12 @@ class MainApp(QMainWindow):
         if tier == self.get_curr_tier():
             self.load_craft_page()
 
+# STICK WINDOW ON TOP
     def window_on_top(self):
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, self.window_on_top_checkbox.isChecked())
         self.show()
 
+# BASIC FUNCTIONALITIES
     def get_curr_tier(self):
         return self.cm.data['active_tier']
     
@@ -332,35 +337,35 @@ class MainApp(QMainWindow):
         self.craft_input_active = 0
         self.load_craft_page()
 
+    def get_curr_quality_scores(self):
+        return self.cm.data[self.get_curr_tier()]['scores']
+    
     def set_quality_score(self):
         spinbox = self.sender() #get the QSpinBox that triggered the event.
         quality_index = spinbox.property("quality_index")
         self.cm.update_quality_score(self.get_curr_tier(), quality_index, spinbox.value())
     
-    def get_curr_quality_scores(self):
-        return self.cm.data[self.get_curr_tier()]['scores']
-        
     def set_multi_entry(self):
         self.multi_entry = self.multi_entry_amount_selection.value()
     
     def reset_multi_entry(self):
         self.multi_entry_amount_selection.setValue(1)
 
+    def get_back_switch(self):
+        return self.cm.get_back_switch(self.get_curr_tier())
+    
     def set_back_switch(self):
         self.cm.update_back_switch(self.get_curr_tier(),
                                    self.back_switch_checkbox.isChecked())
         self.calculate_best_sequence()
         self.load_craft_page()
         
-    def get_back_switch(self):
-        return self.cm.get_back_switch(self.get_curr_tier())
-
+    def get_back_switch_rate(self):
+        return self.cm.get_back_switch_rate(self.get_curr_tier())
+    
     def set_back_switch_rate(self):
         self.cm.update_back_switch_rate(self.get_curr_tier(), self.back_switch_rate_selection.value())
         self.calculate_best_sequence()
-
-    def get_back_switch_rate(self):
-        return self.cm.get_back_switch_rate(self.get_curr_tier())
 
     def get_craft_active(self):
         return self.cm.get_craft_active(self.get_curr_tier())
@@ -368,6 +373,7 @@ class MainApp(QMainWindow):
     def get_craft_sequence(self, i):
         return self.cm.get_craft_sequence(self.get_curr_tier(), i)
 
+# CRAFTING
     def add_record(self):
         button = self.sender()
         quality = button.property("quality_index")
@@ -391,7 +397,6 @@ class MainApp(QMainWindow):
         self.load_craft_sequence(self.craft_input_active)
         sequence_display_label = self.findChild(QTextBrowser, f"sequence_{self.craft_input_active}_display")
         sequence_display_label.verticalScrollBar().setValue(sequence_display_label.verticalScrollBar().maximum())
-
 
     def clear_sequences(self):
         self.cm.reset_sequences(self.get_curr_tier())
@@ -540,6 +545,7 @@ class MainApp(QMainWindow):
         self.load_sequence_icon(i, checkbox)
         self.calculate_best_sequence()
 
+# DISPLAY
     def add_log(self, action, description):
         time = datetime.now().strftime(CONSTANTS.LOG_TIME_FORMAT)
         self.cm.add_log((time, action, description))
@@ -673,31 +679,6 @@ class MainApp(QMainWindow):
         for i in range(5):
             self.load_craft_sequence(i)
 
-    def get_stone_index(self, tier, i):
-        return (i - self.cm.get_craft_active(tier)) % 5
-    
-    def get_backswitch_index(self, tier, i):
-        return (self.cm.get_craft_active(tier) - i) % 5
-
-    def get_button_name(self, tier, i):
-        backswitch_index = self.get_backswitch_index(tier, i)
-        stone_index = self.get_stone_index(tier, i)
-
-        backswitch = self.cm.get_back_switch(tier)
-        stone = CONSTANTS.SWITCHABLES[tier][0]
-
-        if not stone and not backswitch:
-            return "序列"
-        elif stone and not backswitch:
-            return f"石头x{stone_index}"
-        elif not stone and backswitch:
-            return f"反切x{backswitch_index}"
-        else:
-            if stone_index > 2:
-                return f"反切x{backswitch_index}"
-            else:
-                return f"石头x{stone_index}"
-            
     def load_craft_sequence(self, i):
         # button
         button = self.findChild(QPushButton, f"sequence_button_{i}") 
@@ -797,7 +778,32 @@ class MainApp(QMainWindow):
         self.load_enchantment_result()
         self.load_enchantment_sequences()
 
+# HELPERS
+    def get_stone_index(self, tier, i):
+        return (i - self.cm.get_craft_active(tier)) % 5
+    
+    def get_backswitch_index(self, tier, i):
+        return (self.cm.get_craft_active(tier) - i) % 5
 
+    def get_button_name(self, tier, i):
+        backswitch_index = self.get_backswitch_index(tier, i)
+        stone_index = self.get_stone_index(tier, i)
+
+        backswitch = self.cm.get_back_switch(tier)
+        stone = CONSTANTS.SWITCHABLES[tier][0]
+
+        if not stone and not backswitch:
+            return "序列"
+        elif stone and not backswitch:
+            return f"石头x{stone_index}"
+        elif not stone and backswitch:
+            return f"反切x{backswitch_index}"
+        else:
+            if stone_index > 2:
+                return f"反切x{backswitch_index}"
+            else:
+                return f"石头x{stone_index}"
+            
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainApp()
