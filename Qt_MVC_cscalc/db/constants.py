@@ -11,6 +11,7 @@ from PyQt6.QtWidgets import QMessageBox
 
 MAX_TIER = 14
 LOG_MAXIMUM = 50
+CHEST_AMOUNT = 17
 
 TIMER_INTERVALS = {
     'resource': 60 * 60 * 1.5,
@@ -225,3 +226,6 @@ def check_for_updates():
             reply = msg_box.exec()
             if reply == QMessageBox.StandardButton.Yes:
                 download_updates()
+
+def skill_icon(type, id):
+    return os.path.join(get_base_path(), 'ui', f"icon_global_skill_{type}_{id}.png")

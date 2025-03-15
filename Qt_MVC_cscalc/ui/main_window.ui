@@ -2747,6 +2747,2849 @@ QPushButton:pressed {
      <zorder>king_arriving_in</zorder>
      <zorder>resource_arriving_in</zorder>
     </widget>
+    <widget class="QWidget" name="hero_tab">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>icon_global_heroes.png</normaloff>icon_global_heroes.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>英雄</string>
+     </attribute>
+     <widget class="QToolBox" name="hero_widget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>511</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="sequence_assignment_widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>511</width>
+         <height>393</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>序列分配</string>
+       </attribute>
+       <widget class="QCheckBox" name="chest_0">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>木制</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_forest.png</normaloff>chest_forest.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_1">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>冰冻</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_grotto.png</normaloff>chest_grotto.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>黏滑</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_swamp.png</normaloff>chest_swamp.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>灰岩</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_desert.png</normaloff>chest_desert.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>古代</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_pyramid.png</normaloff>chest_pyramid.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>160</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>陈旧</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_ruins.png</normaloff>chest_ruins.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>190</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>遗落</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_castle.png</normaloff>chest_castle.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_7">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>没落</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_temple.png</normaloff>chest_temple.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>250</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>苍凉</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_peak.png</normaloff>chest_peak.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_9">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>280</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>熔铸</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_volcano.png</normaloff>chest_volcano.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_10">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>310</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>虚空</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_rift.png</normaloff>chest_rift.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_11">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>340</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>神圣</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_elysium.png</normaloff>chest_elysium.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_12">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>10</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>奢华</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_goldcity.png</normaloff>chest_goldcity.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_13">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>40</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>丰裕</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_goldcity2.png</normaloff>chest_goldcity2.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_14">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>70</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>白金</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_goldcity3.png</normaloff>chest_goldcity3.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_15">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>130</y>
+          <width>100</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>次级神器</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_artifact01.png</normaloff>chest_artifact01.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_16">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>160</y>
+          <width>100</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>高级神器</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>chest_artifact02.png</normaloff>chest_artifact02.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="Line" name="line_4">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>10</y>
+          <width>10</width>
+          <height>370</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_1">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>20</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_2">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>45</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T2</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_3">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>70</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T3</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_4">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>95</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T4</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_5">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>120</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T5</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_6">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>145</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T6</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_7">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>170</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T7</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_8">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>195</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T8</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_9">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>220</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T9</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_10">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>245</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T10</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_11">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>270</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T11</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_12">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>295</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T12</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_13">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>320</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T13</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_14">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>345</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T14</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_fusion">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>0</y>
+          <width>50</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>合成(金)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_craft">
+        <property name="geometry">
+         <rect>
+          <x>245</x>
+          <y>0</y>
+          <width>40</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>制作</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_1">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>20</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_2">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>45</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_3">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>70</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_4">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>95</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_5">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>120</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_6">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>145</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_7">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>170</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_8">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>195</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_9">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>220</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_10">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>245</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_11">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>270</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_12">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>295</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_13">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>320</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_14">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>345</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_1">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>20</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_8">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>195</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_4">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>95</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_12">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>295</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_14">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>345</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_7">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>170</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_2">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>45</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_5">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>120</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_3">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>70</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_10">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>245</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_13">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>320</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_11">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>270</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_9">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>220</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_6">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>145</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_4">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>95</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_12">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>295</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_14">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>345</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_7">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>170</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_5">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>120</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_enchantment_0">
+        <property name="geometry">
+         <rect>
+          <x>325</x>
+          <y>70</y>
+          <width>40</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>白</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_10">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>245</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_0_assign_tier_9">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>220</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_5">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>120</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_12">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>295</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_9">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>220</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_enchantment_1">
+        <property name="geometry">
+         <rect>
+          <x>365</x>
+          <y>70</y>
+          <width>40</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>绿</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_10">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>245</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_14">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>345</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_4">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>95</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_1_assign_tier_7">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>170</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_5">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>120</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_12">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>295</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_9">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>220</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_enchantment_2">
+        <property name="geometry">
+         <rect>
+          <x>405</x>
+          <y>70</y>
+          <width>40</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>蓝</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_10">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>245</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_14">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>345</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_4">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>95</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_2_assign_tier_7">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>170</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_5">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>120</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_12">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>295</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_9">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>220</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_enchantment_3">
+        <property name="geometry">
+         <rect>
+          <x>445</x>
+          <y>70</y>
+          <width>40</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>紫</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_10">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>245</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_14">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>345</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_4">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>95</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enchantment_3_assign_tier_7">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>170</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_enchantment">
+        <property name="geometry">
+         <rect>
+          <x>375</x>
+          <y>40</y>
+          <width>50</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>附魔</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="skill_widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>511</width>
+         <height>393</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>英雄技能</string>
+       </attribute>
+       <widget class="QComboBox" name="class_selection">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>340</y>
+          <width>81</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>战士</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>侠客</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>施法者</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="skill_assign_label">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>125</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>已分配序列</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>灵巧</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>灵巧.png</normaloff>灵巧.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_0">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>天赋异禀</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>天赋异禀.png</normaloff>天赋异禀.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_0_skill_0">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>195</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>奋起反击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>奋起反击.png</normaloff>奋起反击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_5">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>55</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>额外镀层</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>额外镀层.png</normaloff>额外镀层.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_10">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>90</y>
+          <width>85</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>斗篷匕首</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>斗篷匕首.png</normaloff>斗篷匕首.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_2_skill_0">
+        <property name="geometry">
+         <rect>
+          <x>215</x>
+          <y>195</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>偏斜攻击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>偏斜攻击.png</normaloff>偏斜攻击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_8">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>20</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>模糊动作</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>模糊动作.png</normaloff>模糊动作.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_1_skill_0">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>195</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>擂鼓呐喊</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>擂鼓呐喊.png</normaloff>擂鼓呐喊.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_9">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>55</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>刃之舞</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>刃之舞.png</normaloff>刃之舞.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_6">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>90</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>完美形态</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>完美形态.png</normaloff>完美形态.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_4">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>20</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>无动于衷</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>无动于衷.png</normaloff>无动于衷.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_1">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>55</y>
+          <width>85</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>旋风攻击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>旋风攻击.png</normaloff>旋风攻击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_0">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>145</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>升级1</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_1">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>145</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>升级2</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_2">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>145</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>升级3</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_3">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>145</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>升级4</string>
+        </property>
+       </widget>
+       <widget class="QToolBox" name="skill_display_widget">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>184</y>
+          <width>201</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="page_0">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>100</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>技能3 - 升级序列</string>
+         </attribute>
+         <widget class="QTextBrowser" name="skill_display_0">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>201</width>
+            <height>95</height>
+           </rect>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_1">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>201</width>
+           <height>95</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>技能3 - 骰子序列</string>
+         </attribute>
+         <widget class="QTextBrowser" name="skill_display_1">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>201</width>
+            <height>95</height>
+           </rect>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>100</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>技能4 - 升级序列</string>
+         </attribute>
+         <widget class="QTextBrowser" name="skill_display_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>201</width>
+            <height>95</height>
+           </rect>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>100</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <attribute name="label">
+          <string>技能4 - 骰子序列</string>
+         </attribute>
+         <widget class="QTextBrowser" name="skill_display_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>201</width>
+            <height>95</height>
+           </rect>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | 普通x2 | 普通x1 | &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="skill_undo">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>370</y>
+          <width>61</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>擦除</string>
+        </property>
+        <property name="shortcut">
+         <string>Backspace</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="hero_selection">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>340</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="skill_count_label_1">
+        <property name="geometry">
+         <rect>
+          <x>5</x>
+          <y>370</y>
+          <width>68</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>录入序列第</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="skill_count_label_2">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>370</y>
+          <width>51</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>位技能</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="skill_index_selector">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>370</y>
+          <width>56</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>56</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>9999</number>
+        </property>
+        <property name="value">
+         <number>1</number>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_refresh">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>370</y>
+          <width>61</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>洗技能</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="skill_suggestion_label">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>175</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>推荐技能组</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="Line" name="line_5">
+        <property name="geometry">
+         <rect>
+          <x>205</x>
+          <y>190</y>
+          <width>5</width>
+          <height>140</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_6">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>190</y>
+          <width>5</width>
+          <height>140</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_0_skill_1">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>230</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>奋起反击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>奋起反击.png</normaloff>奋起反击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_0_skill_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>265</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>奋起反击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>奋起反击.png</normaloff>奋起反击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_0_skill_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>300</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>奋起反击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>奋起反击.png</normaloff>奋起反击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_1_skill_1">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>230</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>擂鼓呐喊</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>擂鼓呐喊.png</normaloff>擂鼓呐喊.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_1_skill_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>265</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>擂鼓呐喊</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>擂鼓呐喊.png</normaloff>擂鼓呐喊.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_1_skill_3">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>300</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>擂鼓呐喊</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>擂鼓呐喊.png</normaloff>擂鼓呐喊.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_2_skill_1">
+        <property name="geometry">
+         <rect>
+          <x>215</x>
+          <y>230</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>偏斜攻击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>偏斜攻击.png</normaloff>偏斜攻击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_2_skill_2">
+        <property name="geometry">
+         <rect>
+          <x>215</x>
+          <y>265</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>偏斜攻击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>偏斜攻击.png</normaloff>偏斜攻击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="set_2_skill_3">
+        <property name="geometry">
+         <rect>
+          <x>215</x>
+          <y>300</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>偏斜攻击</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>偏斜攻击.png</normaloff>偏斜攻击.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_15">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>20</y>
+          <width>85</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>斗篷匕首</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>斗篷匕首.png</normaloff>斗篷匕首.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_17">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>90</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>灵巧</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>灵巧.png</normaloff>灵巧.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_12">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>20</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>完美形态</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>完美形态.png</normaloff>完美形态.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_16">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>55</y>
+          <width>85</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>斗篷匕首</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>斗篷匕首.png</normaloff>斗篷匕首.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_14">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>90</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>灵巧</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>灵巧.png</normaloff>灵巧.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_13">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>55</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>完美形态</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>完美形态.png</normaloff>完美形态.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_11">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>125</y>
+          <width>85</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>斗篷匕首</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>斗篷匕首.png</normaloff>斗篷匕首.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>125</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>灵巧</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>灵巧.png</normaloff>灵巧.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="skill_7">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>125</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">text-align: left;</string>
+        </property>
+        <property name="text">
+         <string>完美形态</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>完美形态.png</normaloff>完美形态.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="other_skills_label">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>0</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>其它可选技能</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_4">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>165</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>骰子1</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_5">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>165</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>骰子2</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_6">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>165</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>骰子3</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="assign_skill_7">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>165</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>骰子4</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="promoted_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>340</y>
+          <width>50</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>吃魂</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
    </widget>
    <widget class="QCheckBox" name="window_on_top_checkbox">
     <property name="geometry">

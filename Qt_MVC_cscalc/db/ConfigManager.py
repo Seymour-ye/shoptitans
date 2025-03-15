@@ -1,5 +1,6 @@
 import json
 import db.constants as CONSTANTS
+import db.heroes as HEROES
 from datetime import datetime 
 
 class ConfigManager:
@@ -46,7 +47,8 @@ class ConfigManager:
             tier: self.generate_tier_default(tier),
             'enchantment': self.generate_enchantment_default(),
             'logs':[], #'YYYY-MM-DD HH:MM action description',...
-            'timer': self.generate_timer_default()
+            'timer': self.generate_timer_default(),
+            'heroes': self.generate_hero_default()
         }
     
     def generate_timer_default(self):
@@ -55,6 +57,41 @@ class ConfigManager:
             'resource': datetime.min.isoformat(),
             'craft': datetime.min.isoformat()
         }
+
+    def generate_hero_default(self):
+        return {
+            'sequence_assignment': {
+                'chests': [False for i in range(CONSTANTS.CHEST_AMOUNT)],
+                'craft' : [False for i in range(CONSTANTS.MAX_TIER)],
+                'fusion' :[False for i in range(CONSTANTS.MAX_TIER)],
+                'enchantments': [
+                    [False for i in range(CONSTANTS.MAX_TIER)],
+                    [False for i in range(CONSTANTS.MAX_TIER)],
+                    [False for i in range(CONSTANTS.MAX_TIER)],
+                    [False for i in range(CONSTANTS.MAX_TIER)]
+                ]
+            },
+            'hero_skills': {
+                'fighter': self.generate_hero_skill_default(HEROES.all_fighter_heroes()),
+                'rogue': self.generate_hero_skill_default(HEROES.all_rogue_heroes()),
+                'spellcaster': self.generate_hero_skill_default(HEROES.all_spellcaster_heroes())
+            }
+        }
+    
+    def generate_hero_skill_default(self, heroes):
+        ret = []
+        for i in range(len(heroes)):
+            ret.append({
+                'original': {
+                    'sequence_assignment':[False, False, False, False, False, False, False, False],
+                    'sequences': [[],[],[],[]]
+                },
+                'promoted': {
+                    'sequence_assignment':[False, False, False, False, False, False, False, False],
+                    'sequences': [[],[],[],[]]
+                }
+            })
+        return ret
 
     def load_config(self):
         try:
@@ -261,3 +298,53 @@ class ConfigManager:
             if 4 in [quality for quality, amount in sequence]:
                 return True
         return False 
+    
+    def set_sequence_assignment(self, index, type, quality, assigned):
+        if 'heroes' not in self.data.keys():
+            self.data['heroes'] = self.generate_hero_default()
+        if type == 'enchantments':
+            self.data['heroes']['sequence_assignment'][type][quality][index] = assigned
+        else:
+            self.data['heroes']['sequence_assignment'][type][index] = assigned 
+        self.save_config()
+
+    def get_sequence_assignment(self):
+        if 'heroes' not in self.data.keys():
+            self.data['heroes'] = self.generate_hero_default()
+            self.save_config()
+        return self.data['heroes']['sequence_assignment']
+    
+    def set_skill_assignment(self, hero_class, hero, promoted, index, assigned):
+        if 'heroes' not in self.data.keys():
+            self.data['heroes'] = self.generate_hero_default()
+        prom = 'promoted' if promoted else 'original'
+        self.data['heroes']['hero_skills'][hero_class][hero][prom]['sequence_assignment'][index] = assigned
+        self.save_config()
+    
+    def get_skill_assignment(self, hero_class, hero, promoted):
+        if 'heroes' not in self.data.keys():
+            self.data['heroes'] = self.generate_hero_default()
+            self.save_config()
+        prom = 'promoted' if promoted else 'original'
+        return self.data['heroes']['hero_skills'][hero_class][hero][prom]
+    
+    def skill_input(self, class_name, hero, promoted, sequence_index, skill_name, skill_index):
+        if 'heroes' not in self.data.keys():
+            self.data['heroes'] = self.generate_hero_default()
+        prom = 'promoted' if promoted else 'original'
+        sequence = self.data['heroes']['hero_skills'][class_name][hero][prom]['sequences'][sequence_index]
+        while skill_index >= len(sequence):
+            sequence.append("")
+        sequence[skill_index] = skill_name
+        self.save_config()
+
+    def refresh_skill(self, class_name, hero, promoted, sequence_index):
+        if 'heroes' not in self.data.keys():
+            self.data['heroes'] = self.generate_hero_default()
+        prom = 'promoted' if promoted else 'original'
+        skill = self.data['heroes']['hero_skills'][class_name][hero][prom]['sequences'][sequence_index].pop(0)
+        self.save_config()
+        return skill
+
+
+        

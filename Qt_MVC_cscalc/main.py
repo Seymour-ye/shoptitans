@@ -1,6 +1,8 @@
 # Modules
 import db.constants as CONSTANTS
 from db.ConfigManager import ConfigManager
+import db.heroes as HEROES
+from db.skills import SKILLS
 
 # Functionalities
 import sys
@@ -34,6 +36,11 @@ class MainApp(QMainWindow):
         self.statusBar.addWidget(self.status_bar)
         self.timers = {}
         self.last_occurs = self.cm.get_last_occurs()
+        self.hero_class = 0
+        self.hero = 0
+        self.promoted = False
+        self.skill_input_index = 1
+
         # set up window-on-top
         self.window_on_top_checkbox.stateChanged.connect(self.window_on_top)
 
@@ -43,6 +50,7 @@ class MainApp(QMainWindow):
         self.setup_enchantment_pane()
         for npc in CONSTANTS.TIMER_INTERVALS.keys():
             self.setup_npc_timer(npc)
+        self.set_up_heroes_pane()
 
         # LOAD CONTENTS
         self.updates_display.setText(CONSTANTS.fetch_updates())
@@ -52,12 +60,68 @@ class MainApp(QMainWindow):
         self.load_craft_page()
         self.load_enchantment_page()
         self.load_timers()
+        self.load_sequence_assignment_page()
+        self.load_heroes_pane()
 
         # CHECK FOR UPDATES
         CONSTANTS.check_for_updates()
 
 
 # SET UP
+    def set_up_heroes_pane(self):
+        # CHEST
+        for i in range(CONSTANTS.CHEST_AMOUNT):
+            chest = self.findChild(QCheckBox, f"chest_{i}")
+            chest.setProperty('index', i)
+            chest.setProperty('type', 'chests')
+            chest.stateChanged.connect(self.assign_sequence)
+
+        # OTHERS
+        for tier in range(1, CONSTANTS.MAX_TIER+1):
+            # CRAFT
+            craft = self.findChild(QCheckBox, f"craft_assign_tier_{tier}")
+            craft.setProperty('index', tier-1)
+            craft.setProperty('type', 'craft')
+            craft.stateChanged.connect(self.assign_sequence)
+            # FUSION
+            fusion = self.findChild(QCheckBox, f"fusion_assign_tier_{tier}")
+            fusion.setProperty('index', tier-1)
+            fusion.setProperty('type', 'fusion')
+            fusion.stateChanged.connect(self.assign_sequence)
+            # ENCHANTMENT
+            for quality in range(4):
+                checkbox = self.findChild(QCheckBox, f"enchantment_{quality}_assign_tier_{tier}")
+                if checkbox:
+                    checkbox.setProperty('index', tier-1)
+                    checkbox.setProperty('type', 'enchantments')
+                    checkbox.setProperty('quality', quality)
+                    checkbox.stateChanged.connect(self.assign_sequence)
+        # SKILL ASSIGNMENT
+        for i in range(8):
+            checkbox = self.findChild(QCheckBox, f"assign_skill_{i}")
+            checkbox.setProperty('index', i)
+            checkbox.stateChanged.connect(self.assign_skill)
+
+        self.class_selection.currentTextChanged.connect(self.set_current_hero_class)
+        self.hero_selection.currentTextChanged.connect(self.set_current_hero)
+        self.promoted_checkbox.stateChanged.connect(self.set_promoted)
+        self.skill_index_selector.valueChanged.connect(self.set_skill_index)
+
+        # SKILL INPUT BUTTON
+        for i in range(18):
+            skill_button = self.findChild(QPushButton, f"skill_{i}")
+            skill_button.clicked.connect(self.skill_input)
+        
+        for set_i in range(3):
+            for skill_i in range(4):
+                skill_button = self.findChild(QPushButton, f"set_{set_i}_skill_{skill_i}")
+                skill_button.clicked.connect(self.skill_input)
+        
+        # BACKSPACE & SKILLREFRESH
+        self.skill_refresh.clicked.connect(self.refresh_skill)
+        self.skill_undo.clicked.connect(self.undo_skill)
+
+
     def setup_craft_pane(self):
         # tier selection
         self.tier_selection_dropbox.currentTextChanged.connect(self.set_curr_tier)
@@ -157,6 +221,78 @@ class MainApp(QMainWindow):
         self.timers[npc].setProperty('npc', npc)
         self.timers[npc].timeout.connect(self.update_timer)
 
+# HEROES
+    def refresh_skill(self):
+        sequence_index = self.active_skill_display_index()
+        skill_name = self.cm.refresh_skill(self.hero_class_name(), self.hero, self.promoted, sequence_index)
+        hero = HEROES.get_hero_name_zh(self.hero_class_name(), self.hero, self.promoted)
+        skill = f"<span style='color:{CONSTANTS.QUALITIY_COLORS[4]};'>{skill_name}</span>"
+        self.add_log('技能', f"{hero} 学习技能 {skill}")
+        self.load_hero_skills_page()
+
+    def undo_skill(self):
+        sequence_index = self.active_skill_display_index()
+        self.cm.skill_input(self.hero_class_name(), self.hero, self.promoted, sequence_index,"", self.skill_input_index-1)
+        self.load_hero_skills_page()
+
+    def skill_input(self):
+        button = self.sender()
+        sequence_index = self.active_skill_display_index()
+        self.cm.skill_input(self.hero_class_name(), self.hero, self.promoted, sequence_index, button.text(), self.skill_input_index-1)
+        self.load_hero_skills_page()
+
+    def set_skill_index(self):
+        self.skill_input_index = self.skill_index_selector.value()
+
+    def set_promoted(self):
+        self.promoted = self.promoted_checkbox.isChecked()
+        self.load_hero_skills_page()
+            
+    def assign_sequence(self):
+        sender = self.sender()
+        index = sender.property('index')
+        type = sender.property('type')
+        quality = sender.property('quality') if type == 'enchantments' else None 
+        assigned = sender.isChecked()
+        self.cm.set_sequence_assignment(index, type, quality, assigned)
+
+    def assign_skill(self):
+        sender = self.sender()
+        index = sender.property('index')
+        assigned = sender.isChecked()
+        self.cm.set_skill_assignment(self.hero_class_name(), self.hero, self.promoted, index, assigned)
+        self.load_hero_skills_page()
+
+    def hero_sequence_display_text(self, sequence):
+        length = len(sequence)
+        ret = ""
+        # ret += f"已窥共 {length} 个技能:<br>"
+        i = 0
+        start = 0
+        while i < length:
+            if sequence[i] != "":
+                if i == start + 1:
+                    ret += f"{start+1}. -----------<br>"
+                elif i > start + 1:
+                    ret += f"{start+1} - {i}. -----------<br>"
+                ret += f"<span style='color:{CONSTANTS.QUALITIY_COLORS[4]};'>{i+1}. {sequence[i]}</span><br>"
+                start = i+1
+            i += 1
+        if i == start + 1:
+            ret += f"{start+1}. -----------<br>"
+        elif i > start + 1:
+            ret += f"{start+1} - {i}. -----------<br>"
+        return ret
+    
+    def set_current_hero_class(self):
+        self.hero_class = self.class_selection.currentIndex()
+        self.load_heroes_pane()
+
+    def set_current_hero(self):
+        self.hero = self.hero_selection.currentIndex()
+        self.load_hero_skills_page()
+
+
 # TIMER
     def load_timers(self):
         for npc in self.last_occurs.keys():
@@ -198,7 +334,6 @@ class MainApp(QMainWindow):
 # ENCHANTMENT
     def enchanting(self):
         quality = self.cm.enchanting(self.enchantment_amount)
-        print(quality)
         log_text = ""
         for i in range(5):
             if quality[i] > 0:
@@ -778,6 +913,87 @@ class MainApp(QMainWindow):
         self.load_enchantment_result()
         self.load_enchantment_sequences()
 
+    def load_heroes_pane(self):
+        hero_list = self.generate_hero_selector_list()
+        self.hero_selection.clear()
+        self.hero_selection.addItems(hero_list)
+        self.hero_selection.setCurrentText(hero_list[self.hero])
+        self.load_hero_skills_page()
+
+    def load_sequence_assignment_page(self):
+        assignments = self.cm.get_sequence_assignment()
+
+        #CHEST
+        for i in range(CONSTANTS.CHEST_AMOUNT):
+            chest = self.findChild(QCheckBox, f"chest_{i}")
+            assigned = assignments['chests'][i]
+            chest.blockSignals(True)
+            chest.setChecked(assigned)
+            chest.blockSignals(False)
+
+        for tier in range(1, CONSTANTS.MAX_TIER+1):
+            # CRAFT
+            craft = self.findChild(QCheckBox, f"craft_assign_tier_{tier}")
+            assigned = assignments['craft'][tier-1]
+            craft.blockSignals(True)
+            craft.setChecked(assigned)
+            craft.blockSignals(False)
+
+            # FUSION
+            fusion = self.findChild(QCheckBox, f"fusion_assign_tier_{tier}")
+            assigned = assignments['fusion'][tier-1]
+            fusion.blockSignals(True)
+            fusion.setChecked(assigned)
+            fusion.blockSignals(False)
+
+            # ENCHANTMENT
+            for quality in range(4):
+                checkbox = self.findChild(QCheckBox, f"enchantment_{quality}_assign_tier_{tier}")
+                assigned = assignments['enchantments'][quality][tier-1]
+                if checkbox:
+                    checkbox.blockSignals(True)
+                    checkbox.setChecked(assigned)
+                    checkbox.blockSignals(False)
+
+    def load_hero_skills_page(self):
+        assignments = self.cm.get_skill_assignment(self.hero_class_name(), self.hero, self.promoted)
+
+        for i in range(8):
+            checkbox = self.findChild(QCheckBox, f"assign_skill_{i}")
+            assigned = assignments['sequence_assignment'][i]
+            checkbox.blockSignals(True)
+            checkbox.setChecked(assigned)
+            checkbox.blockSignals(False)
+
+        for i in range(4):
+            display = self.findChild(QTextBrowser, f"skill_display_{i}")
+            text = self.hero_sequence_display_text(assignments['sequences'][i])
+            display.setText(text)
+
+        skills = self.get_skill_list()
+
+        for i in range(18):
+            skill_button = self.findChild(QPushButton, f"skill_{i}")
+            if len(skills['others']) > 0:
+                skill = skills['others'].pop(0)
+                skill_button.setIcon(QIcon(CONSTANTS.skill_icon(skill[0],skill[1])))
+                skill_button.setText(skill[2])
+                skill_button.show()
+            else:
+                skill_button.hide()
+        
+        for set_i in range(3):
+            for skill_i in range(4):
+                skill_button = self.findChild(QPushButton, f"set_{set_i}_skill_{skill_i}")
+                if skill_i < len(skills['suggestions'][set_i]):
+                    skill = skills['suggestions'][set_i][skill_i]
+                    skill_button.setIcon(QIcon(CONSTANTS.skill_icon(skill[0],skill[1])))
+                    skill_button.setText(skill[2])
+                    skill_button.show()
+                else:
+                    skill_button.hide()
+                
+
 # HELPERS
     def get_stone_index(self, tier, i):
         return (i - self.cm.get_craft_active(tier)) % 5
@@ -804,6 +1020,46 @@ class MainApp(QMainWindow):
             else:
                 return f"石头x{stone_index}"
             
+    def generate_hero_selector_list(self):
+        return HEROES.get_hero_list(self.hero_class_name())
+    
+    def hero_class_name(self):
+        if self.hero_class == 0:
+            return 'fighter'
+        elif self.hero_class == 1:
+            return 'rogue'
+        elif self.hero_class == 2:
+            return 'spellcaster'
+    
+    def active_skill_display_index(self):
+        return self.skill_display_widget.currentIndex()
+    
+    def get_skill_list(self):
+        ret = {
+            'suggestions': [[],[],[]],
+            'others':[]
+        }
+        
+        name = HEROES.get_hero_name_en(self.hero_class_name(), self.hero, self.promoted)
+
+        suggested = []
+        for suggestion in HEROES.HERO_RECOMMONDATIONS[self.hero_class_name()][self.hero]['suggestions']:
+            suggested.append(suggestion['skills'])
+
+        for skill_id in SKILLS:
+            if name in SKILLS[skill_id]['heroes']:
+                zh = SKILLS[skill_id]['zh']
+                skill_type =  SKILLS[skill_id]['type']
+                added = False
+                for i in range(min(len(suggested), 3)):
+                    if zh in suggested[i]:
+                        ret['suggestions'][i].append((skill_type, skill_id, zh))
+                        added = True
+                if not added:
+                    ret['others'].append((skill_type, skill_id, zh))
+        return ret
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainApp()
