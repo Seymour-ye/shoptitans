@@ -695,7 +695,7 @@ class MainApp(QMainWindow):
     def best_sequence_warning(self, tier):
         warn_count = -1
         if CONSTANTS.SWITCHABLES[tier][0]:
-            warn_count = 4
+            warn_count = 4+1
         if self.cm.get_back_switch(tier):
             warn_count = 6
         seq_lst = []

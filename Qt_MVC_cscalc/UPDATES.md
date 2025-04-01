@@ -3,6 +3,7 @@
 [最新版下载链接](https://github.com/Seymour-ye/shoptitans/raw/refs/heads/main/Qt_MVC_cscalc/dist/序列计算器.exe)
 
 ----------------------------------------------
+- V3.0.1    2025-04-01      Corner Case Founded, adding 1 to warning count for stone-switchables.
 - V3.0.0    2025-03-15      添加了英雄栏，添加了英雄刷技能相关记录和操作
 - V2.1.5    2025-03-03      Removed unproper logs for debugging.
 - V2.1.4    2025-03-03      Adjusted Warning trigger amount.
