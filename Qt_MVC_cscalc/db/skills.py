@@ -53,6 +53,14 @@ SKILLS = {
         'heroes': HEROES.all_rogue_heroes() | set("Spellblade, Spellknight".lower().split(', '))
     },
 
+    'hpdef': {
+        'zh': "主宰",
+        'en': 'Juggernaut',
+        'type': 's',
+        'heroes': HEROES.all_spellcaster_heroes() | HEROES.all_fighter_heroes() | HEROES.all_rogue_heroes()
+    },
+    
+
     'glancingblows': {
         'zh': "偏斜攻击",
         'en': "Glancing Blows",
@@ -88,6 +96,13 @@ SKILLS = {
         'heroes': set("Sorcerer, Warlock".lower().split(', '))
     },
 
+    'thickskin': {
+        'zh': "皮糙肉厚",
+        'en': 'Thick Skin',
+        'type': 'p',
+        'heroes': HEROES.all_fighter_heroes() | set("Spellknight".lower().split(', '))
+    },
+    
     'whirlwind': {
         'zh': "旋风攻击",
         'en': 'Whirlwind Attack',

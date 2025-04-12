@@ -28,7 +28,15 @@ HERO_RECOMMONDATIONS = {
         'promotion_en': "lord", 
         'element': "光",
         'description': "没推荐",
-        'suggestions': []
+        'suggestions': [
+            {
+                'skills': ["额外镀层","主宰","皮糙肉厚","无动于衷"],
+                'equips': ["魔晶破坏刃", "漫长寒冬护甲","泰坦护手","阿尔贡之盔","原岩重靴","阿尔贡之盾" ],
+                'elements': ["水","水","水","水","水","水"],
+                'spirits':["衔尾蛇","衔尾蛇","泰坦","衔尾蛇","衔尾蛇","衔尾蛇"],
+                'comment': ""
+            }
+        ]
     },
 
     {
