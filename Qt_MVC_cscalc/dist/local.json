@@ -1,11 +1,11 @@
 {
     "summary_tiers": [
-        14,
+        13,
         12,
         11,
         10
     ],
-    "active_tier": 11,
+    "active_tier": 10,
     "14": {
         "best_sequence": [
             [
@@ -522,125 +522,9 @@
             false,
             false,
             false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
             true
         ],
         "result": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
             0,
             0,
             0,
@@ -651,6 +535,106 @@
         ]
     },
     "logs": [
+        [
+            "2025-04-12 10:34:15",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x2</span>"
+        ],
+        [
+            "2025-04-12 10:30:42",
+            "制作",
+            "T10 <span style='color: #a64ca6;'>史诗x1</span>"
+        ],
+        [
+            "2025-04-12 10:29:39",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 2</span> "
+        ],
+        [
+            "2025-04-12 10:26:51",
+            "制作",
+            "T11 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-04-12 10:26:48",
+            "制作",
+            "T11 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-04-12 10:26:36",
+            "制作",
+            "T13 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-04-12 10:24:05",
+            "制作",
+            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
+        ],
+        [
+            "2025-04-12 10:23:57",
+            "制作",
+            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
+        ],
+        [
+            "2025-04-12 10:23:50",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-04-12 10:23:44",
+            "制作",
+            "T10 <span style='color: #00ff00;'>优质x1</span>"
+        ],
+        [
+            "2025-04-12 10:23:37",
+            "制作",
+            "T10 <span style='color: #00ff00;'>优质x1</span>"
+        ],
+        [
+            "2025-04-12 10:20:43",
+            "制作",
+            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
+        ],
+        [
+            "2025-04-12 10:20:40",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-04-12 10:20:40",
+            "制作",
+            "T10 <span style='color: #ffffff;'>普通x1</span>"
+        ],
+        [
+            "2025-04-12 10:12:13",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 2</span> "
+        ],
+        [
+            "2025-04-12 10:11:44",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 2</span> "
+        ],
+        [
+            "2025-04-12 10:08:08",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 16</span> "
+        ],
+        [
+            "2025-04-12 10:00:57",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 17</span> "
+        ],
+        [
+            "2025-04-12 10:00:54",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 17</span> "
+        ],
+        [
+            "2025-04-12 10:00:31",
+            "附魔",
+            "<span style='color:#ffffff;'>普通 x 2</span> "
+        ],
         [
             "2025-04-11 10:20:33",
             "制作",
@@ -800,116 +784,10 @@
             "2025-04-11 04:33:57",
             "制作",
             "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:33:46",
-            "制作",
-            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-04-11 04:33:41",
-            "制作",
-            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-04-11 04:31:43",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:28:18",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x2</span>"
-        ],
-        [
-            "2025-04-11 04:28:05",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:25:22",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:25:16",
-            "制作",
-            "T10 <span style='color: #AAAAAA;'>石头x1</span>"
-        ],
-        [
-            "2025-04-11 04:25:08",
-            "制作",
-            "T10 <span style='color: #ffffff;'>普通x2</span>"
-        ],
-        [
-            "2025-04-11 04:20:37",
-            "制作",
-            "T14 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:19:53",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:19:41",
-            "制作",
-            "T10 <span style='color: #00ff00;'>优质x1</span>"
-        ],
-        [
-            "2025-04-11 04:18:50",
-            "制作",
-            "T11 <span style='color: #4da6ff;'>精良x1</span>"
-        ],
-        [
-            "2025-04-11 04:17:40",
-            "制作",
-            "T11 <span style='color: #00ff00;'>优质x1</span>"
-        ],
-        [
-            "2025-04-11 04:13:50",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:13:48",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:11:39",
-            "附魔",
-            "<span style='color:#ffffff;'>普通 x 2</span> "
-        ],
-        [
-            "2025-04-11 04:11:22",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:11:17",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:11:15",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x1</span>"
-        ],
-        [
-            "2025-04-11 04:11:02",
-            "制作",
-            "T11 <span style='color: #ffffff;'>普通x2</span>"
         ]
     ],
     "13": {
         "best_sequence": [
-            [
-                null,
-                0,
-                1,
-                true
-            ],
             [
                 null,
                 0,
@@ -1055,10 +933,6 @@
         "back_switch_rate": 1,
         "sequences": [
             [
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     1
@@ -1906,18 +1780,6 @@
             ],
             [
                 null,
-                0,
-                1,
-                true
-            ],
-            [
-                null,
-                0,
-                1,
-                true
-            ],
-            [
-                null,
                 2,
                 1,
                 true
@@ -2078,14 +1940,6 @@
                     1
                 ],
                 [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
                     2,
                     1
                 ],
@@ -2198,27 +2052,15 @@
     "10": {
         "best_sequence": [
             [
-                "石头",
-                -1,
-                1,
-                false
-            ],
-            [
-                "石头",
-                -1,
-                1,
-                false
-            ],
-            [
-                "石头",
-                -1,
+                null,
+                0,
                 1,
                 false
             ],
             [
                 null,
-                0,
-                2,
+                3,
+                1,
                 false
             ],
             [
@@ -2228,7 +2070,7 @@
                 false
             ]
         ],
-        "craft_active": 3,
+        "craft_active": 1,
         "scores": [
             1,
             5,
@@ -2241,42 +2083,6 @@
         "sequences": [
             [
                 [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
                     1,
                     1
                 ],
@@ -2351,7 +2157,7 @@
                     1
                 ],
                 [
-                    0,
+                    3,
                     1
                 ],
                 [
@@ -2360,7 +2166,7 @@
                 ],
                 [
                     0,
-                    2
+                    1
                 ],
                 [
                     0,
@@ -2368,46 +2174,6 @@
                 ]
             ],
             [
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    2
-                ],
                 [
                     0,
                     2
@@ -2430,42 +2196,6 @@
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    2
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
                 [
                     2,
                     1
@@ -2488,42 +2218,6 @@
                 ]
             ],
             [
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
-                [
-                    0,
-                    1
-                ],
                 [
                     0,
                     2
