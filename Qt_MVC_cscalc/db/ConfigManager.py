@@ -312,7 +312,18 @@ class ConfigManager:
         if 'heroes' not in self.data.keys():
             self.data['heroes'] = self.generate_hero_default()
             self.save_config()
-        return self.data['heroes']['sequence_assignment']
+        assignment = self.data['heroes']['sequence_assignment']
+        while len(assignment['chests']) != CONSTANTS.CHEST_AMOUNT:
+            assignment['chests'].append(False)
+        while len(assignment['craft']) != CONSTANTS.MAX_TIER:
+            assignment['craft'].append(False)
+        while len(assignment['fusion']) != CONSTANTS.MAX_TIER:
+            assignment['fusion'].append(False)
+        while len(assignment['enchantments'][0]) != CONSTANTS.MAX_TIER:
+            for i in range(4):
+                assignment['enchantments'][i].append(False)
+        self.save_config()
+        return assignment
     
     def set_skill_assignment(self, hero_class, hero, promoted, index, assigned):
         if 'heroes' not in self.data.keys():

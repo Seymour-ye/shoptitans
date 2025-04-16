@@ -133,7 +133,7 @@ QTextBrowser a:hover {
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -2765,7 +2765,7 @@ QPushButton:pressed {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="sequence_assignment_widget">
        <property name="geometry">
@@ -4305,6 +4305,70 @@ QPushButton:pressed {
         </property>
         <property name="text">
          <string>附魔</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chest_17">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>370</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>史前</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fusion_assign_tier_15">
+        <property name="geometry">
+         <rect>
+          <x>305</x>
+          <y>370</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="craft_assign_tier_15">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>370</y>
+          <width>20</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="tier_label_15">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>370</y>
+          <width>25</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #2e2e2e; border: none; </string>
+        </property>
+        <property name="text">
+         <string>T15</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignCenter</set>

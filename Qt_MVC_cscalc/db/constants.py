@@ -9,9 +9,9 @@ import subprocess
 from PyQt6.QtGui import QPixmap, QIcon
 from PyQt6.QtWidgets import QMessageBox
 
-MAX_TIER = 14
+MAX_TIER = 15
 LOG_MAXIMUM = 50
-CHEST_AMOUNT = 17
+CHEST_AMOUNT = 18
 
 TIMER_INTERVALS = {
     'resource': 60 * 60 * 1.5,
@@ -39,7 +39,8 @@ SWITCHABLES = {
     11: (False, True),
     12: (True, True),
     13: (False, True),
-    14: (True, True)
+    14: (True, True),
+    15: (False, True)
 }
 
 QUALITIES = ['普通', '优质', '精良', '史诗', '传说']
